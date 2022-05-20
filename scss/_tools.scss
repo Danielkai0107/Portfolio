@@ -1,0 +1,209 @@
+// 置中
+%absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-center($a, $b, $c, $d) {
+  position: absolute;
+  left: $a;
+  top: $b;
+  transform: translate($c, $d);
+}
+
+// 左上
+@mixin absolute-lt($a, $b) {
+  position: absolute;
+  left: $a;
+  top: $b;
+}
+// 左下
+@mixin absolute-lb($a, $b) {
+  position: absolute;
+  left: $a;
+  bottom: $b;
+}
+//右上
+@mixin absolute-rt($a, $b) {
+  position: absolute;
+  right: $a;
+  top: $b;
+}
+//右下
+@mixin absolute-rb($a, $b) {
+  position: absolute;
+  right: $a;
+  bottom: $b;
+}
+
+//fixed
+
+// 左上
+@mixin fixed-lt($a, $b) {
+  position: fixed;
+  left: $b;
+  top: $a;
+}
+// 左下
+@mixin fixed-lb($a, $b) {
+  position: fixed;
+  left: $a;
+  bottom: $b;
+}
+//右上
+@mixin fixed-rt($a, $b) {
+  position: fixed;
+  right: $a;
+  top: $b;
+}
+//右下
+@mixin fixed-rb($a, $b) {
+  position: fixed;
+  right: $a;
+  bottom: $b;
+}
+
+//background 設定
+%bg-contain {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+%bg-cover {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// 偽元素
+@mixin after($c, $w, $h) {
+  &::after {
+    display: block;
+    content: $c;
+    width: $w;
+    height: $h;
+    @content;
+  }
+}
+
+@mixin after-b($c, $w, $h, $br, $bgc) {
+  &::after {
+    display: block;
+    content: $c;
+    width: $w;
+    height: $h;
+    border-radius: $br;
+    background-color: $bgc;
+    @content;
+  }
+}
+
+@mixin before($c, $w, $h) {
+  &::before {
+    display: block;
+    content: $c;
+    width: $w;
+    height: $h;
+    @content;
+  }
+}
+
+@mixin before-b($c, $w, $h, $br, $bgc) {
+  &::before {
+    display: block;
+    content: $c;
+    width: $w;
+    height: $h;
+    border-radius: $br;
+    background-color: $bgc;
+    @content;
+  }
+}
+
+//盒子長寬設定
+
+@mixin size($w, $h) {
+  width: $w;
+  height: $h;
+}
+@mixin size-bgc($w, $h, $radius, $color) {
+  width: $w;
+  height: $h;
+  border-radius: $radius;
+  background-color: $color;
+}
+
+//圖片等比例框
+@mixin img-w($x, $y, $c) {
+  width: $x;
+  aspect-ratio: $y;
+  object-fit: $c;
+  vertical-align: bottom;
+}
+
+@mixin img-h($x, $y, $c) {
+  height: $x;
+  aspect-ratio: $y;
+  object-fit: $c;
+  vertical-align: bottom;
+}
+
+//文字
+
+@mixin font($a, $b, $c, $d, $e) {
+  font-size: $a;
+  line-height: $b;
+  font-weight: $c;
+  letter-spacing: $d;
+  margin: $e;
+}
+
+//grid
+
+@mixin grid($a, $b, $c) {
+  display: grid;
+  grid-template-columns: $a;
+  grid-column-gap: $b;
+  grid-row-gap: $c;
+}
+
+// 圖片滑鼠放大
+
+@mixin hover-scale($x, $y) {
+  transition: all $y;
+  &:hover {
+    transform: scale($x);
+  }
+}
+
+//文字滑鼠底線
+
+@mixin hover-line($b, $color, $t) {
+  @include after-b('', 100%, $b, 0, $color) {
+    transition: all $t;
+    @include absolute-lb(0, -50%);
+    opacity: 0;
+  }
+  &:hover {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+//文字滑鼠透明
+
+@mixin hover-opacity($x, $y) {
+  transition: all $y;
+  opacity: $x;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@mixin blur($saturate, $blur) {
+  backdrop-filter: saturate($saturate) blur($blur);
+}

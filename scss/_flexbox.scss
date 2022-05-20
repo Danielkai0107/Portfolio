@@ -1,0 +1,80 @@
+//水平排版
+// 置中
+%flex-row-center {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: center;
+	align-items: center;
+}
+//置中靠上
+%flex-row-stretch {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: center;
+	align-items: stretch;
+}
+// 靠左
+%flex-row-start {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+// 靠右
+%flex-row-end {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+// 水平均分
+%flex-row-around {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+%flex-row-between {
+	display: flex;
+	flex-flow: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+//垂直排版
+// 置中
+%flex-col-center {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+}
+// 靠左
+%flex-col-start {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+// 靠右
+%flex-col-end {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+// 水平均分
+%flex-col-around {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+%flex-col-between {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-between;
+	align-items: center;
+}

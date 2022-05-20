@@ -1,0 +1,94 @@
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+.container {
+  width: 100%;
+}
+
+@for $var from 1 to 11 {
+  .row-#{$var*10} {
+    width: 10% * $var;
+  }
+}
+
+// @media row
+
+@media (min-width: 1400px) {
+  @for $var from 1 to 11 {
+    .row-#{$var*10}-xl {
+      width: 10% * $var;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  @for $var from 1 to 11 {
+    .row-#{$var*10}-lg {
+      width: 10% * $var;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  @for $var from 1 to 11 {
+    .row-#{$var*10}-md {
+      width: 10% * $var;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  @for $var from 1 to 11 {
+    .row-#{$var*10}-sm {
+      width: 10% * $var;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  @for $var from 1 to 11 {
+    .row-#{$var*10}-xs {
+      width: 10% * $var;
+    }
+  }
+}
+
+// @media font
+
+@media (max-width: 1400px) {
+  body {
+    font-size: 16x;
+  }
+}
+
+@media (max-width: 1200px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    font-size: 10px;
+  }
+}
