@@ -2,12 +2,17 @@
 @import 'flexbox';
 @import 'animation';
 
-$theme-black: #333;
+$theme-black: #212121;
 $theme-white: #fff;
-$content-width: 95%;
+$content-width: 90%;
 
-.bgc-wrapper {
+.bgc-wrapper-1 {
   background-image: url(../white/white-bgc.jpeg);
+  padding: 2em 0;
+}
+
+.bgc-wrapper-2 {
+  background-image: url(../black/black-bgc.jpg);
   padding: 2em 0;
 }
 
@@ -16,8 +21,12 @@ $content-width: 95%;
   margin: 0 auto;
   border: 1px solid $theme-black;
   border-radius: 0.6em;
+  hr {
+    width: $content-width;
+    color: $theme-black;
+  }
   &__nav {
-    @include size($content-width, 2.5em);
+    @include size(95%, 2.5em);
     @extend %flex-row-between;
     margin: 0 auto;
     border-bottom: 1px solid $theme-black;
@@ -59,7 +68,6 @@ $content-width: 95%;
     width: $content-width;
     @extend %flex-row-start;
     margin: 0 auto;
-    border-bottom: 1px solid $theme-black;
     &__title {
       width: 80%;
       margin: 5em 0;
@@ -74,7 +82,6 @@ $content-width: 95%;
     @extend %flex-row-between;
     align-items: flex-start;
     margin: 3em auto;
-    border-bottom: 1px solid $theme-black;
     &__num {
       @include size(10%, 7em);
       img {
@@ -133,6 +140,173 @@ $content-width: 95%;
           a {
             @include font(1em, 1.5, 300, 0.1em, 0 20px);
             @include hover-line(1px, $theme-black, 0.2s);
+          }
+        }
+      }
+    }
+  }
+}
+
+//main2 About
+
+.about {
+  width: 95%;
+  margin: 0 auto;
+  border: 1px solid $theme-white;
+  border-radius: 0.6em;
+  hr {
+    width: $content-width;
+    color: $theme-white;
+  }
+  &__nav {
+    @include size(95%, 2.5em);
+    @extend %flex-row-between;
+    margin: 0 auto;
+    border-bottom: 1px solid $theme-white;
+    ul {
+      @include size(100%, 100%);
+      @extend %flex-row-between;
+      li {
+        flex: 1;
+        &:nth-child(1) {
+          @extend %flex-row-start;
+          div {
+            @include size(0.6em, 0.6em);
+            border: 1px solid $theme-white;
+            border-radius: 1em;
+            margin: 0 10px;
+            &:hover {
+              background-color: $theme-white;
+            }
+          }
+        }
+        &:nth-child(2) {
+          @extend %flex-row-center;
+          a {
+            @include font(1em, 1.5, 300, 0.1em, 0);
+            @include hover-line(1px, $theme-white, 0.2s);
+            color: $theme-white;
+          }
+        }
+        &:nth-child(3) {
+          @extend %flex-row-end;
+          a {
+            @include font(1em, 1.5, 300, 0.1em, 0 20px);
+            @include hover-line(1px, $theme-white, 0.2s);
+            color: $theme-white;
+          }
+        }
+      }
+    }
+  }
+  &__header {
+    width: $content-width;
+    @extend %flex-row-start;
+    margin: 0 auto;
+    margin-bottom: 5em;
+    &__title {
+      width: 80%;
+      margin: 6em 0 6em 0;
+      img {
+        width: 80%;
+        object-fit: contain;
+      }
+    }
+    &__content {
+      .textBox {
+        width: 60%;
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      .imgBox {
+        @include absolute-rb(0, -10%);
+        transform-origin: right top;
+        transform: rotate(90deg);
+        width: 50%;
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+  &__section--1 {
+    width: $content-width;
+    @extend %flex-col-center;
+    align-items: flex-start;
+    margin: 5em auto;
+    .title {
+      height: 5em;
+      img {
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .content {
+      width: 40%;
+      margin-left: 45%;
+      margin-top: 5em;
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  &__section--2 {
+    width: $content-width;
+    @extend %flex-col-center;
+    align-items: flex-start;
+    margin: 5em auto;
+    .title {
+      height: 5em;
+      img {
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .content {
+      width: 40%;
+      margin-left: 45%;
+      margin-top: 6em;
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  &__footer {
+    @include size($content-width, 2.5em);
+    @extend %flex-row-between;
+    margin: 0 auto 1em auto;
+    ul {
+      @include size(100%, 100%);
+      @extend %flex-row-between;
+      li {
+        flex: 1;
+        &:nth-child(1) {
+          @extend %flex-row-start;
+          a {
+            @include font(1em, 1.5, 300, 0.1em, 0);
+            @include hover-line(1px, $theme-white, 0.2s);
+            color: $theme-white;
+          }
+        }
+        &:nth-child(2) {
+          @extend %flex-row-center;
+          a {
+            @include font(1em, 1.5, 300, 0.1em, 0);
+            @include hover-line(1px, $theme-white, 0.2s);
+            color: $theme-white;
+          }
+        }
+        &:nth-child(3) {
+          @extend %flex-row-end;
+          a {
+            @include font(1em, 1.5, 300, 0.1em, 0 20px);
+            @include hover-line(1px, $theme-white, 0.2s);
+            color: $theme-white;
           }
         }
       }
