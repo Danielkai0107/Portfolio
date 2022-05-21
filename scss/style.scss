@@ -1,3 +1,141 @@
 @import 'tools';
 @import 'flexbox';
 @import 'animation';
+
+$theme-black: #333;
+$theme-white: #fff;
+$content-width: 95%;
+
+.bgc-wrapper {
+  background-image: url(../white/white-bgc.jpeg);
+  padding: 2em 0;
+}
+
+.projects {
+  width: 95%;
+  margin: 0 auto;
+  border: 1px solid $theme-black;
+  border-radius: 0.6em;
+  &__nav {
+    @include size($content-width, 2.5em);
+    @extend %flex-row-between;
+    margin: 0 auto;
+    border-bottom: 1px solid $theme-black;
+    ul {
+      @include size(100%, 100%);
+      @extend %flex-row-between;
+      li {
+        flex: 1;
+        &:nth-child(1) {
+          @extend %flex-row-start;
+          div {
+            @include size(0.6em, 0.6em);
+            border: 1px solid $theme-black;
+            border-radius: 1em;
+            margin: 0 10px;
+            &:hover {
+              background-color: $theme-black;
+            }
+          }
+        }
+        &:nth-child(2) {
+          @extend %flex-row-center;
+          a {
+            @include font(1em, 1.5, 300, 0.1em, 0);
+            @include hover-line(1px, $theme-black, 0.2s);
+          }
+        }
+        &:nth-child(3) {
+          @extend %flex-row-end;
+          a {
+            @include font(1em, 1.5, 300, 0.1em, 0 20px);
+            @include hover-line(1px, $theme-black, 0.2s);
+          }
+        }
+      }
+    }
+  }
+  &__header {
+    width: $content-width;
+    @extend %flex-row-start;
+    margin: 0 auto;
+    border-bottom: 1px solid $theme-black;
+    &__title {
+      width: 80%;
+      margin: 5em 0;
+      img {
+        width: 80%;
+        object-fit: contain;
+      }
+    }
+  }
+  &__section {
+    width: $content-width;
+    @extend %flex-row-between;
+    align-items: flex-start;
+    margin: 3em auto;
+    border-bottom: 1px solid $theme-black;
+    &__num {
+      @include size(10%, 7em);
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    &__content {
+      width: 70%;
+      @extend %flex-col-between;
+      .imgBox {
+        width: 100%;
+        img {
+          width: 100%;
+          object-fit: cover;
+          aspect-ratio: 16/9;
+          vertical-align: bottom;
+        }
+      }
+      .title {
+        @extend %flex-row-end;
+        @include size(100%, 20%);
+        margin: 3em auto;
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+  &__footer {
+    @include size($content-width, 2.5em);
+    @extend %flex-row-between;
+    margin: 0 auto 1em auto;
+    ul {
+      @include size(100%, 100%);
+      @extend %flex-row-between;
+      li {
+        flex: 1;
+        &:nth-child(1) {
+          @extend %flex-row-start;
+          a {
+            @include font(1em, 1.5, 300, 0.1em, 0);
+            @include hover-line(1px, $theme-black, 0.2s);
+          }
+        }
+        &:nth-child(2) {
+          @extend %flex-row-center;
+          a {
+            @include font(1em, 1.5, 300, 0.1em, 0);
+            @include hover-line(1px, $theme-black, 0.2s);
+          }
+        }
+        &:nth-child(3) {
+          @extend %flex-row-end;
+          a {
+            @include font(1em, 1.5, 300, 0.1em, 0 20px);
+            @include hover-line(1px, $theme-black, 0.2s);
+          }
+        }
+      }
+    }
+  }
+}

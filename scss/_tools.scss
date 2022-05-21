@@ -184,7 +184,8 @@
 @mixin hover-line($b, $color, $t) {
   @include after-b('', 100%, $b, 0, $color) {
     transition: all $t;
-    @include absolute-lb(0, -50%);
+    @include absolute-lt(0, 50%);
+    transform: translateY(-50%);
     opacity: 0;
   }
   &:hover {
