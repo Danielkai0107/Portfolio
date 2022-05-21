@@ -26,6 +26,7 @@ $font-Taviraj: 'Taviraj', serif;
   hr {
     width: $content-width;
     color: $theme-black;
+    transition: all 0.6s;
   }
   &__nav {
     @include size(95%, 2.5em);
@@ -103,7 +104,7 @@ $font-Taviraj: 'Taviraj', serif;
           object-fit: cover;
           aspect-ratio: 16/9;
           vertical-align: bottom;
-          @include hover-scale(1.3, 1s);
+          @include hover-scale(1.3, 0.5s);
         }
       }
       .title {
@@ -243,7 +244,7 @@ $font-Taviraj: 'Taviraj', serif;
     align-items: flex-start;
     margin: 3em auto;
     .title {
-      @include font(4em, 1.3, 200, 0, 0);
+      @include font(4em, 1.3, 200, 0.1em, 0);
       color: $theme-white;
       font-family: $font-Taviraj;
     }
@@ -263,7 +264,7 @@ $font-Taviraj: 'Taviraj', serif;
     align-items: flex-start;
     margin: 3em auto;
     .title {
-      @include font(4em, 1.3, 200, 0, 0);
+      @include font(4em, 1.3, 200, 0.1em, 0);
       color: $theme-white;
       font-family: $font-Taviraj;
     }
