@@ -175,7 +175,7 @@
 @mixin hover-scale($x, $y) {
   transition: all $y;
   &:hover {
-    transform: scale($x);
+    transform: scale($x) rotate(8deg);
   }
 }
 
