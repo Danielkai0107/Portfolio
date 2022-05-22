@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daniel Kai</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/layout.css" />
     <link rel="stylesheet" href="./css/animation.css" />
@@ -17,11 +18,11 @@
     />
   </head>
   <body>
-    <article class="open-animation">
+    <!-- <article class="open-animation">
       <section class="text">
         <p>DANIEL<span>KAI</span></p>
       </section>
-    </article>
+    </article> -->
     <!-- start main-1 -->
     <article class="bgc-wrapper-1">
       <main class="projects">
@@ -53,16 +54,24 @@
 
         <!-- start article 1 -->
         <article class="projects__section">
-          <div class="projects__mask"></div>
-          <figure class="projects__section__num">
+          <figure
+            class="projects__section__num"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
             <img src="./white/01.png" alt="" />
           </figure>
           <ul class="projects__section__content">
-            <li class="imgBox">
+            <li class="imgBox" data-aos="fade-left" data-aos-duration="2000">
               <img src="./white/shoe-img.jpg" alt="" />
               <div class="mask"></div>
             </li>
-            <li class="title">
+            <li
+              class="title"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-offset="50"
+            >
               <img src="./white/shoe.png" alt="" />
             </li>
           </ul>
@@ -72,15 +81,24 @@
 
         <!-- start article 2 -->
         <article class="projects__section">
-          <figure class="projects__section__num">
+          <figure
+            class="projects__section__num"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
             <img src="./white/02.png" alt="" />
           </figure>
           <ul class="projects__section__content">
-            <li class="imgBox">
+            <li class="imgBox" data-aos="fade-left" data-aos-duration="2000">
               <img src="./white/pet-img.jpg" alt="" />
               <div class="mask"></div>
             </li>
-            <li class="title">
+            <li
+              class="title"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-offset="50"
+            >
               <img src="./white/pet.png" alt="" />
             </li>
           </ul>
@@ -90,15 +108,24 @@
 
         <!-- start article 3 -->
         <article class="projects__section">
-          <figure class="projects__section__num">
+          <figure
+            class="projects__section__num"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
             <img src="./white/03.png" alt="" />
           </figure>
           <ul class="projects__section__content">
-            <li class="imgBox">
+            <li class="imgBox" data-aos="fade-left" data-aos-duration="2000">
               <img src="./white/dessert-img.jpg" alt="" />
               <div class="mask mask-3"></div>
             </li>
-            <li class="title">
+            <li
+              class="title"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-offset="50"
+            >
               <img src="./white/dessert.png" alt="" />
             </li>
           </ul>
@@ -149,10 +176,18 @@
             <img src="./black/title_5.png" alt="" />
           </figure>
           <section class="about__header__content">
-            <figure class="textBox">
+            <figure
+              class="textBox"
+              data-aos="fade-right"
+              data-aos-duration="2000"
+            >
               <img src="./black/intro.png" alt="" />
             </figure>
-            <figure class="imgBox">
+            <figure
+              class="imgBox"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+            >
               <img src="./black/github.png" alt="" />
             </figure>
           </section>
@@ -162,8 +197,10 @@
 
         <!-- start article 1 -->
         <article class="about__section--1">
-          <p class="title">SKILL</p>
-          <figure class="content">
+          <p class="title" data-aos="fade-right" data-aos-duration="2000">
+            SKILL
+          </p>
+          <figure class="content" data-aos="fade-up" data-aos-duration="2000">
             <img src="./black/list.png" alt="" />
           </figure>
         </article>
@@ -172,9 +209,14 @@
 
         <!-- start article 2 -->
         <article class="about__section--2">
-          <p class="title">EXPERIENCE</p>
-          <figure class="content">
+          <p class="title" data-aos="fade-right" data-aos-duration="2000">
+            EXPERIENCE
+          </p>
+          <figure class="content" data-aos="fade-up" data-aos-duration="1000">
             <img src="./black/3.png" alt="" />
+          </figure>
+          <figure class="mail" data-aos="fade-right" data-aos-duration="1000">
+            <img src="./black/mail.png" alt="" />
           </figure>
         </article>
         <hr class="hr" />
@@ -196,5 +238,9 @@
     </article>
     <!-- end main-2 -->
     <script src="./index.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

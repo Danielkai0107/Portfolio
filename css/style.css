@@ -502,7 +502,7 @@
 .about__header__content .imgBox {
   position: absolute;
   right: 0;
-  bottom: -10%;
+  bottom: -25%;
   transform-origin: right top;
   transform: rotate(90deg);
   width: 50%;
@@ -556,6 +556,15 @@
   margin-top: 3em;
 }
 .about__section--2 .content img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.about__section--2 .mail {
+  width: 50%;
+  margin-top: 3em;
+}
+.about__section--2 .mail img {
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;

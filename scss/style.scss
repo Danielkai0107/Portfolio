@@ -273,7 +273,7 @@ $font-Taviraj: 'Taviraj', serif;
         }
       }
       .imgBox {
-        @include absolute-rb(0, -10%);
+        @include absolute-rb(0, -25%);
         transform-origin: right top;
         transform: rotate(90deg);
         width: 50%;
@@ -317,6 +317,14 @@ $font-Taviraj: 'Taviraj', serif;
     .content {
       width: 40%;
       margin-left: 45%;
+      margin-top: 3em;
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    .mail {
+      width: 50%;
       margin-top: 3em;
       img {
         width: 100%;
