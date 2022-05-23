@@ -400,6 +400,7 @@
   position: absolute;
   left: 0;
   top: 0;
+  transition: all 0.4s;
   background-image: url(../black/black-bgc.jpg);
   padding: 2em 0;
 }
