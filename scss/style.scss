@@ -8,10 +8,6 @@ $content-width: 90%;
 $font-noto: 'Noto Sans', sans-serif;
 $font-Taviraj: 'Taviraj', serif;
 
-.hidden {
-  display: none;
-}
-
 .open-animation {
   @include fixed-lt(0, 0);
   @include size-bgc(100%, 100vh, 0, rgba(8, 8, 8, 0.5));
@@ -36,6 +32,8 @@ $font-Taviraj: 'Taviraj', serif;
   }
 }
 
+//Article-1 Projects
+
 .bgc-wrapper-1 {
   background-image: url(../white/white-bgc.jpeg);
   padding: 2em 0;
@@ -44,19 +42,21 @@ $font-Taviraj: 'Taviraj', serif;
     margin: 0 auto;
     border: 1px solid $theme-black;
     border-radius: 0.6em;
+    overflow: hidden;
     hr {
       width: $content-width;
       color: $theme-black;
       transition: all 0.6s;
     }
     &__nav {
-      @include size(95%, 2.5em);
       @extend %flex-row-between;
+      width: 95%;
       margin: 0 auto;
       border-bottom: 1px solid $theme-black;
       ul {
-        @include size(100%, 100%);
         @extend %flex-row-between;
+        width: 100%;
+        padding: 1em 1em;
         li {
           flex: 1;
           &:nth-child(1) {
@@ -82,7 +82,7 @@ $font-Taviraj: 'Taviraj', serif;
           &:nth-child(3) {
             @extend %flex-row-end;
             a {
-              @include font(1em, 1.5, 300, 0.1em, 0 20px);
+              @include font(1em, 1.5, 300, 0.1em, 0 0 0 20px);
               @include hover-line(1px, $theme-black, 0.2s);
               cursor: pointer;
             }
@@ -110,7 +110,6 @@ $font-Taviraj: 'Taviraj', serif;
       @extend %flex-row-between;
       align-items: flex-start;
       margin: 3em auto;
-
       &__num {
         @include size(10%, 7em);
         img {
@@ -164,12 +163,14 @@ $font-Taviraj: 'Taviraj', serif;
       }
     }
     &__footer {
-      @include size($content-width, 2.5em);
+      width: 95%;
       @extend %flex-row-between;
-      margin: 0 auto 1em auto;
+      margin: 0 auto;
       ul {
-        @include size(100%, 100%);
+        width: 100%;
         @extend %flex-row-between;
+        border-top: 1px solid $theme-black;
+        padding: 1em 1em;
         li {
           flex: 1;
           &:nth-child(1) {
@@ -190,7 +191,7 @@ $font-Taviraj: 'Taviraj', serif;
           &:nth-child(3) {
             @extend %flex-row-end;
             a {
-              @include font(1em, 1.5, 300, 0.1em, 0 20px);
+              @include font(1em, 1.5, 300, 0.1em, 0 0 0 20px);
               @include hover-line(1px, $theme-black, 0.2s);
               cursor: pointer;
             }
@@ -201,11 +202,12 @@ $font-Taviraj: 'Taviraj', serif;
   }
 }
 
-//main2 About
+//Article-2 About
 
 .bgc-wrapper-2 {
   @include absolute-lt(0, 0);
-  transition: all 0.4s;
+  visibility: hidden;
+  opacity: 0;
   background-image: url(../black/black-bgc.jpg);
   padding: 2em 0;
   .about {
@@ -218,13 +220,14 @@ $font-Taviraj: 'Taviraj', serif;
       color: $theme-white;
     }
     &__nav {
-      @include size(95%, 2.5em);
+      width: 95%;
       @extend %flex-row-between;
       margin: 0 auto;
       border-bottom: 1px solid $theme-white;
       ul {
-        @include size(100%, 100%);
+        width: 100%;
         @extend %flex-row-between;
+        padding: 1em 1em;
         li {
           flex: 1;
           &:nth-child(1) {
@@ -251,7 +254,7 @@ $font-Taviraj: 'Taviraj', serif;
           &:nth-child(3) {
             @extend %flex-row-end;
             a {
-              @include font(1em, 1.5, 300, 0.1em, 0 20px);
+              @include font(1em, 1.5, 300, 0.1em, 0 0 0 20px);
               @include hover-line(1px, $theme-white, 0.2s);
               color: $theme-white;
               cursor: pointer;
@@ -342,12 +345,14 @@ $font-Taviraj: 'Taviraj', serif;
       }
     }
     &__footer {
-      @include size($content-width, 2.5em);
+      width: 95%;
       @extend %flex-row-between;
-      margin: 0 auto 1em auto;
+      margin: 0 auto;
       ul {
-        @include size(100%, 100%);
+        width: 100%;
         @extend %flex-row-between;
+        border-top: 1px solid $theme-white;
+        padding: 1em 1em;
         li {
           flex: 1;
           &:nth-child(1) {
@@ -370,7 +375,7 @@ $font-Taviraj: 'Taviraj', serif;
           &:nth-child(3) {
             @extend %flex-row-end;
             a {
-              @include font(1em, 1.5, 300, 0.1em, 0 20px);
+              @include font(1em, 1.5, 300, 0.1em, 0 0 0 20px);
               @include hover-line(1px, $theme-white, 0.2s);
               color: $theme-white;
               cursor: pointer;
@@ -380,4 +385,18 @@ $font-Taviraj: 'Taviraj', serif;
       }
     }
   }
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.ab {
+  visibility: visible;
+  animation: about 2s forwards;
+}
+
+.overflow {
+  overflow: hidden;
 }

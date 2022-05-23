@@ -53,4 +53,24 @@
   to {
     opacity: 0;
   }
+}
+@-webkit-keyframes about {
+  from {
+    transform: scale(0) rotate(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+@keyframes about {
+  from {
+    transform: scale(0) rotate(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
 }/*# sourceMappingURL=animation.css.map */
