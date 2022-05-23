@@ -1,8 +1,14 @@
-.bgc-wrapper-1 .projects__section__num .circle::after, .bgc-wrapper-1 .projects__header__circle::after {
+.bgc-wrapper-1 .projects__header__circle::after {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.bgc-wrapper-1 .projects__section__circle::after, .bgc-wrapper-1 .projects__header__circle::after {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .bgc-wrapper-2 .about__footer ul li:nth-child(2), .bgc-wrapper-2 .about__nav ul li:nth-child(2), .bgc-wrapper-1 .projects__footer ul li:nth-child(2), .bgc-wrapper-1 .projects__nav ul li:nth-child(2), .open-animation .text {
@@ -284,17 +290,11 @@
 }
 .bgc-wrapper-1 .projects__header__circle::after {
   display: block;
-  content: "scroll";
-  width: 3em;
-  height: 3em;
-  text-align: center;
-  font-family: "Taviraj", serif;
-  font-size: 2.2em;
-  line-height: 2.8em;
-  font-weight: 100;
-  letter-spacing: 0.1em;
-  margin: 0;
-  opacity: 0.5;
+  content: "";
+  width: 60%;
+  height: 100%;
+  background-image: url("../white/scrolltext.png");
+  opacity: 0.3;
 }
 .bgc-wrapper-1 .projects__header__circle img {
   width: 100%;
@@ -334,35 +334,6 @@
   width: 30%;
   -o-object-fit: contain;
      object-fit: contain;
-}
-.bgc-wrapper-1 .projects__section__num .circle {
-  width: 50%;
-  position: absolute;
-  left: 0%;
-  top: 240%;
-}
-.bgc-wrapper-1 .projects__section__num .circle::after {
-  display: block;
-  content: "click photo";
-  width: 3em;
-  height: 3em;
-  text-align: center;
-  white-space: nowrap;
-  font-family: "Taviraj", serif;
-  font-size: 2em;
-  line-height: 2.5em;
-  font-weight: 100;
-  letter-spacing: 0.1em;
-  margin: 0;
-  opacity: 0.5;
-}
-.bgc-wrapper-1 .projects__section__num .circle img {
-  width: 50%;
-  -o-object-fit: contain;
-     object-fit: contain;
-  opacity: 0.2;
-  -webkit-animation: rotate360 40s infinite forwards linear;
-          animation: rotate360 40s infinite forwards linear;
 }
 .bgc-wrapper-1 .projects__section__num__title {
   width: 80%;
@@ -428,6 +399,32 @@
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.bgc-wrapper-1 .projects__section__circle {
+  width: 10%;
+  position: absolute;
+  left: 0%;
+  bottom: 30%;
+}
+.bgc-wrapper-1 .projects__section__circle::after {
+  display: block;
+  content: "";
+  width: 200%;
+  height: 50%;
+  background-image: url("../white/clickphoto.png");
+  position: absolute;
+  left: 32%;
+  top: 50%;
+  transform: translate(0, -50%);
+  opacity: 0.4;
+}
+.bgc-wrapper-1 .projects__section__circle img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  opacity: 0.2;
+  -webkit-animation: rotate360 40s infinite forwards linear;
+          animation: rotate360 40s infinite forwards linear;
 }
 .bgc-wrapper-1 .projects__footer {
   width: 95%;
