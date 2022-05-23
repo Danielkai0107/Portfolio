@@ -8,6 +8,10 @@ $content-width: 90%;
 $font-noto: 'Noto Sans', sans-serif;
 $font-Taviraj: 'Taviraj', serif;
 
+.hidden {
+  display: none;
+}
+
 .open-animation {
   @include fixed-lt(0, 0);
   @include size-bgc(100%, 100vh, 0, rgba(8, 8, 8, 0.5));
@@ -35,163 +39,161 @@ $font-Taviraj: 'Taviraj', serif;
 .bgc-wrapper-1 {
   background-image: url(../white/white-bgc.jpeg);
   padding: 2em 0;
-}
-
-.bgc-wrapper-2 {
-  background-image: url(../black/black-bgc.jpg);
-  padding: 2em 0;
-}
-
-.projects {
-  width: 95%;
-  margin: 0 auto;
-  border: 1px solid $theme-black;
-  border-radius: 0.6em;
-  hr {
-    width: $content-width;
-    color: $theme-black;
-    transition: all 0.6s;
-  }
-  &__nav {
-    @include size(95%, 2.5em);
-    @extend %flex-row-between;
+  .projects {
+    width: 95%;
     margin: 0 auto;
-    border-bottom: 1px solid $theme-black;
-    ul {
-      @include size(100%, 100%);
+    border: 1px solid $theme-black;
+    border-radius: 0.6em;
+    hr {
+      width: $content-width;
+      color: $theme-black;
+      transition: all 0.6s;
+    }
+    &__nav {
+      @include size(95%, 2.5em);
       @extend %flex-row-between;
-      li {
-        flex: 1;
-        &:nth-child(1) {
-          @extend %flex-row-start;
-          div {
-            @include size(0.6em, 0.6em);
-            border: 1px solid $theme-black;
-            border-radius: 1em;
-            margin: 0 10px;
-            &:hover {
-              background-color: $theme-black;
+      margin: 0 auto;
+      border-bottom: 1px solid $theme-black;
+      ul {
+        @include size(100%, 100%);
+        @extend %flex-row-between;
+        li {
+          flex: 1;
+          &:nth-child(1) {
+            @extend %flex-row-start;
+            div {
+              @include size(0.6em, 0.6em);
+              border: 1px solid $theme-black;
+              border-radius: 1em;
+              margin: 0 10px;
+              &:hover {
+                background-color: $theme-black;
+              }
+            }
+          }
+          &:nth-child(2) {
+            @extend %flex-row-center;
+            a {
+              @include font(1em, 1.5, 300, 0.1em, 0);
+              @include hover-line(1px, $theme-black, 0.2s);
+              cursor: pointer;
+            }
+          }
+          &:nth-child(3) {
+            @extend %flex-row-end;
+            a {
+              @include font(1em, 1.5, 300, 0.1em, 0 20px);
+              @include hover-line(1px, $theme-black, 0.2s);
+              cursor: pointer;
             }
           }
         }
-        &:nth-child(2) {
-          @extend %flex-row-center;
-          a {
-            @include font(1em, 1.5, 300, 0.1em, 0);
-            @include hover-line(1px, $theme-black, 0.2s);
-          }
-        }
-        &:nth-child(3) {
-          @extend %flex-row-end;
-          a {
-            @include font(1em, 1.5, 300, 0.1em, 0 20px);
-            @include hover-line(1px, $theme-black, 0.2s);
-          }
-        }
       }
     }
-  }
-  &__header {
-    width: $content-width;
-    @extend %flex-row-start;
-    margin: 0 auto;
-    &__title {
-      width: 80%;
-      margin: 5em 0;
-      animation: fade 2s 1.8s forwards;
-      opacity: 0;
-      img {
+    &__header {
+      width: $content-width;
+      @extend %flex-row-start;
+      margin: 0 auto;
+      &__title {
         width: 80%;
-        object-fit: contain;
+        margin: 5em 0;
+        animation: fade 2s 1.8s forwards;
+        opacity: 0;
+        img {
+          width: 80%;
+          object-fit: contain;
+        }
       }
     }
-  }
-  &__section {
-    width: $content-width;
-    @extend %flex-row-between;
-    align-items: flex-start;
-    margin: 3em auto;
+    &__section {
+      width: $content-width;
+      @extend %flex-row-between;
+      align-items: flex-start;
+      margin: 3em auto;
 
-    &__num {
-      @include size(10%, 7em);
-      img {
-        width: 100%;
-        object-fit: contain;
-      }
-    }
-    &__content {
-      width: 70%;
-      @extend %flex-col-between;
-      .imgBox {
-        width: 100%;
-        overflow: hidden;
-        box-shadow: 2px 2px 5px rgb(90, 90, 90);
-        .mask {
-          @include absolute-lt(0, 0);
-          @include size-bgc(100%, 100%, 0, rgba(255, 255, 255, 0.2));
-          @include blur(60, 5px);
-          transform-origin: top left;
-          transition: all 1.3s;
-        }
-        .mask-3 {
-          @include size-bgc(100%, 100%, 0, rgba(255, 85, 241, 0.5));
-          @include blur(20, 1px);
-        }
+      &__num {
+        @include size(10%, 7em);
         img {
           width: 100%;
-          object-fit: cover;
-          aspect-ratio: 16/9;
-          vertical-align: bottom;
-          transition: all 1.3s;
+          object-fit: contain;
         }
-        &:hover {
+      }
+      &__content {
+        width: 70%;
+        @extend %flex-col-between;
+        .imgBox {
+          width: 100%;
+          overflow: hidden;
+          box-shadow: 2px 2px 5px rgb(90, 90, 90);
           .mask {
-            transform: rotate(90deg) translateX(80%) skew(30deg, 70deg);
+            @include absolute-lt(0, 0);
+            @include size-bgc(100%, 100%, 0, rgba(255, 255, 255, 0.2));
+            @include blur(60, 5px);
+            transform-origin: top left;
+            transition: all 1.3s;
+          }
+          .mask-3 {
+            @include size-bgc(100%, 100%, 0, rgba(255, 85, 241, 0.5));
+            @include blur(20, 1px);
           }
           img {
-            transform: scale(1.3) rotate(8deg);
+            width: 100%;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+            vertical-align: bottom;
+            transition: all 1.3s;
+          }
+          &:hover {
+            .mask {
+              transform: rotate(90deg) translateX(80%) skew(30deg, 70deg);
+            }
+            img {
+              transform: scale(1.3) rotate(8deg);
+            }
           }
         }
-      }
-      .title {
-        @extend %flex-row-end;
-        @include size(100%, 20%);
-        margin: 1em auto 0 auto;
-        img {
-          width: 100%;
-          object-fit: cover;
+        .title {
+          @extend %flex-row-end;
+          @include size(100%, 20%);
+          margin: 1em auto 0 auto;
+          img {
+            width: 100%;
+            object-fit: cover;
+          }
         }
       }
     }
-  }
-  &__footer {
-    @include size($content-width, 2.5em);
-    @extend %flex-row-between;
-    margin: 0 auto 1em auto;
-    ul {
-      @include size(100%, 100%);
+    &__footer {
+      @include size($content-width, 2.5em);
       @extend %flex-row-between;
-      li {
-        flex: 1;
-        &:nth-child(1) {
-          @extend %flex-row-start;
-          a {
-            @include font(1em, 1.5, 300, 0.1em, 0);
-            @include hover-line(1px, $theme-black, 0.2s);
+      margin: 0 auto 1em auto;
+      ul {
+        @include size(100%, 100%);
+        @extend %flex-row-between;
+        li {
+          flex: 1;
+          &:nth-child(1) {
+            @extend %flex-row-start;
+            a {
+              @include font(1em, 1.5, 300, 0.1em, 0);
+              @include hover-line(1px, $theme-black, 0.2s);
+              cursor: pointer;
+            }
           }
-        }
-        &:nth-child(2) {
-          @extend %flex-row-center;
-          a {
-            @include font(1em, 1.5, 300, 0.1em, 0);
-            @include hover-line(1px, $theme-black, 0.2s);
+          &:nth-child(2) {
+            @extend %flex-row-center;
+            a {
+              @include font(1em, 1.5, 300, 0.1em, 0);
+              @include hover-line(1px, $theme-black, 0.2s);
+            }
           }
-        }
-        &:nth-child(3) {
-          @extend %flex-row-end;
-          a {
-            @include font(1em, 1.5, 300, 0.1em, 0 20px);
-            @include hover-line(1px, $theme-black, 0.2s);
+          &:nth-child(3) {
+            @extend %flex-row-end;
+            a {
+              @include font(1em, 1.5, 300, 0.1em, 0 20px);
+              @include hover-line(1px, $theme-black, 0.2s);
+              cursor: pointer;
+            }
           }
         }
       }
@@ -201,168 +203,177 @@ $font-Taviraj: 'Taviraj', serif;
 
 //main2 About
 
-.about {
-  width: 95%;
-  margin: 0 auto;
-  border: 1px solid $theme-white;
-  border-radius: 0.6em;
-  hr {
-    width: $content-width;
-    color: $theme-white;
-  }
-  &__nav {
-    @include size(95%, 2.5em);
-    @extend %flex-row-between;
+.bgc-wrapper-2 {
+  @include absolute-lt(0, 0);
+  background-image: url(../black/black-bgc.jpg);
+  padding: 2em 0;
+  .about {
+    width: 95%;
     margin: 0 auto;
-    border-bottom: 1px solid $theme-white;
-    ul {
-      @include size(100%, 100%);
+    border: 1px solid $theme-white;
+    border-radius: 0.6em;
+    hr {
+      width: $content-width;
+      color: $theme-white;
+    }
+    &__nav {
+      @include size(95%, 2.5em);
       @extend %flex-row-between;
-      li {
-        flex: 1;
-        &:nth-child(1) {
-          @extend %flex-row-start;
-          div {
-            @include size(0.6em, 0.6em);
-            border: 1px solid $theme-white;
-            border-radius: 1em;
-            margin: 0 10px;
-            &:hover {
-              background-color: $theme-white;
+      margin: 0 auto;
+      border-bottom: 1px solid $theme-white;
+      ul {
+        @include size(100%, 100%);
+        @extend %flex-row-between;
+        li {
+          flex: 1;
+          &:nth-child(1) {
+            @extend %flex-row-start;
+            div {
+              @include size(0.6em, 0.6em);
+              border: 1px solid $theme-white;
+              border-radius: 1em;
+              margin: 0 10px;
+              &:hover {
+                background-color: $theme-white;
+              }
+            }
+          }
+          &:nth-child(2) {
+            @extend %flex-row-center;
+            a {
+              @include font(1em, 1.5, 300, 0.1em, 0);
+              @include hover-line(1px, $theme-white, 0.2s);
+              color: $theme-white;
+              cursor: pointer;
+            }
+          }
+          &:nth-child(3) {
+            @extend %flex-row-end;
+            a {
+              @include font(1em, 1.5, 300, 0.1em, 0 20px);
+              @include hover-line(1px, $theme-white, 0.2s);
+              color: $theme-white;
+              cursor: pointer;
             }
           }
         }
-        &:nth-child(2) {
-          @extend %flex-row-center;
-          a {
-            @include font(1em, 1.5, 300, 0.1em, 0);
-            @include hover-line(1px, $theme-white, 0.2s);
-            color: $theme-white;
-          }
-        }
-        &:nth-child(3) {
-          @extend %flex-row-end;
-          a {
-            @include font(1em, 1.5, 300, 0.1em, 0 20px);
-            @include hover-line(1px, $theme-white, 0.2s);
-            color: $theme-white;
-          }
-        }
       }
     }
-  }
-  &__header {
-    width: $content-width;
-    @extend %flex-row-start;
-    margin: 0 auto;
-    margin-bottom: 5em;
-    &__title {
-      width: 80%;
-      margin: 6em 0 6em 0;
-      img {
+    &__header {
+      width: $content-width;
+      @extend %flex-row-start;
+      margin: 0 auto;
+      margin-bottom: 5em;
+      &__title {
         width: 80%;
-        object-fit: contain;
+        margin: 6em 0 6em 0;
+        img {
+          width: 80%;
+          object-fit: contain;
+        }
+      }
+      &__content {
+        .textBox {
+          width: 60%;
+          img {
+            width: 100%;
+            object-fit: contain;
+          }
+        }
+        .imgBox {
+          @include absolute-rb(0, -25%);
+          transform-origin: right top;
+          transform: rotate(90deg);
+          width: 50%;
+          img {
+            width: 100%;
+            object-fit: contain;
+          }
+        }
       }
     }
-    &__content {
-      .textBox {
-        width: 60%;
+    &__section--1 {
+      width: $content-width;
+      @extend %flex-col-center;
+      align-items: flex-start;
+      margin: 3em auto;
+      .title {
+        @include font(4em, 1.3, 200, 0.1em, 0);
+        color: $theme-white;
+        font-family: $font-Taviraj;
+      }
+      .content {
+        width: 40%;
+        margin-left: 45%;
+        margin-top: 1em;
         img {
           width: 100%;
           object-fit: contain;
         }
       }
-      .imgBox {
-        @include absolute-rb(0, -25%);
-        transform-origin: right top;
-        transform: rotate(90deg);
+    }
+    &__section--2 {
+      width: $content-width;
+      @extend %flex-col-center;
+      align-items: flex-start;
+      margin: 3em auto;
+      .title {
+        @include font(4em, 1.3, 200, 0.1em, 0);
+        color: $theme-white;
+        font-family: $font-Taviraj;
+      }
+      .content {
+        width: 40%;
+        margin-left: 45%;
+        margin-top: 3em;
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+      .mail {
         width: 50%;
+        margin-top: 3em;
         img {
           width: 100%;
           object-fit: contain;
         }
       }
     }
-  }
-  &__section--1 {
-    width: $content-width;
-    @extend %flex-col-center;
-    align-items: flex-start;
-    margin: 3em auto;
-    .title {
-      @include font(4em, 1.3, 200, 0.1em, 0);
-      color: $theme-white;
-      font-family: $font-Taviraj;
-    }
-    .content {
-      width: 40%;
-      margin-left: 45%;
-      margin-top: 1em;
-      img {
-        width: 100%;
-        object-fit: contain;
-      }
-    }
-  }
-  &__section--2 {
-    width: $content-width;
-    @extend %flex-col-center;
-    align-items: flex-start;
-    margin: 3em auto;
-    .title {
-      @include font(4em, 1.3, 200, 0.1em, 0);
-      color: $theme-white;
-      font-family: $font-Taviraj;
-    }
-    .content {
-      width: 40%;
-      margin-left: 45%;
-      margin-top: 3em;
-      img {
-        width: 100%;
-        object-fit: contain;
-      }
-    }
-    .mail {
-      width: 50%;
-      margin-top: 3em;
-      img {
-        width: 100%;
-        object-fit: contain;
-      }
-    }
-  }
-  &__footer {
-    @include size($content-width, 2.5em);
-    @extend %flex-row-between;
-    margin: 0 auto 1em auto;
-    ul {
-      @include size(100%, 100%);
+    &__footer {
+      @include size($content-width, 2.5em);
       @extend %flex-row-between;
-      li {
-        flex: 1;
-        &:nth-child(1) {
-          @extend %flex-row-start;
-          a {
-            @include font(1em, 1.5, 300, 0.1em, 0);
-            @include hover-line(1px, $theme-white, 0.2s);
-            color: $theme-white;
+      margin: 0 auto 1em auto;
+      ul {
+        @include size(100%, 100%);
+        @extend %flex-row-between;
+        li {
+          flex: 1;
+          &:nth-child(1) {
+            @extend %flex-row-start;
+            a {
+              @include font(1em, 1.5, 300, 0.1em, 0);
+              @include hover-line(1px, $theme-white, 0.2s);
+              color: $theme-white;
+              cursor: pointer;
+            }
           }
-        }
-        &:nth-child(2) {
-          @extend %flex-row-center;
-          a {
-            @include font(1em, 1.5, 300, 0.1em, 0);
-            @include hover-line(1px, $theme-white, 0.2s);
-            color: $theme-white;
+          &:nth-child(2) {
+            @extend %flex-row-center;
+            a {
+              @include font(1em, 1.5, 300, 0.1em, 0);
+              @include hover-line(1px, $theme-white, 0.2s);
+              color: $theme-white;
+            }
           }
-        }
-        &:nth-child(3) {
-          @extend %flex-row-end;
-          a {
-            @include font(1em, 1.5, 300, 0.1em, 0 20px);
-            @include hover-line(1px, $theme-white, 0.2s);
-            color: $theme-white;
+          &:nth-child(3) {
+            @extend %flex-row-end;
+            a {
+              @include font(1em, 1.5, 300, 0.1em, 0 20px);
+              @include hover-line(1px, $theme-white, 0.2s);
+              color: $theme-white;
+              cursor: pointer;
+            }
           }
         }
       }
