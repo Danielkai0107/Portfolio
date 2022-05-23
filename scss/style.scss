@@ -97,7 +97,7 @@ $font-Taviraj: 'Taviraj', serif;
       &__circle {
         width: 15%;
         @include absolute-rb(5%, 15%);
-        @include after('down', 3em, 3em) {
+        @include after('scroll', 3em, 3em) {
           text-align: center;
           font-family: $font-Taviraj;
           @include font(2.2em, 2.8em, 100, 0.1em, 0);
@@ -107,7 +107,7 @@ $font-Taviraj: 'Taviraj', serif;
         img {
           width: 100%;
           object-fit: contain;
-          opacity: 0.4;
+          opacity: 0.2;
           animation: rotate360 40s infinite forwards linear;
         }
       }
@@ -128,13 +128,41 @@ $font-Taviraj: 'Taviraj', serif;
       align-items: flex-start;
       margin: 3em auto;
       &__num {
-        width: 10%;
+        width: 30%;
         @extend %flex-col-start;
         align-items: flex-start;
         @include font(1.2em, 3, 300, 0.1em, 0);
         img {
-          width: 100%;
+          width: 30%;
           object-fit: contain;
+        }
+        .circle {
+          width: 50%;
+          @include absolute-lt(0%, 240%);
+          @include after('click photo', 3em, 3em) {
+            text-align: center;
+            white-space: nowrap;
+            font-family: $font-Taviraj;
+            @include font(2em, 2.5em, 100, 0.1em, 0);
+            @extend %absolute-center;
+            opacity: 0.5;
+          }
+          img {
+            width: 50%;
+            object-fit: contain;
+            opacity: 0.2;
+            animation: rotate360 40s infinite forwards linear;
+          }
+        }
+        &__title {
+          width: 80%;
+          margin: 5em 0;
+          animation: fade 2s 1.8s forwards;
+          opacity: 0;
+          img {
+            width: 80%;
+            object-fit: contain;
+          }
         }
       }
       &__content {

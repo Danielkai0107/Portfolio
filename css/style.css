@@ -1,4 +1,4 @@
-.bgc-wrapper-1 .projects__header__circle::after {
+.bgc-wrapper-1 .projects__section__num .circle::after, .bgc-wrapper-1 .projects__header__circle::after {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -284,7 +284,7 @@
 }
 .bgc-wrapper-1 .projects__header__circle::after {
   display: block;
-  content: "down";
+  content: "scroll";
   width: 3em;
   height: 3em;
   text-align: center;
@@ -300,7 +300,7 @@
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  opacity: 0.4;
+  opacity: 0.2;
   -webkit-animation: rotate360 40s infinite forwards linear;
           animation: rotate360 40s infinite forwards linear;
 }
@@ -322,7 +322,7 @@
   margin: 3em auto;
 }
 .bgc-wrapper-1 .projects__section__num {
-  width: 10%;
+  width: 30%;
   align-items: flex-start;
   font-size: 1.2em;
   line-height: 3;
@@ -331,7 +331,48 @@
   margin: 0;
 }
 .bgc-wrapper-1 .projects__section__num img {
-  width: 100%;
+  width: 30%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.bgc-wrapper-1 .projects__section__num .circle {
+  width: 50%;
+  position: absolute;
+  left: 0%;
+  top: 240%;
+}
+.bgc-wrapper-1 .projects__section__num .circle::after {
+  display: block;
+  content: "click photo";
+  width: 3em;
+  height: 3em;
+  text-align: center;
+  white-space: nowrap;
+  font-family: "Taviraj", serif;
+  font-size: 2em;
+  line-height: 2.5em;
+  font-weight: 100;
+  letter-spacing: 0.1em;
+  margin: 0;
+  opacity: 0.5;
+}
+.bgc-wrapper-1 .projects__section__num .circle img {
+  width: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  opacity: 0.2;
+  -webkit-animation: rotate360 40s infinite forwards linear;
+          animation: rotate360 40s infinite forwards linear;
+}
+.bgc-wrapper-1 .projects__section__num__title {
+  width: 80%;
+  margin: 5em 0;
+  -webkit-animation: fade 2s 1.8s forwards;
+          animation: fade 2s 1.8s forwards;
+  opacity: 0;
+}
+.bgc-wrapper-1 .projects__section__num__title img {
+  width: 80%;
   -o-object-fit: contain;
      object-fit: contain;
 }
