@@ -12,7 +12,7 @@ const artTop = document.querySelector('.projects-top');
 projectsBtn.forEach((n) => {
   n.addEventListener('click', () => {
     aboutPage.classList.remove('ab');
-    projectPage.classList.add('overflow');
+    projectPage.classList.remove('display-none');
     window.scrollTo(0, artTop.offsetTop);
   });
 });
@@ -20,7 +20,9 @@ projectsBtn.forEach((n) => {
 aboutBtn.forEach((n) => {
   n.addEventListener('click', () => {
     aboutPage.classList.add('ab');
-    projectPage.classList.remove('overflow');
+    setTimeout(() => {
+      projectPage.classList.add('display-none');
+    }, 1500);
     window.scrollTo(0, 0);
   });
 });
