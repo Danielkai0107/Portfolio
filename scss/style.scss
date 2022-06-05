@@ -126,6 +126,12 @@ $font-Taviraj: 'Taviraj', serif;
       @extend %flex-row-between;
       align-items: flex-start;
       margin: 3em auto;
+      .gitHub {
+        @include absolute-lb(0, 0);
+        @include font(0.9em, 3, 300, 0.1em, 0);
+        @include hover-line(1px, $theme-black, 0.6s);
+        opacity: 0.6;
+      }
       &__num {
         width: 30%;
         @extend %flex-col-start;
