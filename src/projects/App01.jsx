@@ -1,5 +1,7 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
+import { ImageApp01, ImageApp01_c } from '../func/imgList'
+
 
 const App01 = () => {
   return (
@@ -11,7 +13,7 @@ const App01 = () => {
           幫助用戶識別並加強需要改善的單詞或發音，有效提升溝通技能。</p>
       </article>
 
-      <img className='project1_img' src="/assets/images/AIEnglish/1.png" alt="" />
+      <img className='project1_img' src={ImageApp01[0]} alt="" />
 
       <article className='project1_sub'>
         <h2>風格指南</h2>
@@ -43,7 +45,7 @@ const App01 = () => {
       </article>
 
       <article className='project1_cnt'>
-        <img src="/assets/images/AIEnglish/c1.png" alt="" />
+        <img src={ImageApp01_c[0]} alt="" />
         <ul>
           <li>
             <h4>步驟指示器</h4>
@@ -60,7 +62,7 @@ const App01 = () => {
         </ul>
       </article>
 
-      <img className='project1_img' src="/assets/images/AIEnglish/2.png" alt="" />
+      <img className='project1_img' src={ImageApp01[1]} alt="" />
 
       <article className='project1_sub'>
         <h2>首頁介面</h2>
@@ -68,7 +70,7 @@ const App01 = () => {
       </article>
 
       <article className='project1_cnt'>
-        <img src="/assets/images/AIEnglish/c2.png" alt="" />
+        <img src={ImageApp01_c[1]} alt="" />
         <ul>
           <li>
             <h4>最佳成績</h4>
@@ -91,11 +93,11 @@ const App01 = () => {
       </article>
 
       <article className='project1_cnt'>
-        <img src="/assets/images/AIEnglish/c3.png" alt="" />
-        <img src="/assets/images/AIEnglish/c4.png" alt="" />
+        <img src={ImageApp01_c[2]} alt="" />
+        <img src={ImageApp01_c[3]} alt="" />
       </article>
 
-      <img className='project1_img' src="/assets/images/AIEnglish/3.png" alt="" />
+      <img className='project1_img' src={ImageApp01[2]} alt="" />
 
       <article className='project1_sub'>
         <h2>AI評測報告介面</h2>
@@ -103,7 +105,7 @@ const App01 = () => {
       </article>
 
       <article className='project1_cnt'>
-        <img src="/assets/images/AIEnglish/c5.png" alt="" />
+        <img src={ImageApp01_c[4]} alt="" />
         <ul>
           <li>
             <h4>評分結果</h4>
@@ -120,14 +122,14 @@ const App01 = () => {
         </ul>
       </article>
 
-      <img className='project1_img' src="/assets/images/AIEnglish/4.png" alt="" />
+      <img className='project1_img' src={ImageApp01[3]} alt="" />
 
       <article className='project1_sub'>
         <h2>低中高級距介面</h2>
         <h3>Level Interface</h3>
       </article>
 
-      <img className='project1_img' src="/assets/images/AIEnglish/5.png" alt="" />
+      <img className='project1_img' src={ImageApp01[4]} alt="" />
 
       <article className='project1_sub'>
         <h2>場景模擬介面</h2>
@@ -135,7 +137,7 @@ const App01 = () => {
       </article>
 
       <article className='project1_cnt project1_cnt--row '>
-        <img className='row' src="/assets/images/AIEnglish/c6.png" alt="" />
+        <img className='row' src={ImageApp01_c[5]} alt="" />
         <ul>
           <li>
             <h4>評分結果</h4>
@@ -157,7 +159,7 @@ const App01 = () => {
         <h3>Practice Process UI Flow </h3>
       </article>
 
-      <img className='project1_img' src="/assets/images/AIEnglish/6.png" alt="" />
+      <img className='project1_img' src={ImageApp01[5]} alt="" />
     </main>
 
   )

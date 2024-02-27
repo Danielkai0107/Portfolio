@@ -17,14 +17,14 @@ nav {
   }
   .logo {
     @include size(30px, 30px);
-    background-image: url("../../../public/assets/images/xing.png");
+    background-image: url("../../images/xing.png");
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
   }
   .home_btn {
     @include size(24px, 24px);
-    background-image: url("../../../public/assets/images/menu.png");
+    background-image: url("../../images/menu.png");
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;

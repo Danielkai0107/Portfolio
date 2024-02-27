@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5rem;
+  gap: 4rem;
   padding: 6rem 0;
   //MD
   @include md {
@@ -19,12 +19,12 @@
       padding: 0rem $md-padding 0 $md-padding;
     }
     h1 {
-      font-size: 2.7rem;
+      font-size: 2.6rem;
       font-weight: 400;
     }
     p {
       font-family: "Noto Sans TC", sans-serif;
-      font-size: 1.14rem;
+      font-size: 1.1rem;
       font-weight: 300;
       line-height: 2;
       letter-spacing: 3px;
@@ -37,14 +37,14 @@
     padding: 0 $sm-padding;
     h2 {
       font-family: "Noto Sans TC", sans-serif;
-      font-size: 2rem;
-      font-weight: 300;
+      font-size: 1.8rem;
+      font-weight: 400;
       letter-spacing: 4px;
     }
     h3 {
       margin-top: 1.5rem;
-      font-size: 1.3rem;
-      font-weight: 100;
+      font-size: 1.1rem;
+      font-weight: 400;
       letter-spacing: 3px;
     }
   }
@@ -54,6 +54,7 @@
     flex-direction: column;
     gap: 3rem;
   }
+
   &_cnt {
     width: 100%;
     padding: 0 $sm-padding;
@@ -65,7 +66,7 @@
     @include md {
       flex-direction: row;
       align-items: flex-end;
-      gap: 6rem;
+      gap: 5rem;
     }
     .title {
       display: flex;
@@ -105,7 +106,7 @@
       padding: 1rem 0;
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      gap: 2rem;
       li {
         h4 {
           font-size: 1.5rem;
@@ -113,23 +114,13 @@
           letter-spacing: 2px;
         }
         p {
-          margin-top: 21px;
+          margin-top: .8rem;
           font-size: 1rem;
           font-weight: 300;
           line-height: 2;
           letter-spacing: 1px;
         }
       }
-    }
-  }
-  .line--bt {
-    margin: 0 auto;
-    width: 80%;
-    height: 1px;
-    background-color: #b0b0b0;
-    margin-top: 1rem;
-    &:last-child {
-      display: none;
     }
   }
 }

@@ -1,11 +1,13 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
+import { ImageApp02, ImageApp02_c } from '../func/imgList'
+
 
 const data = [
   {
     id: 1,
     subName: 'Home Page',
-    BeforeImg: '/assets/images/UIDesign/c1.png',
+    BeforeImg: `${ImageApp02_c[0]}`,
     b1: {
       title: '視覺效果不符合產品定位',
       p: '標榜智能分析的產品，視覺上卻給帶給用戶廉價感，與科技感AI分析的理念不符。'
@@ -22,7 +24,7 @@ const data = [
       title: '互動元素不明確',
       p: '頁面上的搜索框沒有清晰的呼籲行動或互動提示，用戶可能不清楚可以在這裡進行什麼操作。'
     },
-    AfterImg: '/assets/images/UIDesign/c2.png',
+    AfterImg: `${ImageApp02_c[1]}`,
     a1: {
       title: '清晰度與專注點',
       p: '修改後的設計提供了更清晰的視覺階層，使用者可以更容易地識別主要功能。'
@@ -43,14 +45,14 @@ const data = [
   {
     id: 2,
     subName: 'Device Check',
-    BeforeImg: '/assets/images/UIDesign/c3.png',
+    BeforeImg: `${ImageApp02_c[2]}`,
     b1: {
       title: '圖示含義不明確',
       p: '圖示雖然有助於快速傳達信息，但如果用戶不熟悉這些圖示代表的含義，可能會感到困惑。特別是車輛圖示可能不是立刻能夠和“安靜的環境”聯系起來。'
     },
     b2: {
       title: '操作指引不夠明顯',
-      p: '“Confirm”按鈕與其他元素的視覺重要性不匹配，用戶可能不會立即注意到這是一個需要操作的按鈕。'
+      p: '按鈕“Confirm”與其他元素的視覺重要性不匹配，用戶可能不會立即注意到這是一個需要操作的按鈕。'
     },
     b3: {
       title: '風格不一致',
@@ -60,7 +62,7 @@ const data = [
       title: '信息密度不好閱讀',
       p: '檢查清單的信息過於密集，缺少足夠的空間來分隔各個建議，使得閱讀起來可能稍嫌吃力。'
     },
-    AfterImg: '/assets/images/UIDesign/c4.png',
+    AfterImg: `${ImageApp02_c[3]}`,
     a1: {
       title: '頂部欄位',
       p: '顯示當前正在進行的任務或步驟的名稱，讓用戶知道他們正在執行的過程。'
@@ -81,7 +83,7 @@ const data = [
   {
     id: 3,
     subName: 'Voice Test',
-    BeforeImg: '/assets/images/UIDesign/c5.png',
+    BeforeImg: `${ImageApp02_c[4]}`,
     b1: {
       title: '信息層次不明顯',
       p: '頁面上的元素如播放按鈕、進度時間和句子沒有清晰的視覺層次，使得用戶可能不清楚哪些是可以互動的元素。'
@@ -98,7 +100,7 @@ const data = [
       title: '視覺反饋不足',
       p: '播放按鈕旁邊的進度時間可能過於簡單，不提供足夠的視覺反饋或動畫來指示錄音或播放的狀態。'
     },
-    AfterImg: '/assets/images/UIDesign/c6.png',
+    AfterImg: `${ImageApp02_c[5]}`,
     a1: {
       title: '標題＆進度指示器',
       p: '顯示當前正在進行題目類別及進度，讓用戶知道他們正在練習的盡頭和方向。'
@@ -119,7 +121,7 @@ const data = [
   {
     id: 4,
     subName: 'Report Page',
-    BeforeImg: '/assets/images/UIDesign/c7.png',
+    BeforeImg: `${ImageApp02_c[6]}`,
     b1: {
       title: '不清晰的回饋信息',
       p: '用戶的發音有錯誤，信息太模糊，不足以提供有用的反饋或改進的具體方向。'
@@ -136,7 +138,7 @@ const data = [
       title: '紅色提示',
       p: '紅色提示對於學習者會充滿壓力，好像做錯了什麼事情。'
     },
-    AfterImg: '/assets/images/UIDesign/c8.png',
+    AfterImg: `${ImageApp02_c[7]}`,
     a1: {
       title: '清晰的性能指標',
       p: '直接展示了百分比評分，給用戶提供了明確的績效指標。'
@@ -163,7 +165,7 @@ const App02 = () => {
         <h1>UI Redesign</h1>
         <p>為符合市場期待以及功能的擴充應用，同時提供學習用戶的動力，決定將原有的UI介面進行部分改版更新，並新增付費功能等。</p>
       </article>
-      <img className='project1_img' src="/assets/images/UIDesign/1.png" alt="" />
+      <img className='project1_img' src={ImageApp02[0]} alt="" />
       {data.map((item) =>
       (<article key={item.id} className='project2_item'>
         <section className='project2_sub'>
@@ -221,7 +223,6 @@ const App02 = () => {
             </li>
           </ul>
         </section>
-        <span className='line--bt'></span>
       </article>)
       )}
     </main>
