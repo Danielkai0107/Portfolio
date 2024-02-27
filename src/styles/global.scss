@@ -1,0 +1,18 @@
+@import "./base/reset";
+@import "./mixin/rwd";
+@import "./mixin/tool";
+@import "./animations/animations";
+@import "./variable/variable";
+
+// Layout
+
+@import "./layout/navbar";
+@import "./layout/homePage";
+@import "./layout/App01";
+@import "./layout/App02";
+@import "./layout/AppUIDesign";
+@import "./layout/ImgSlider";
+
+html {
+  font-size: 14px;
+}

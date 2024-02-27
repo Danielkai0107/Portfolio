@@ -1,0 +1,51 @@
+nav {
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+  height: 4rem;
+  right: 0;
+  top: 0rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 0 $sm-padding;
+  box-shadow: 1px 1px 4px #eaeaea;
+  transition: all 0.4s;
+  @include md {
+    padding: 0 $md-padding;
+  }
+  .logo {
+    @include size(30px, 30px);
+    background-image: url("../../../public/assets/images/xing.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+  }
+  .home_btn {
+    @include size(24px, 24px);
+    background-image: url("../../../public/assets/images/menu.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    //MD
+    @include md {
+      display: none;
+    }
+  }
+  .nav_md {
+    display: none;
+    //MD
+    @include md {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    &_btn {
+      font-size: 1.2rem;
+    }
+  }
+  &.unstick {
+    top: -8rem;
+  }
+}
