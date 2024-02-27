@@ -6,7 +6,7 @@ import AppUIDesign from "./pages/AppUIDesign";
 import App02 from "./projects/App02";
 import GraphicDesign from "./pages/GraphicDesign";
 import WebsiteUIDesign from "./pages/WebsiteUIDesign";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { HashRouter as Route, Routes, useLocation } from "react-router-dom";
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
