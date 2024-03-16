@@ -1,5 +1,5 @@
 .home {
-  background-color: #F0F0F3;
+  background-color: #f0f0f3;
   &_art1 {
     width: 100vw;
     height: 100vh;
@@ -88,27 +88,442 @@
           border-radius: 1rem;
           animation: scroll 2.5s infinite;
           transition: all 0.2s;
-          @keyframes scroll {
-            0% {
-              top: 25%;
-              height: 4px;
-            }
-            10% {
-              height: 8px;
-            }
-            50% {
-              top: 75%;
-              height: 4px;
-            }
-            100% {
-              top: 25%;
-              height: 4px;
-            }
-          }
         }
       }
     }
     &_show {
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 1rem;
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        li {
+          width: 400px;
+          height: calc((100vh - 3 * 1rem) / 3);
+          border-radius: 40px;
+          &:nth-child(1) {
+            z-index: 10;
+            background-image: url("../../images/AIEnglish/1.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: float 6s ease-in-out infinite;
+          }
+          &:nth-child(3) {
+            z-index: 10;
+            background-image: url("../../images/AIEnglish/2.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: float 6s 1s ease-in-out infinite;
+          }
+          &:nth-child(2) {
+            z-index: 20;
+            height: 120px;
+            background: #f0f0f3;
+            box-shadow: -10px -10px 30px #ffffff,
+              10px 10px 30px rgba(174, 174, 192, 0.4),
+              inset 10px 10px 10px #ffffff,
+              inset -10px -10px 10px rgba(174, 174, 192, 0.25);
+            animation: float 6s 0.5s ease-in-out infinite;
+          }
+        }
+      }
+    }
+  }
+  &_art2 {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding: 2.5rem;
+    &_title {
+      h1 {
+        font-size: 3.75rem;
+      }
+    }
+    &_main {
+      width: calc(100vw / 4);
+      aspect-ratio: 4/5;
+      position: absolute;
+      top: 12rem;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 60px;
+      background-image: url("../../images/AIEnglish/1.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      .icon--into {
+        position: absolute;
+        bottom: 1rem;
+        right: -4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90px;
+        height: 90px;
+        border-radius: 20px;
+        background: #f0f0f3;
+        box-shadow: -10px -10px 30px #ffffff,
+          10px 10px 30px rgba(174, 174, 192, 0.4), inset 10px 10px 10px #ffffff,
+          inset -10px -10px 10px rgba(174, 174, 192, 0.25);
+        cursor: pointer;
+        transition: all 0.2s;
+        &:active {
+          opacity: 0;
+        }
+        span {
+          display: block;
+          width: 40px;
+          height: 40px;
+          background-image: url("../../images/icon/right.png");
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+        animation: float 6s ease-in-out infinite;
+      }
+      .card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: calc(100vw / 3.5);
+        position: absolute;
+        top: 40%;
+        right: 80%;
+        padding: 1rem;
+        border-radius: 60px;
+        background: #ffffff;
+        box-shadow: 7.27273px 7.27273px 21.8182px rgba(174, 174, 192, 0.4),
+          -7.27273px -7.27273px 21.8182px #ffffff;
+        animation: float 6s 1s ease-in-out infinite;
+        &_info {
+          width: 50%;
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+          line-height: 1.25rem;
+          span {
+            display: block;
+            min-width: 1.5rem;
+            height: 1.5rem;
+            background-color: #f0f0f3;
+            border-radius: 1rem;
+          }
+        }
+        &_img {
+          width: 8rem;
+          height: 8rem;
+          border-radius: 40px;
+          background-image: url("../../images/AIEnglish/4.png");
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+      .list {
+        left: 110%;
+        position: absolute;
+        height: calc(100vw / 5);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        li {
+          &:nth-child(1) {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+        }
+        p {
+          text-wrap: nowrap;
+          font-size: 1.25rem;
+          opacity: 0.3;
+          cursor: pointer;
+          transition: all 0.2s;
+          &:hover {
+            opacity: 1;
+            scale: 1.1;
+          }
+        }
+        h2 {
+          font-size: 3rem;
+          text-wrap: nowrap;
+          animation: float 6s 2s ease-in-out infinite;
+        }
+      }
+    }
+  }
+  &_art3 {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding: 2.5rem;
+    &_title {
+      h1 {
+        font-size: 3.75rem;
+      }
+    }
+    &_main {
+      @include size(50px, 50px);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      .card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        z-index: 20;
+        top: 40%;
+        right: 0;
+        padding: 1rem;
+        border-radius: 60px;
+        background: #ffffff;
+        box-shadow: 7.27273px 7.27273px 21.8182px rgba(174, 174, 192, 0.4),
+          -7.27273px -7.27273px 21.8182px #ffffff;
+        animation: float 6s 1s ease-in-out infinite;
+        &_info {
+          width: 50%;
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+          line-height: 1.8rem;
+          font-size: 1.3rem;
+          span {
+            display: block;
+            min-width: 1.5rem;
+            height: 1.5rem;
+            background-color: #f0f0f3;
+            border-radius: 1rem;
+          }
+        }
+        &_img {
+          width: 22rem;
+          height: 12rem;
+          border-radius: 40px;
+          background-image: url("../../images/AIEnglish/4.png");
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+      .img {
+        position: absolute;
+        left: 0;
+        bottom: -40%;
+        width: calc(100vw / 3);
+        aspect-ratio: 5/3;
+        border-radius: 40px;
+        background-image: url("../../images/AIEnglish/6.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        .icon--into {
+          position: absolute;
+          bottom: -100%;
+          right: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 90px;
+          height: 90px;
+          border-radius: 20px;
+          background: #f0f0f3;
+          box-shadow: -10px -10px 30px #ffffff,
+            10px 10px 30px rgba(174, 174, 192, 0.4),
+            inset 10px 10px 10px #ffffff,
+            inset -10px -10px 10px rgba(174, 174, 192, 0.25);
+          cursor: pointer;
+          transition: all 0.2s;
+          &:active {
+            opacity: 0;
+          }
+          span {
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-image: url("../../images/icon/right.png");
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+          animation: float 6s ease-in-out infinite;
+        }
+      }
+      .list {
+        left: 160%;
+        top: 180%;
+        position: absolute;
+        height: calc(100vw / 5);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        li {
+          &:nth-child(1) {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+        }
+        p {
+          text-wrap: nowrap;
+          font-size: 1.25rem;
+          opacity: 0.3;
+          cursor: pointer;
+          transition: all 0.2s;
+          &:hover {
+            opacity: 1;
+            scale: 1.1;
+          }
+        }
+      }
+      .title {
+        position: absolute;
+        right: 380%;
+        top: -100%;
+        li {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          animation: float 6s 2s ease-in-out infinite;
+          span {
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-image: url("../../images/logo.png");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+          h2 {
+            font-size: 2.5rem;
+            text-wrap: nowrap;
+          }
+          h3 {
+            font-size: 2rem;
+            text-wrap: nowrap;
+          }
+        }
+      }
+    }
+  }
+  &_art4 {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding: 2.5rem;
+    &_title {
+      h1 {
+        font-size: 3.75rem;
+      }
+    }
+    &_main {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .icon--into {
+        position: absolute;
+        bottom: -10%;
+        right: 45%;
+        z-index: 40;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 60px;
+        background: #f0f0f3;
+        box-shadow: -10px -10px 30px #ffffff,
+          10px 10px 30px rgba(174, 174, 192, 0.4), inset 10px 10px 10px #ffffff,
+          inset -10px -10px 10px rgba(174, 174, 192, 0.25);
+        cursor: pointer;
+        transition: all 0.2s;
+        &:active {
+          opacity: 0;
+        }
+        span {
+          display: block;
+          width: 30px;
+          height: 30px;
+          background-image: url("../../images/icon/right.png");
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+        animation: float 6s ease-in-out infinite;
+      }
+      .card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: calc(100vw / 2.5);
+        padding: 1rem;
+        border-radius: 60px;
+        background: #ffffff;
+        box-shadow: 7.27273px 7.27273px 21.8182px rgba(174, 174, 192, 0.4),
+          -7.27273px -7.27273px 21.8182px #ffffff;
+        animation: float 6s 1s ease-in-out infinite;
+        &_info {
+          width: 50%;
+          display: flex;
+          gap: 1.5rem;
+          align-items: center;
+          line-height: 1.8rem;
+          font-size: 1.4rem;
+          span {
+            display: block;
+            min-width: 1.5rem;
+            height: 1.5rem;
+            background-color: #f0f0f3;
+            border-radius: 1rem;
+          }
+        }
+        &_img {
+          width: 12rem;
+          aspect-ratio: 1;
+          border-radius: 40px;
+          background-image: url("../../images/9.png");
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+      .list {
+        position: absolute;
+        left: 50%;
+        top: 120%;
+        transform: translateX(-50%);
+        height: calc(100vw / 5);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        li {
+          &:nth-child(1) {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+        }
+        p {
+          text-wrap: nowrap;
+          font-size: 1.25rem;
+          opacity: 0.3;
+          cursor: pointer;
+          transition: all 0.2s;
+          &:hover {
+            opacity: 1;
+            scale: 1.1;
+          }
+        }
+      }
     }
   }
 }
