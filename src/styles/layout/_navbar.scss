@@ -1,51 +1,47 @@
 nav {
+  width: 50vw;
   position: fixed;
   z-index: 100;
-  width: 100vw;
-  height: 4rem;
   right: 0;
-  top: 0rem;
+  top: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
-  padding: 0 $sm-padding;
-  box-shadow: 1px 1px 4px #eaeaea;
-  transition: all 0.4s;
-  @include md {
-    padding: 0 $md-padding;
+  padding-right: 2.5rem;
+  ul {
+    display: flex;
+    gap: 2rem;
+    li {
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
   }
-  .logo {
-    @include size(30px, 30px);
-    background-image: url("../../images/xing.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+  figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.75rem;
+    height: 3.75rem;
+    background: #f0f0f3;
+    box-shadow: -4px -4px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4),
+      inset 10px 10px 10px #ffffff,
+      inset -10px -10px 10px rgba(174, 174, 192, 0.25);
+    border-radius: 40px;
     cursor: pointer;
-  }
-  .home_btn {
-    @include size(24px, 24px);
-    background-image: url("../../images/menu.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
-    //MD
-    @include md {
-      display: none;
+    transition: all 0.2s;
+    &:hover {
+      scale: 0.8;
     }
-  }
-  .nav_md {
-    display: none;
-    //MD
-    @include md {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
+    span {
+      @include size(20px, 20px);
+      background-image: url("../../images//icon/home.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
-    &_btn {
-      font-size: 1.2rem;
-    }
-  }
-  &.unstick {
-    top: -8rem;
   }
 }
