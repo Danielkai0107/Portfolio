@@ -26,3 +26,96 @@
     height: 4px;
   }
 }
+@keyframes marquee {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -200%;
+  }
+}
+@keyframes text {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-60px);
+  }
+  75% {
+    transform: translateY(60px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes card--1 {
+  0% {
+    left: 20%;
+    bottom: 200%;
+    rotate: 90deg;
+    scale: 0.9;
+  }
+  20% {
+    left: 20%;
+    bottom: 0;
+    scale: 0.9;
+    rotate: 90deg;
+  }
+  60% {
+    left: 20%;
+    bottom: 0;
+    scale: 0.9;
+    rotate: 90deg;
+  }
+  80% {
+    left: 0;
+    bottom: 0;
+    scale: 1;
+    rotate: 0deg;
+  }
+}
+
+@keyframes card--2 {
+  0% {
+    right: 0%;
+    top: 0;
+    rotate: 0deg;
+  }
+  60% {
+  }
+  75% {
+    right: 0%;
+    top: 0;
+    rotate: 0deg;
+  }
+  100% {
+    right: 20%;
+    top: 200%;
+    rotate: 160deg;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeData {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

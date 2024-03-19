@@ -4,8 +4,33 @@
 @import "./animations/animations";
 @import "./variable/variable";
 
+//components
+@import "./components/Home01";
+@import "./components/Home02";
+@import "./components/Home03";
+@import "./components/Home04";
+@import "./components/Home05";
+@import "./components/Navbar";
+
 // Layout
+@import "./pages/Home";
+@import "./pages/ShowPage.scss";
 
-@import "./layout/Home";
-@import "./layout/Navbar";
+body {
+  background-color: #f0f0f3;
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+  overscroll-behavior: none;
+  height: 100vh;
+  overflow-x: hidden;
+}
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
 
+.visible {
+  opacity: 1;
+}

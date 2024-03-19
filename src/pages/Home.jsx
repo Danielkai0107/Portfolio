@@ -1,129 +1,45 @@
-import React from 'react'
+import React, { useRef } from 'react';
+import Home01 from '../components/Home01';
+import Home02 from '../components/Home02';
+import Home03 from '../components/Home03';
+import Home04 from '../components/Home04';
+import Home05 from '../components/Home05';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
-const Home = () => {
+
+const Home = ({ handleSetShow }) => {
+  const homeContainer = useRef();
+  gsap.registerPlugin(ScrollTrigger);
+
+
+  useGSAP(() => {
+    let items = gsap.utils.toArray('.panel')
+
+    gsap.to(items, {
+      xPercent: -100 * (items.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: homeContainer.current,
+        pin: true,
+        scrub: 1,
+        snap: 1 / (items.length - 1),
+        end: () => '+=' + document.querySelector(".home").offsetWidth
+      }
+    })
+
+  }, { scope: homeContainer })
+
   return (
-    <main className='home'>
-      <article className='home_art1'>
-        <section className='home_art1_title'>
-          <ul>
-            <li>
-              <span></span>
-              <p>Daniel Kai</p>
-            </li>
-            <li>
-              <h1>UI/ UX</h1>
-              <h1>DESIGNER</h1>
-            </li>
-            <li></li>
-            <li>
-              <p>A passionate designer specializing in web and graphic design.</p>
-            </li>
-          </ul>
-          <figure className='icon--scroll'>
-            <span className='border'></span>
-            <span className='dot'></span>
-          </figure>
-        </section>
-        <section className='home_art1_show'>
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </section>
-      </article>
-      <article className='home_art2'>
-        <section className='home_art2_title'>
-          <h1>APP UI</h1>
-          <h1>Projects</h1>
-        </section>
-        <section className='home_art2_main'>
-          <figure className='icon--into'>
-            <span></span>
-          </figure>
-          <ul className='card'>
-            <li className='card_info'>
-              <span></span>
-              <p>AI English UI Projects of the ponndy</p>
-            </li>
-            <li className='card_img'></li>
-          </ul>
-          <ul className='list'>
-            <li>
-              <p>01 Device Check Redesign</p>
-              <p>02 KIDS English</p>
-              <p>03 AI English</p>
-            </li>
-            <li>
-              <h2>04</h2>
-              <h2>Payment UI</h2>
-            </li>
-          </ul>
-        </section>
-
-
-      </article>
-      <article className='home_art3'>
-        <section className='home_art3_title'>
-          <h1>WebPage</h1>
-          <h1>Side Projects</h1>
-        </section>
-        <section className='home_art3_main'>
-          <ul className='card'>
-            <li className='card_info'>
-              <span></span>
-              <p>AI English UI Projects</p>
-            </li>
-            <li className='card_img'></li>
-          </ul>
-          <section className='img'>
-            <figure className='icon--into'>
-              <span></span>
-            </figure>
-          </section>
-          <ul className='list'>
-            <li>
-              <p>01 Device Check Redesign</p>
-              <p>02 KIDS English</p>
-              <p>03 AI English</p>
-            </li>
-          </ul>
-          <ul className='title'>
-            <li>
-              <span></span>
-              <h3>04</h3>
-              <h2>Payment UI</h2>
-            </li>
-          </ul>
-        </section>
-      </article>
-      <article className='home_art4'>
-        <section className='home_art4_title'>
-          <h1>Graphic</h1>
-          <h1>Design</h1>
-        </section>
-        <section className='home_art4_main'>
-          <ul className='card'>
-            <li className='card_info'>
-              <span></span>
-              <p>AI English UI Projects</p>
-            </li>
-            <li className='card_img'></li>
-          </ul>
-          <figure className='icon--into'>
-            <span></span>
-          </figure>
-          <ul className='list'>
-            <li>
-              <p>01 Device Check Redesign</p>
-              <p>02 KIDS English</p>
-              <p>03 AI English</p>
-            </li>
-          </ul>
-        </section>
-      </article>
+    <main className='home' ref={homeContainer}>
+      <Home01 />
+      <Home02 handleSetShow={handleSetShow} />
+      <Home03 handleSetShow={handleSetShow} />
+      <Home04 handleSetShow={handleSetShow} />
+      <Home05 handleSetShow={handleSetShow} />
     </main>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

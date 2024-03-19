@@ -1,0 +1,9 @@
+.home {
+  width: 500%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  overscroll-behavior: none;
+  animation: fadeIn 0.4s ease-in;
+}
