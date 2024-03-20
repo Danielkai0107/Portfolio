@@ -5,6 +5,8 @@ const Home03 = ({ handleSetShow }) => {
   const items = projects[0].items
   const [currentItem, setCurrentItem] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [fadeKey, setFadeKey] = useState(0);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -12,6 +14,7 @@ const Home03 = ({ handleSetShow }) => {
     }, 4000);
 
     setCurrentItem(projects[0].items[currentIndex]);
+    setFadeKey((prevKey) => prevKey + 1);
 
     return () => clearInterval(interval);
   }, [currentIndex, items.length]);
@@ -25,16 +28,16 @@ const Home03 = ({ handleSetShow }) => {
       </section>
       <section className='home03_main'>
         <ul className='card'>
-          <li className='card_info'>
+          <li className='card_info fade-in-out'  key={`card-info-${fadeKey}`}>
             <span></span>
             <p>AI English UI Projects</p>
           </li>
-          <li className='card_img'>
+          <li className='card_img fade-in-out'  key={`card-img-${fadeKey}`}>
             <img src={currentItem && currentItem.images[1]} alt="" />
           </li>
         </ul>
         <section className='img'>
-          <img className='home03_main_bgc' src={currentItem && currentItem.images[2]} alt="" />
+          <img className='home03_main_bgc fade-in-out'  key={`card-bgc-${fadeKey}`} src={currentItem && currentItem.images[2]} alt="" />
           <figure className='icon--into' onClick={() => { handleSetShow(currentItem) }}>
             <span></span>
           </figure>
@@ -46,7 +49,7 @@ const Home03 = ({ handleSetShow }) => {
             )}
           </li>
         </ul>
-        <ul className='title'>
+        <ul className='title fade-in-out'  key={`card-title-${fadeKey}`}>
           <li>
             <span></span>
             <h3>0{currentItem && currentItem.id}</h3>

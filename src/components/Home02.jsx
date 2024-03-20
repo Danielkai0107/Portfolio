@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { projects } from '../libs/projects.js'
+import React, { useEffect, useState } from 'react';
+import { projects } from '../libs/projects.js';
 
-
-const Home02 = ({ handleSetShow  }) => {
-  const items = projects[0].items
-  const [currentItem, setCurrentItem] = useState(null)
+const Home02 = ({ handleSetShow }) => {
+  const items = projects[0].items;
+  const [currentItem, setCurrentItem] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [fadeKey, setFadeKey] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -13,10 +13,10 @@ const Home02 = ({ handleSetShow  }) => {
     }, 4000);
 
     setCurrentItem(projects[0].items[currentIndex]);
+    setFadeKey((prevKey) => prevKey + 1);
 
     return () => clearInterval(interval);
   }, [currentIndex, items.length]);
-
 
   return (
     <article className='home02 panel'>
@@ -25,34 +25,32 @@ const Home02 = ({ handleSetShow  }) => {
         <h1>Projects</h1>
       </section>
       <section className='home02_main'>
-        <img className='home02_main_bgc' src={currentItem && currentItem.images[2]} alt="" />
+        <img className='home02_main_bgc fade-in-out' key={`bgc-${fadeKey}`} src={currentItem && currentItem.images[2]} alt="" />
         <figure className='icon--into' onClick={() => { handleSetShow(currentItem) }}>
           <span></span>
         </figure>
         <ul className='card'>
-          <li className='card_info'>
+          <li className='card_info fade-in-out' key={`card-info-${fadeKey}`}>
             <span></span>
             <p>{currentItem && currentItem.info}</p>
           </li>
-          <li className='card_img'>
+          <li className='card_img fade-in-out' key={`card-img-${fadeKey}`}>
             <img src={currentItem && currentItem.images[1]} alt="" />
           </li>
         </ul>
         <ul className='list'>
           <li>
             {items.map((item, index) =>
-              <p key={index}>0{index + 1} {item.title}</p>
+              <p key={`item-${index}`}>0{index + 1} {item.title}</p>
             )}
           </li>
-          <li>
-            <h2>0{currentItem && currentItem.id} {currentItem && currentItem.title}</h2>
+          <li className='fade-in-out' key={`title-${fadeKey}`}>
+            <h2 >0{currentItem && currentItem.id} {currentItem && currentItem.title}</h2>
           </li>
         </ul>
       </section>
-
-
     </article>
-  )
-}
+  );
+};
 
-export default Home02
+export default Home02;

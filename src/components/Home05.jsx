@@ -3,14 +3,18 @@ import { projects } from '../libs/projects.js';
 
 const Home05 = ({ handleSetShow }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [fadeKey, setFadeKey] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
     }, 4000);
 
+    setFadeKey((prevKey) => prevKey + 1);
+
     return () => clearInterval(interval);
-  }, []);
+    
+  }, [currentIndex]);
 
   const currentList = projects[currentIndex].items;
 
@@ -26,9 +30,9 @@ const Home05 = ({ handleSetShow }) => {
       <section className='home05_title'>
         <h1>A <span>passionate</span> designer <span>specializing</span> in <span>web</span> and <span>graphic</span> design.</h1>
       </section>
-      <section className='home05_main'>
+      <section className='home05_main fade-in-out' key={`fade-main-${fadeKey}`}>
         {currentList && currentList.map((item,index)=>
-          <ul key={index} className='card' onClick={() => { handleSetShow(123) }}>
+          <ul key={index} className='card' onClick={() => { handleSetShow(item) }}>
             <li className='card_info'>
               <span></span>
               <p>{item.title}</p> {/* Assuming each project has a title */}
