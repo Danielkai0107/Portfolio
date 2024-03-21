@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import img1 from '../images/AIEnglish/1.png';
-import img2 from '../images/AIEnglish/2.png';
-import img3 from '../images/AIEnglish/3.png';
-import img4 from '../images/AIEnglish/4.png';
-import img5 from '../images/AIEnglish/5.png';
-import img6 from '../images/AIEnglish/6.png';
+import img1 from '../images/Home/1.png';
+import img2 from '../images/Home/2.png';
+import img3 from '../images/Home/3.png';
+import img4 from '../images/Home/4.png';
+import img5 from '../images/Home/5.png';
+import img6 from '../images/Home/6.png';
 
 const Home01 = () => {
   const [currentItem, setCurrentItem] = useState(null);

@@ -3,7 +3,7 @@ import { projects } from '../libs/projects.js'
 
 
 const Home04 = ({ handleSetShow }) => {
-  const items = projects[0].items
+  const items = projects[2].items
   const [currentItem, setCurrentItem] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
@@ -14,7 +14,7 @@ const Home04 = ({ handleSetShow }) => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
     }, 4000);
 
-    setCurrentItem(projects[0].items[currentIndex]);
+    setCurrentItem(projects[2].items[currentIndex]);
     setFadeKey((prevKey) => prevKey + 1);
 
 
@@ -55,13 +55,13 @@ const Home04 = ({ handleSetShow }) => {
             <img src={currentItem && currentItem.images[2]} alt="" />
           </li>
         </ul>
-        <figure className='icon--into' onClick={() => { handleSetShow(currentItem) }}>
+        <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id,2) }}>
           <span></span>
         </figure>
         <ul className='list'>
           <li>
             {items.map((item, index) =>
-              <p key={index}>0{index + 1} {item.title}</p>
+              <p key={index} onClick={() => { handleSetShow(item.id, 2) }}>0{index + 1} {item.title}</p>
             )}
           </li>
         </ul>

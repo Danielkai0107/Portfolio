@@ -1,27 +1,19 @@
-import React, { useState } from "react";
+// App.js
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
 import ShowPage from "./pages/ShowPage";
+import Navbar from "./components/Navbar";
 
 const App = () => {
-  const [showOpen, setShowOpen] = useState(false);
-  const [showItem, setShowItem] = useState([]);
-
-  const handleShowPage = () => {
-    setShowOpen(!showOpen);
-  };
-
-  const handleSetShow = (item) => {
-    setShowItem(item)
-    setShowOpen(true);
-  };
-
   return (
-    <>
-      <Navbar setShowOpen={setShowOpen} />
-      <Home handleShowPage={handleShowPage} handleSetShow={handleSetShow}/>
-      {showOpen && <ShowPage setShowOpen={setShowOpen} showItem={showItem && showItem}/>}
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Project/:id/:category" element={<ShowPage />} />
+      </Routes>
+    </Router>
   );
 };
 

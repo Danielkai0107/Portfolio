@@ -1,3 +1,4 @@
+//Home.jsx
 import React, { useRef } from 'react';
 import Home01 from '../components/Home01';
 import Home02 from '../components/Home02';
@@ -7,13 +8,19 @@ import Home05 from '../components/Home05';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { useNavigate } from 'react-router-dom';
 
 
-const Home = ({ handleSetShow }) => {
+const Home = () => {
+
+  const navigate = useNavigate();
+  const handleSetShow = (currentItem, categoryIndex) => {
+    navigate(`/Project/${currentItem}/${categoryIndex}`);
+  };
+
+
   const homeContainer = useRef();
   gsap.registerPlugin(ScrollTrigger);
-
-
   useGSAP(() => {
     let items = gsap.utils.toArray('.panel')
 

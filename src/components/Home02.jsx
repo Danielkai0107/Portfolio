@@ -26,7 +26,7 @@ const Home02 = ({ handleSetShow }) => {
       </section>
       <section className='home02_main'>
         <img className='home02_main_bgc fade-in-out' key={`bgc-${fadeKey}`} src={currentItem && currentItem.images[2]} alt="" />
-        <figure className='icon--into' onClick={() => { handleSetShow(currentItem) }}>
+        <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id, 0) }}>
           <span></span>
         </figure>
         <ul className='card'>
@@ -41,7 +41,7 @@ const Home02 = ({ handleSetShow }) => {
         <ul className='list'>
           <li>
             {items.map((item, index) =>
-              <p key={`item-${index}`}>0{index + 1} {item.title}</p>
+              <p key={`item-${index}`} onClick={() => { handleSetShow(item.id, 0) }}>0{index + 1} {item.title}</p>
             )}
           </li>
           <li className='fade-in-out' key={`title-${fadeKey}`}>

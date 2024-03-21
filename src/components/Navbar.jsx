@@ -1,13 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({setShowOpen}) => {
+const Navbar = () => {
+  const navigate = useNavigate();
 
   const goToTop = () => {
-    setShowOpen(false)
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
+    navigate(`/`);
   }
 
   return (

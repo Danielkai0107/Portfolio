@@ -32,7 +32,7 @@ const Home05 = ({ handleSetShow }) => {
       </section>
       <section className='home05_main fade-in-out' key={`fade-main-${fadeKey}`}>
         {currentList && currentList.map((item,index)=>
-          <ul key={index} className='card' onClick={() => { handleSetShow(item) }}>
+          <ul key={index} className='card' onClick={() => { handleSetShow(item.id,currentIndex) }}>
             <li className='card_info'>
               <span></span>
               <p>{item.title}</p> {/* Assuming each project has a title */}
