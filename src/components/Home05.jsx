@@ -8,7 +8,7 @@ const Home05 = ({ handleSetShow }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
-    }, 4000);
+    }, 6000);
 
     setFadeKey((prevKey) => prevKey + 1);
 

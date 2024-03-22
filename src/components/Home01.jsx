@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useMemo, memo } from 'react';
-const img1 = '../images/Home/1.png';
-const img2 = '../images/Home/2.png';
-const img3 = '../images/Home/3.png';
-const img4 = '../images/Home/4.png';
-const img5 = '../images/Home/5.png';
-const img6 = '../images/Home/6.png';
+import img1 from '../images/Home/1.png';
+import img2 from '../images/Home/2.png';
+import img3 from '../images/Home/3.png';
+import img4 from '../images/Home/4.png';
+import img5 from '../images/Home/5.png';
+import img6 from '../images/Home/6.png';
 
 const Home01 = memo(() => {
   const [currentItem, setCurrentItem] = useState(null);
@@ -16,7 +16,7 @@ const Home01 = memo(() => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000);
+    }, 6000);
 
     setCurrentItem(images[currentImageIndex]);
     setFadeKey((prevKey) => prevKey + 1);

@@ -1,47 +1,47 @@
 //APP
-const ai_m = "../../images/App/AI/main.png";
-const ai_01 = "../images/App/AI/1.png";
-const ai_02 = "../images/App/AI/2.png";
+import ai_m from "../images/App/AI/main.png";
+import ai_01 from "../images/App/AI/1.png";
+import ai_02 from "../images/App/AI/2.png";
 
-const kids_m = "../../images/App/Kids/main.png";
-const kids_01 = "../images/App/Kids/1.png";
-const kids_02 = "../images/App/Kids/2.png";
+import kids_m from "../images/App/Kids/main.png";
+import kids_01 from "../images/App/Kids/1.png";
+import kids_02 from "../images/App/Kids/2.png";
 
-const dev_m = "../../images/App/Dev/main.png";
-const dev_01 = "../images/App/Dev/1.png";
-const dev_02 = "../images/App/Dev/2.png";
+import dev_m from "../images/App/Dev/main.png";
+import dev_01 from "../images/App/Dev/1.png";
+import dev_02 from "../images/App/Dev/2.png";
 
-const pay_m = "../../images/App/Pay/main.png";
-const pay_01 = "../images/App/Pay/1.png";
-const pay_02 = "../images/App/Pay/2.png";
+import pay_m from "../images/App/Pay/main.png";
+import pay_01 from "../images/App/Pay/1.png";
+import pay_02 from "../images/App/Pay/2.png";
 
 
 //Web
-const w_m = "../../images/Web/Weather/main.png";
-const w_01 = "../images/Web/Weather/1.png";
-const w_02 = "../images/Web/Weather/2.png";
+import w_m from "../images/Web/Weather/main.png";
+import w_01 from "../images/Web/Weather/1.png";
+import w_02 from "../images/Web/Weather/2.png";
 
-const mo_m = "../../images/Web/Movie/main.png";
-const mo_01 = "../images/Web/Movie/1.png";
-const mo_02 = "../images/Web/Movie/2.png";
+import mo_m from "../images/Web/Movie/main.png";
+import mo_01 from "../images/Web/Movie/1.png";
+import mo_02 from "../images/Web/Movie/2.png";
 
 //Graphic
 
-const f_m = "../../images/Graphic/Fisher/main.png";
-const f_01 = "../images/Graphic/Fisher/1.png";
-const f_02 = "../images/Graphic/Fisher/2.png";
+import f_m from "../images/Graphic/Fisher/main.png";
+import f_01 from "../images/Graphic/Fisher/1.png";
+import f_02 from "../images/Graphic/Fisher/2.png";
 
-const z_m = "../../images/Graphic/Zebulun/main.png";
-const z_01 = "../images/Graphic/Zebulun/1.png";
-const z_02 = "../images/Graphic/Zebulun/2.png";
+import z_m from "../images/Graphic/Zebulun/main.png";
+import z_01 from "../images/Graphic/Zebulun/1.png";
+import z_02 from "../images/Graphic/Zebulun/2.png";
 
-const y_m = "../../images/Graphic/Yolo/main.png";
-const y_01 = "../images/Graphic/Yolo/1.png";
-const y_02 = "../images/Graphic/Yolo/2.png";
+import y_m from "../images/Graphic/Yolo/main.png";
+import y_01 from "../images/Graphic/Yolo/1.png";
+import y_02 from "../images/Graphic/Yolo/2.png";
 
-const p_m = "../../images/Graphic/Poster/main.png";
-const p_01 = "../images/Graphic/Poster/1.png";
-const p_02 = "../images/Graphic/Poster/2.png";
+import p_m from "../images/Graphic/Poster/main.png";
+import p_01 from "../images/Graphic/Poster/1.png";
+import p_02 from "../images/Graphic/Poster/2.png";
 
 export const projects = [
   {
