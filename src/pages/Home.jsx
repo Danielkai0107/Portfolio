@@ -17,13 +17,11 @@ const Home = () => {
   const handleSetShow = (currentItem, categoryIndex) => {
     navigate(`/Project/${currentItem}/${categoryIndex}`);
   };
-
-
   const homeContainer = useRef();
+  
   gsap.registerPlugin(ScrollTrigger);
   useGSAP(() => {
     let items = gsap.utils.toArray('.panel')
-
     gsap.to(items, {
       xPercent: -100 * (items.length - 1),
       ease: "none",

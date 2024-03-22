@@ -8,6 +8,8 @@ const Home03 = ({ handleSetShow }) => {
   const [currentItem, setCurrentItem] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
 
 
   useEffect(() => {
@@ -17,6 +19,7 @@ const Home03 = ({ handleSetShow }) => {
 
     setCurrentItem(projects[1].items[currentIndex]);
     setFadeKey((prevKey) => prevKey + 1);
+    setImageLoaded(false)
 
     return () => clearInterval(interval);
   }, [currentIndex, items.length]);
@@ -35,11 +38,11 @@ const Home03 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out'  key={`card-img-${fadeKey}`}>
-            <img src={currentItem ? currentItem.images[1] : loadIMG} alt="" />
+            <img src={imageLoaded && currentItem ? currentItem.images[1] : loadIMG} alt="" onLoad={() => setImageLoaded(true)} />
           </li>
         </ul>
         <section className='img'>
-          <img className='home03_main_bgc fade-in-out'  key={`card-bgc-${fadeKey}`} src={currentItem ? currentItem.images[2] : loadIMG} alt="" />
+          <img className='home03_main_bgc fade-in-out'  key={`card-bgc-${fadeKey}`} src={imageLoaded && currentItem ? currentItem.images[2] : loadIMG} alt="" onLoad={() => setImageLoaded(true)} />
           <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id,1) }}>
             <span></span>
           </figure>

@@ -7,6 +7,8 @@ const Home04 = ({ handleSetShow }) => {
   const [currentItem, setCurrentItem] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
 
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const Home04 = ({ handleSetShow }) => {
 
     setCurrentItem(projects[2].items[currentIndex]);
     setFadeKey((prevKey) => prevKey + 1);
-
+    setImageLoaded(false)
 
     return () => clearInterval(interval);
   }, [currentIndex, items.length]);
@@ -34,7 +36,7 @@ const Home04 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`bgc-img-${fadeKey}`} >
-            <img src={currentItem ? currentItem.images[0] : loadIMG} alt="" />
+            <img src={imageLoaded && currentItem ? currentItem.images[0] : loadIMG} alt="" onLoad={() => setImageLoaded(true)} />
           </li>
         </ul>
         <ul className='card'>
@@ -43,7 +45,7 @@ const Home04 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`bgc-img01-${fadeKey}`} >
-            <img src={currentItem ? currentItem.images[1] : loadIMG} alt="" />
+            <img src={imageLoaded && currentItem ? currentItem.images[1] : loadIMG} alt="" onLoad={() => setImageLoaded(true)} />
           </li>
         </ul>
         <ul className='card'>
@@ -52,7 +54,7 @@ const Home04 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`bgc-img03-${fadeKey}`} >
-            <img src={currentItem ? currentItem.images[2] : loadIMG} alt="" />
+            <img src={imageLoaded && currentItem ? currentItem.images[2] : loadIMG} alt="" onLoad={() => setImageLoaded(true)} />
           </li>
         </ul>
         <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id, 2) }}>

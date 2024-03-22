@@ -11,41 +11,26 @@ const Home01 = memo(() => {
   const [currentItem, setCurrentItem] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const images = useMemo(() => [img1, img2, img3, img4, img5, img6], []);
 
-  useEffect(() => {
-    const loadImages = async () => {
-      await Promise.all(images.map(image => {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.src = image;
-          img.onload = resolve;
-          img.onerror = reject;
-        });
-      }));
-      setLoading(false);
-    };
-    loadImages();
-  }, [images]);
+
 
   useEffect(() => {
-    if (!loading) {
-      const interval = setInterval(() => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-      }, 6000);
 
-      setCurrentItem(images[currentImageIndex]);
-      setFadeKey((prevKey) => prevKey + 1);
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 6000);
 
-      return () => clearInterval(interval);
-    }
-  }, [currentImageIndex, images, loading]);
+    setCurrentItem(images[currentImageIndex]);
+    setFadeKey((prevKey) => prevKey + 1);
+    setImageLoaded(false)
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    return () => clearInterval(interval);
+
+  }, [currentImageIndex, images]);
+
 
   return (
     <article className='home01 panel'>
@@ -71,7 +56,7 @@ const Home01 = memo(() => {
       <section className='home01_show'>
         <ul>
           <li className='fade-in-out' key={fadeKey}>
-            <img src={loading ? loadIMG : currentItem} alt="" />
+            <img src={imageLoaded ? currentItem : loadIMG} alt="" onLoad={() => setImageLoaded(true)} />
           </li>
         </ul>
       </section>
