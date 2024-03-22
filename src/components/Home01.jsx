@@ -1,33 +1,32 @@
-import React, { useEffect, useState, useMemo, memo } from 'react';
-import img1 from '../images/Home/1.png';
-import img2 from '../images/Home/2.png';
+import React, { useEffect, useState, useMemo } from 'react';
+import img1 from '../images/Home/1.jpg';
+import img2 from '../images/Home/2.jpg';
 import img3 from '../images/Home/3.png';
 import img4 from '../images/Home/4.png';
-import img5 from '../images/Home/5.png';
-import img6 from '../images/Home/6.png';
+import img5 from '../images/Home/5.jpg';
+import img6 from '../images/Home/6.jpg';
 
-const Home01 = memo(() => {
-  const [currentItem, setCurrentItem] = useState(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const Home01 = () => {
+  const [currentImageIndexes, setCurrentImageIndexes] = useState([0, 0, 0, 0]);
   const [fadeKey, setFadeKey] = useState(0);
 
-  const images = useMemo(() => [img1, img2, img3, img4, img5, img6], []);
-
-
+  const images = useMemo(() => [
+    [img1, img2, img3, img4, img5, img6],
+    [img2, img3, img4, img5, img6, img1],
+    [img3, img4, img5, img6, img1, img2],
+    [img4, img5, img6, img1, img2, img3]
+  ], []);
 
   useEffect(() => {
-
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentImageIndexes(prevIndexes =>
+        prevIndexes.map((index, i) => (index + 1) % images[i].length)
+      );
+      setFadeKey(prevKey => prevKey + 1);
     }, 6000);
 
-    setCurrentItem(images[currentImageIndex]);
-    setFadeKey((prevKey) => prevKey + 1);
-
     return () => clearInterval(interval);
-
-  }, [currentImageIndex, images]);
-
+  }, [images]);
 
   return (
     <article className='home01 panel'>
@@ -52,13 +51,15 @@ const Home01 = memo(() => {
       </section>
       <section className='home01_show'>
         <ul>
-          <li className='fade-in-out' key={fadeKey}>
-            <img src={currentItem} alt=""/>
-          </li>
+          {images.map((imgArr, i) => (
+            <li className='fade-in-out-1' key={`home-${i + 1}-${fadeKey}`}>
+              <img src={imgArr[currentImageIndexes[i]]} alt="" />
+            </li>
+          ))}
         </ul>
       </section>
     </article>
   );
-})
+}
 
 export default Home01;

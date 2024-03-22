@@ -17,29 +17,29 @@ import pay_02 from "../images/App/Pay/2.png";
 
 
 //Web
-import w_m from "../images/Web/Weather/main.png";
-import w_01 from "../images/Web/Weather/1.png";
-import w_02 from "../images/Web/Weather/2.png";
+import w_m from "../images/Web/Weather/main.jpg";
+import w_01 from "../images/Web/Weather/1.jpg";
+import w_02 from "../images/Web/Weather/2.jpg";
 
-import mo_m from "../images/Web/Movie/main.png";
+import mo_m from "../images/Web/Movie/main.jpg";
 import mo_01 from "../images/Web/Movie/1.png";
 import mo_02 from "../images/Web/Movie/2.png";
 
 //Graphic
 
-import f_m from "../images/Graphic/Fisher/main.png";
+import f_m from "../images/Graphic/Fisher/main.jpg";
 import f_01 from "../images/Graphic/Fisher/1.png";
 import f_02 from "../images/Graphic/Fisher/2.png";
 
-import z_m from "../images/Graphic/Zebulun/main.png";
+import z_m from "../images/Graphic/Zebulun/main.jpg";
 import z_01 from "../images/Graphic/Zebulun/1.png";
 import z_02 from "../images/Graphic/Zebulun/2.png";
 
-import y_m from "../images/Graphic/Yolo/main.png";
+import y_m from "../images/Graphic/Yolo/main.jpg";
 import y_01 from "../images/Graphic/Yolo/1.png";
 import y_02 from "../images/Graphic/Yolo/2.png";
 
-import p_m from "../images/Graphic/Poster/main.png";
+import p_m from "../images/Graphic/Poster/main.jpg";
 import p_01 from "../images/Graphic/Poster/1.png";
 import p_02 from "../images/Graphic/Poster/2.png";
 
