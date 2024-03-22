@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { projects } from '../libs/projects.js';
+import loadIMG from '../images/loading.png'
 
 const Home02 = ({ handleSetShow }) => {
   const items = projects[0].items;
@@ -25,7 +26,7 @@ const Home02 = ({ handleSetShow }) => {
         <h1>Projects</h1>
       </section>
       <section className='home02_main'>
-        <img className='home02_main_bgc fade-in-out' key={`bgc-${fadeKey}`} src={currentItem && currentItem.images[2]} alt="" />
+        <img className='home02_main_bgc fade-in-out' key={`bgc-${fadeKey}`} src={currentItem ? currentItem.images[2] : loadIMG} alt="" />
         <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id, 0) }}>
           <span></span>
         </figure>
@@ -35,7 +36,7 @@ const Home02 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`card-img-${fadeKey}`}>
-            <img src={currentItem && currentItem.images[1]} alt="" />
+            <img src={currentItem ? currentItem.images[1] : loadIMG} alt="" />
           </li>
         </ul>
         <ul className='list'>

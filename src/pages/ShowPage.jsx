@@ -1,7 +1,7 @@
-//ShowPage.jsx
 import React, { useEffect, useState } from 'react';
 import { projects } from '../libs/projects';
 import { useNavigate, useParams } from 'react-router-dom';
+import loadIMG from '../images/loading.png'
 
 const ShowPage = () => {
   const navigate = useNavigate();
@@ -9,6 +9,7 @@ const ShowPage = () => {
   const [ID, setID] = useState(parseInt(id));
   const currentList = projects[category].items;
   const currentItem = currentList.find((item) => item.id === ID);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const handleBack = () => {
     navigate('/');
@@ -50,7 +51,8 @@ const ShowPage = () => {
       top: 0,
       behavior: 'smooth',
     });
-  }, [])
+    setImageLoaded(false); // Reset image loading state when component mounts or ID changes
+  }, [ID])
 
   return (
     <aside className="show">
@@ -96,7 +98,12 @@ const ShowPage = () => {
           </ul>
         </section>
         <section className="show_main_content">
-          <img src={currentItem.images[0]} alt="" />
+          {/* Display loadIMG as a placeholder until the main image has loaded */}
+          <img 
+            src={imageLoaded && currentItem ? currentItem.images[0] : loadIMG} 
+            alt="" 
+            onLoad={() => setImageLoaded(true)} 
+          />
           <ul onClick={handleToTop}>
             <li>
               <span></span>
@@ -104,7 +111,6 @@ const ShowPage = () => {
             </li>
           </ul>
         </section>
-
       </article>
     </aside>
   );

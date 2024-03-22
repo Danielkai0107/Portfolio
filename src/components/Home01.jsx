@@ -5,24 +5,47 @@ import img3 from '../images/Home/3.png';
 import img4 from '../images/Home/4.png';
 import img5 from '../images/Home/5.png';
 import img6 from '../images/Home/6.png';
+import loadIMG from '../images/loading.png'
 
 const Home01 = memo(() => {
   const [currentItem, setCurrentItem] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const images = useMemo(() => [img1, img2, img3, img4, img5, img6], []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 6000);
+    const loadImages = async () => {
+      await Promise.all(images.map(image => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = image;
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+      }));
+      setLoading(false);
+    };
+    loadImages();
+  }, [images]);
 
-    setCurrentItem(images[currentImageIndex]);
-    setFadeKey((prevKey) => prevKey + 1);
+  useEffect(() => {
+    if (!loading) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 6000);
 
-    return () => clearInterval(interval);
-  }, [currentImageIndex, images]);
+      setCurrentItem(images[currentImageIndex]);
+      setFadeKey((prevKey) => prevKey + 1);
+
+      return () => clearInterval(interval);
+    }
+  }, [currentImageIndex, images, loading]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <article className='home01 panel'>
@@ -48,7 +71,7 @@ const Home01 = memo(() => {
       <section className='home01_show'>
         <ul>
           <li className='fade-in-out' key={fadeKey}>
-            <img src={currentItem} alt="" />
+            <img src={loading ? loadIMG : currentItem} alt="" />
           </li>
         </ul>
       </section>

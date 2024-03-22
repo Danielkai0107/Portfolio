@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { projects } from '../libs/projects.js';
+import loadIMG from '../images/loading.png'
 
 const Home05 = ({ handleSetShow }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,7 +14,7 @@ const Home05 = ({ handleSetShow }) => {
     setFadeKey((prevKey) => prevKey + 1);
 
     return () => clearInterval(interval);
-    
+
   }, [currentIndex]);
 
   const currentList = projects[currentIndex].items;
@@ -31,14 +32,14 @@ const Home05 = ({ handleSetShow }) => {
         <h1>A <span>passionate</span> designer <span>specializing</span> in <span>web</span> and <span>graphic</span> design.</h1>
       </section>
       <section className='home05_main fade-in-out' key={`fade-main-${fadeKey}`}>
-        {currentList && currentList.map((item,index)=>
-          <ul key={index} className='card' onClick={() => { handleSetShow(item.id,currentIndex) }}>
+        {currentList && currentList.map((item, index) =>
+          <ul key={index} className='card' onClick={() => { handleSetShow(item.id, currentIndex) }}>
             <li className='card_info'>
               <span></span>
               <p>{item.title}</p> {/* Assuming each project has a title */}
             </li>
             <li className='card_img'>
-              <img src={item.images[1]} alt="" />
+              <img src={item ? item.images[1] : loadIMG} alt="" />
             </li>
           </ul>
         )}

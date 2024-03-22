@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { projects } from '../libs/projects.js'
-
+import loadIMG from '../images/loading.png'
 
 const Home04 = ({ handleSetShow }) => {
   const items = projects[2].items
   const [currentItem, setCurrentItem] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
-  
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,7 +34,7 @@ const Home04 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`bgc-img-${fadeKey}`} >
-            <img src={currentItem && currentItem.images[0]} alt="" />
+            <img src={currentItem ? currentItem.images[0] : loadIMG} alt="" />
           </li>
         </ul>
         <ul className='card'>
@@ -43,7 +43,7 @@ const Home04 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`bgc-img01-${fadeKey}`} >
-            <img src={currentItem && currentItem.images[1]} alt="" />
+            <img src={currentItem ? currentItem.images[1] : loadIMG} alt="" />
           </li>
         </ul>
         <ul className='card'>
@@ -52,10 +52,10 @@ const Home04 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`bgc-img03-${fadeKey}`} >
-            <img src={currentItem && currentItem.images[2]} alt="" />
+            <img src={currentItem ? currentItem.images[2] : loadIMG} alt="" />
           </li>
         </ul>
-        <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id,2) }}>
+        <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id, 2) }}>
           <span></span>
         </figure>
         <ul className='list'>

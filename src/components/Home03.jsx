@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { projects } from '../libs/projects.js'
+import loadIMG from '../images/loading.png'
+
 
 const Home03 = ({ handleSetShow }) => {
   const items = projects[1].items
@@ -33,11 +35,11 @@ const Home03 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out'  key={`card-img-${fadeKey}`}>
-            <img src={currentItem && currentItem.images[1]} alt="" />
+            <img src={currentItem ? currentItem.images[1] : loadIMG} alt="" />
           </li>
         </ul>
         <section className='img'>
-          <img className='home03_main_bgc fade-in-out'  key={`card-bgc-${fadeKey}`} src={currentItem && currentItem.images[2]} alt="" />
+          <img className='home03_main_bgc fade-in-out'  key={`card-bgc-${fadeKey}`} src={currentItem ? currentItem.images[2] : loadIMG} alt="" />
           <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id,1) }}>
             <span></span>
           </figure>
