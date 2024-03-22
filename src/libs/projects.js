@@ -1,54 +1,45 @@
-//APP
-import ai_01 from "../images/App/AI/1.png";
-import ai_02 from "../images/App/AI/2.png";
+const ai_01 = "/images/App/AI/1.png";
+const ai_02 = "/images/App/AI/2.png";
 
-import kids_01 from "../images/App/Kids/1.png";
-import kids_02 from "../images/App/Kids/2.png";
+const kids_01 = "/images/App/Kids/1.png";
+const kids_02 = "/images/App/Kids/2.png";
 
-import dev_01 from "../images/App/Dev/1.png";
-import dev_02 from "../images/App/Dev/2.png";
+const dev_01 = "/images/App/Dev/1.png";
+const dev_02 = "/images/App/Dev/2.png";
 
-import pay_01 from "../images/App/Pay/1.png";
-import pay_02 from "../images/App/Pay/2.png";
-
+const pay_01 = "/images/App/Pay/1.png";
+const pay_02 = "/images/App/Pay/2.png";
 
 //Web
-import w_01 from "../images/Web/Weather/1.jpg";
-import w_02 from "../images/Web/Weather/2.jpg";
+const w_01 = "/images/Web/Weather/1.jpg";
+const w_02 = "/images/Web/Weather/2.jpg";
 
-import mo_01 from "../images/Web/Movie/1.png";
-import mo_02 from "../images/Web/Movie/2.png";
+const mo_01 = "/images/Web/Movie/1.png";
+const mo_02 = "/images/Web/Movie/2.png";
 
 //Graphic
+const f_01 = "/images/Graphic/Fisher/1.png";
+const f_02 = "/images/Graphic/Fisher/2.png";
 
-import f_01 from "../images/Graphic/Fisher/1.png";
-import f_02 from "../images/Graphic/Fisher/2.png";
+const z_01 = "/images/Graphic/Zebulun/1.png";
+const z_02 = "/images/Graphic/Zebulun/2.png";
 
-import z_01 from "../images/Graphic/Zebulun/1.png";
-import z_02 from "../images/Graphic/Zebulun/2.png";
+const y_01 = "/images/Graphic/Yolo/1.png";
+const y_02 = "/images/Graphic/Yolo/2.png";
 
-import y_01 from "../images/Graphic/Yolo/1.png";
-import y_02 from "../images/Graphic/Yolo/2.png";
+const p_01 = "/images/Graphic/Poster/1.png";
+const p_02 = "/images/Graphic/Poster/2.png";
 
-import p_01 from "../images/Graphic/Poster/1.png";
-import p_02 from "../images/Graphic/Poster/2.png";
-
-const ai_m  =  "../../public/images/App/AI/main.png";
-const kids_m = "../../public/images/App/Kids/main.png";
-const dev_m = "../../public/images/App/Dev/main.png";
-const pay_m = "../../public/images/App/Pay/main.png";
-const w_m = "../../public/images/Web/Weather/main.jpg";
-const mo_m = "../../public/images/Web/Movie/main.jpg";
-const f_m = "../../public/images/Graphic/Fisher/main.jpg";
-const z_m = "../../public/images/Graphic/Zebulun/main.jpg";
-const y_m = "../../public/images/Graphic/Yolo/main.jpg";
-const p_m = "../../public/images/Graphic/Poster/main.jpg";
-
-
-
-
-
-
+const ai_m = "/images/App/AI/main.png";
+const kids_m = "/images/App/Kids/main.png";
+const dev_m = "/images/App/Dev/main.png";
+const pay_m = "/images/App/Pay/main.png";
+const w_m = "/images/Web/Weather/main.jpg";
+const mo_m = "/images/Web/Movie/main.jpg";
+const f_m = "/images/Graphic/Fisher/main.jpg";
+const z_m = "/images/Graphic/Zebulun/main.jpg";
+const y_m = "/images/Graphic/Yolo/main.jpg";
+const p_m = "/images/Graphic/Poster/main.jpg";
 
 export const projects = [
   {
@@ -71,7 +62,8 @@ export const projects = [
         title: "Device Check UI",
         info: "UI Redesign",
         URL: {
-          figma: "https://www.figma.com/file/HMcLsWaecjpFvjU8bJjCn7/Device-Check-UI?type=design&node-id=0%3A1&mode=design&t=0RHG84KgyX0CECcY-1",
+          figma:
+            "https://www.figma.com/file/HMcLsWaecjpFvjU8bJjCn7/Device-Check-UI?type=design&node-id=0%3A1&mode=design&t=0RHG84KgyX0CECcY-1",
           github: null,
           web: null,
         },
@@ -110,7 +102,8 @@ export const projects = [
         title: "Movie Finder",
         info: "ReactJS RWD API",
         URL: {
-          figma: "https://www.figma.com/file/akpQOTlVUP3IDUDgNt2Bv9/MovieFinder?type=design&node-id=460%3A401&mode=design&t=mU4KEwJsjFbrJVcU-1",
+          figma:
+            "https://www.figma.com/file/akpQOTlVUP3IDUDgNt2Bv9/MovieFinder?type=design&node-id=460%3A401&mode=design&t=mU4KEwJsjFbrJVcU-1",
           github: "https://github.com/Danielkai0107/movie-final.git",
           web: "https://danielkai0107.github.io/movie-final/",
         },
@@ -121,7 +114,8 @@ export const projects = [
         title: "Weather Forecast",
         info: "ReactJS API",
         URL: {
-          figma: "https://www.figma.com/file/DkAa0lG987eAv43Vwft8BK/Weather-Forecast?type=design&node-id=0%3A1&mode=design&t=TNvFB8P0HOIsPAqG-1",
+          figma:
+            "https://www.figma.com/file/DkAa0lG987eAv43Vwft8BK/Weather-Forecast?type=design&node-id=0%3A1&mode=design&t=TNvFB8P0HOIsPAqG-1",
           github: "https://github.com/Danielkai0107/Weather-API-UI.git",
           web: "https://weather-api-ui.vercel.app/",
         },
