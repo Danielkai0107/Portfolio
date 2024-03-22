@@ -15,8 +15,6 @@ const Navbar = () => {
   return (
     <nav>
       <ul>
-        <li>About</li>
-        <li>Work</li>
       </ul>
       <figure onClick={goToTop} >
         <span ></span>

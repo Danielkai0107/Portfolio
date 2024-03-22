@@ -41,7 +41,7 @@ nav {
     }
     span {
       @include size(20px, 20px);
-      background-image: url("../../images/icon/home.png");
+      background-image: url("../../../public/images/icon/home.png");
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
