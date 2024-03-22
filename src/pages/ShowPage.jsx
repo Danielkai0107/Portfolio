@@ -7,6 +7,7 @@ const ShowPage = () => {
   const navigate = useNavigate();
   const { id, category } = useParams();
   const [ID, setID] = useState(parseInt(id));
+  const [loaded, setLoaded] = useState(true);
   const currentList = projects[category].items;
   const currentItem = currentList.find((item) => item.id === ID);
 
@@ -97,8 +98,9 @@ const ShowPage = () => {
         </section>
         <section className="show_main_content">
           <img 
-            src={currentItem ? currentItem.images[0] : loadIMG} 
+            src={loaded && currentItem ? currentItem.images[0] : loadIMG} 
             alt="" 
+            onLoad={setLoaded(false)}
           />
           <ul onClick={handleToTop}>
             <li>
