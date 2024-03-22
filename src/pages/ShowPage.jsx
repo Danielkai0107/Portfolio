@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { projects } from '../libs/projects';
 import { useNavigate, useParams } from 'react-router-dom';
-import loadIMG from '../images/loading.png'
 
 const ShowPage = () => {
   const navigate = useNavigate();
   const { id, category } = useParams();
   const [ID, setID] = useState(parseInt(id));
-  const [loaded, setLoaded] = useState(true);
   const currentList = projects[category].items;
   const currentItem = currentList.find((item) => item.id === ID);
 
@@ -98,9 +96,8 @@ const ShowPage = () => {
         </section>
         <section className="show_main_content">
           <img 
-            src={loaded && currentItem ? currentItem.images[0] : loadIMG} 
+            src={currentItem && currentItem.images[0] } 
             alt="" 
-            onload={setLoaded(false)}
           />
           <ul onClick={handleToTop}>
             <li>
