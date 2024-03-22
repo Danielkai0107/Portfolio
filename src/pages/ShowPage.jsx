@@ -100,7 +100,7 @@ const ShowPage = () => {
           <img 
             src={loaded && currentItem ? currentItem.images[0] : loadIMG} 
             alt="" 
-            onLoad={setLoaded(false)}
+            onload={setLoaded(false)}
           />
           <ul onClick={handleToTop}>
             <li>
