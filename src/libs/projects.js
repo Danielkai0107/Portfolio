@@ -1,47 +1,54 @@
 //APP
-import ai_m from "../images/App/AI/main.png";
 import ai_01 from "../images/App/AI/1.png";
 import ai_02 from "../images/App/AI/2.png";
 
-import kids_m from "../images/App/Kids/main.png";
 import kids_01 from "../images/App/Kids/1.png";
 import kids_02 from "../images/App/Kids/2.png";
 
-import dev_m from "../images/App/Dev/main.png";
 import dev_01 from "../images/App/Dev/1.png";
 import dev_02 from "../images/App/Dev/2.png";
 
-import pay_m from "../images/App/Pay/main.png";
 import pay_01 from "../images/App/Pay/1.png";
 import pay_02 from "../images/App/Pay/2.png";
 
 
 //Web
-import w_m from "../images/Web/Weather/main.jpg";
 import w_01 from "../images/Web/Weather/1.jpg";
 import w_02 from "../images/Web/Weather/2.jpg";
 
-import mo_m from "../images/Web/Movie/main.jpg";
 import mo_01 from "../images/Web/Movie/1.png";
 import mo_02 from "../images/Web/Movie/2.png";
 
 //Graphic
 
-import f_m from "../images/Graphic/Fisher/main.jpg";
 import f_01 from "../images/Graphic/Fisher/1.png";
 import f_02 from "../images/Graphic/Fisher/2.png";
 
-import z_m from "../images/Graphic/Zebulun/main.jpg";
 import z_01 from "../images/Graphic/Zebulun/1.png";
 import z_02 from "../images/Graphic/Zebulun/2.png";
 
-import y_m from "../images/Graphic/Yolo/main.jpg";
 import y_01 from "../images/Graphic/Yolo/1.png";
 import y_02 from "../images/Graphic/Yolo/2.png";
 
-import p_m from "../images/Graphic/Poster/main.jpg";
 import p_01 from "../images/Graphic/Poster/1.png";
 import p_02 from "../images/Graphic/Poster/2.png";
+
+const ai_m  =  "../../public/images/App/AI/main.png";
+const kids_m = "../../public/images/App/Kids/main.png";
+const dev_m = "../../public/images/App/Dev/main.png";
+const pay_m = "../../public/images/App/Pay/main.png";
+const w_m = "../../public/images/Web/Weather/main.jpg";
+const mo_m = "../../public/images/Web/Movie/main.jpg";
+const f_m = "../../public/images/Graphic/Fisher/main.jpg";
+const z_m = "../../public/images/Graphic/Zebulun/main.jpg";
+const y_m = "../../public/images/Graphic/Yolo/main.jpg";
+const p_m = "../../public/images/Graphic/Poster/main.jpg";
+
+
+
+
+
+
 
 export const projects = [
   {
