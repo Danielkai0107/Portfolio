@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { projects } from '../libs/projects.js';
-import loadIMG from '../images/loading.png'
 
 const Home05 = ({ handleSetShow }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
 
   useEffect(() => {
@@ -14,7 +12,6 @@ const Home05 = ({ handleSetShow }) => {
     }, 6000);
 
     setFadeKey((prevKey) => prevKey + 1);
-    setImageLoaded(false)
 
     return () => clearInterval(interval);
 
@@ -42,7 +39,7 @@ const Home05 = ({ handleSetShow }) => {
               <p>{item.title}</p> {/* Assuming each project has a title */}
             </li>
             <li className='card_img'>
-              <img src={imageLoaded && item ? item.images[1] : loadIMG} alt="" onLoad={() => setImageLoaded(true)}/>
+              <img src={item.images[1]} alt="" />
             </li>
           </ul>
         )}

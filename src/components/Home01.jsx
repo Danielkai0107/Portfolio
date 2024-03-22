@@ -5,13 +5,11 @@ import img3 from '../images/Home/3.png';
 import img4 from '../images/Home/4.png';
 import img5 from '../images/Home/5.png';
 import img6 from '../images/Home/6.png';
-import loadIMG from '../images/loading.png'
 
 const Home01 = memo(() => {
   const [currentItem, setCurrentItem] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   const images = useMemo(() => [img1, img2, img3, img4, img5, img6], []);
 
@@ -25,7 +23,6 @@ const Home01 = memo(() => {
 
     setCurrentItem(images[currentImageIndex]);
     setFadeKey((prevKey) => prevKey + 1);
-    setImageLoaded(false)
 
     return () => clearInterval(interval);
 
@@ -56,7 +53,7 @@ const Home01 = memo(() => {
       <section className='home01_show'>
         <ul>
           <li className='fade-in-out' key={fadeKey}>
-            <img src={imageLoaded ? currentItem : loadIMG} alt="" onLoad={() => setImageLoaded(true)} />
+            <img src={currentItem} alt=""/>
           </li>
         </ul>
       </section>

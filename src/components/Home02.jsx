@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { projects } from '../libs/projects.js';
-import loadIMG from '../images/loading.png'
 
 const Home02 = ({ handleSetShow }) => {
   const items = projects[0].items;
   const [currentItem, setCurrentItem] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState(false);
 
 
   useEffect(() => {
@@ -17,7 +15,6 @@ const Home02 = ({ handleSetShow }) => {
 
     setCurrentItem(projects[0].items[currentIndex]);
     setFadeKey((prevKey) => prevKey + 1);
-    setImageLoaded(false);
 
     return () => clearInterval(interval);
   }, [currentIndex, items.length]);
@@ -30,7 +27,7 @@ const Home02 = ({ handleSetShow }) => {
         <h1>Projects</h1>
       </section>
       <section className='home02_main'>
-        <img className='home02_main_bgc fade-in-out' key={`bgc-${fadeKey}`} src={imageLoaded && currentItem ? currentItem.images[2] : loadIMG} alt="" onLoad={() => setImageLoaded(true)} />
+        <img className='home02_main_bgc fade-in-out' key={`bgc-${fadeKey}`} src={ currentItem && currentItem.images[2]} alt="" />
         <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id, 0) }}>
           <span></span>
         </figure>
@@ -40,7 +37,7 @@ const Home02 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`card-img-${fadeKey}`}>
-            <img src={imageLoaded && currentItem ? currentItem.images[1] : loadIMG} alt="" onLoad={() => setImageLoaded(true)} />
+            <img src={ currentItem && currentItem.images[1] } alt="" />
           </li>
         </ul>
         <ul className='list'>
