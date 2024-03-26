@@ -41,11 +41,6 @@ const Home02 = ({ handleSetShow }) => {
           </li>
         </ul>
         <ul className='list'>
-          <li>
-            {items.map((item, index) =>
-              <p key={`item-${index}`} onClick={() => { handleSetShow(item.id, 0) }}>0{index + 1} {item.title}</p>
-            )}
-          </li>
           <li className='fade-in-out' key={`title-${fadeKey}`}>
             <h2 >0{currentItem && currentItem.id} {currentItem && currentItem.title}</h2>
           </li>

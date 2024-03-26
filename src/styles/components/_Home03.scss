@@ -4,25 +4,25 @@
   height: 100vh;
   overflow: hidden;
   padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
   &_title {
+    width: 100%;
     h1 {
       font-size: 3.75rem;
     }
   }
   &_main {
-    @include size(50px, 50px);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     .card {
+      position: absolute;
+      top: 10rem;
+      right: 20rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      position: absolute;
       z-index: 20;
-      top: 40%;
-      right: 0;
       padding: 1rem;
       border-radius: 60px;
       background: #ffffff;
@@ -57,11 +57,9 @@
       }
     }
     .img {
-      position: absolute;
-      left: 0;
-      bottom: -40%;
       width: calc(100vw / 3);
       aspect-ratio: 5/3;
+      margin-left: 20rem;
       img {
         width: 100%;
         height: 100%;
@@ -70,7 +68,7 @@
       }
       .icon--into {
         position: absolute;
-        bottom: -70%;
+        bottom: -50%;
         right: 0;
         display: flex;
         justify-content: center;
@@ -99,37 +97,11 @@
         animation: float 6s ease-in-out infinite;
       }
     }
-    .list {
-      left: 160%;
-      top: 180%;
+    .titleList {
       position: absolute;
-      height: calc(100vw / 5);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      li {
-        &:nth-child(1) {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-      }
-      p {
-        text-wrap: nowrap;
-        font-size: 1.25rem;
-        opacity: 0.3;
-        cursor: pointer;
-        transition: all 0.2s;
-        &:hover {
-          opacity: 1;
-          scale: 1.1;
-        }
-      }
-    }
-    .title {
-      position: absolute;
-      left: -850%;
-      top: -100%;
+      top: 30%;
+      right: 30rem;
+      z-index: 30;
       li {
         display: flex;
         justify-content: flex-start;

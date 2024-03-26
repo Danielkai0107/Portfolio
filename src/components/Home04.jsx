@@ -33,7 +33,7 @@ const Home04 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`bgc-img-${fadeKey}`} >
-            <img src={  currentItem && currentItem.images[0] } alt="" />
+            <img src={currentItem && currentItem.images[0]} alt="" />
           </li>
         </ul>
         <ul className='card'>
@@ -42,7 +42,7 @@ const Home04 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`bgc-img01-${fadeKey}`} >
-            <img src={ currentItem && currentItem.images[1] } alt=""  />
+            <img src={currentItem && currentItem.images[1]} alt="" />
           </li>
         </ul>
         <ul className='card'>
@@ -51,19 +51,12 @@ const Home04 = ({ handleSetShow }) => {
             <p>{currentItem && currentItem.info}</p>
           </li>
           <li className='card_img fade-in-out' key={`bgc-img03-${fadeKey}`} >
-            <img src={  currentItem && currentItem.images[2] } alt="" />
+            <img src={currentItem && currentItem.images[2]} alt="" />
           </li>
         </ul>
         <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id, 2) }}>
           <span></span>
         </figure>
-        <ul className='list'>
-          <li>
-            {items.map((item, index) =>
-              <p key={index} onClick={() => { handleSetShow(item.id, 2) }}>0{index + 1} {item.title}</p>
-            )}
-          </li>
-        </ul>
       </section>
     </article>
   )

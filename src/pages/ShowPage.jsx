@@ -95,9 +95,9 @@ const ShowPage = () => {
           </ul>
         </section>
         <section className="show_main_content">
-          <img 
-            src={currentItem && currentItem.images[0] } 
-            alt="" 
+          <img
+            src={currentItem && currentItem.images[0]}
+            alt=""
           />
           <ul onClick={handleToTop}>
             <li>

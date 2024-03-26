@@ -1,45 +1,52 @@
+const ai_m = "/images/App/AI/main.png";
 const ai_01 = "/images/App/AI/1.png";
 const ai_02 = "/images/App/AI/2.png";
 
+const kids_m = "/images/App/Kids/main.png";
 const kids_01 = "/images/App/Kids/1.png";
 const kids_02 = "/images/App/Kids/2.png";
 
+const dev_m = "/images/App/Dev/main.png";
 const dev_01 = "/images/App/Dev/1.png";
 const dev_02 = "/images/App/Dev/2.png";
 
+const pay_m = "/images/App/Pay/main.png";
 const pay_01 = "/images/App/Pay/1.png";
 const pay_02 = "/images/App/Pay/2.png";
 
 //Web
+const w_m = "/images/Web/Weather/main.jpg";
 const w_01 = "/images/Web/Weather/1.jpg";
 const w_02 = "/images/Web/Weather/2.jpg";
 
+const mo_m = "/images/Web/Movie/main.jpg";
 const mo_01 = "/images/Web/Movie/1.png";
 const mo_02 = "/images/Web/Movie/2.png";
 
+const l1_m = "/images/Web/Land01/main.jpg";
+const l1_01 = "/images/Web/Land01/main.jpg";
+const l1_02 = "/images/Web/Land01/main.jpg";
+
+const l2_m = "/images/Web/Land02/main.jpg";
+const l2_01 = "/images/Web/Land02/main.jpg";
+const l2_02 = "/images/Web/Land02/main.jpg";
+
 //Graphic
+const f_m = "/images/Graphic/Fisher/main.jpg";
 const f_01 = "/images/Graphic/Fisher/1.png";
 const f_02 = "/images/Graphic/Fisher/2.png";
 
+const z_m = "/images/Graphic/Zebulun/main.jpg";
 const z_01 = "/images/Graphic/Zebulun/1.png";
 const z_02 = "/images/Graphic/Zebulun/2.png";
 
+const y_m = "/images/Graphic/Yolo/main.jpg";
 const y_01 = "/images/Graphic/Yolo/1.png";
 const y_02 = "/images/Graphic/Yolo/2.png";
 
+const p_m = "/images/Graphic/Poster/main.jpg";
 const p_01 = "/images/Graphic/Poster/1.png";
 const p_02 = "/images/Graphic/Poster/2.png";
-
-const ai_m = "/images/App/AI/main.png";
-const kids_m = "/images/App/Kids/main.png";
-const dev_m = "/images/App/Dev/main.png";
-const pay_m = "/images/App/Pay/main.png";
-const w_m = "/images/Web/Weather/main.jpg";
-const mo_m = "/images/Web/Movie/main.jpg";
-const f_m = "/images/Graphic/Fisher/main.jpg";
-const z_m = "/images/Graphic/Zebulun/main.jpg";
-const y_m = "/images/Graphic/Yolo/main.jpg";
-const p_m = "/images/Graphic/Poster/main.jpg";
 
 export const projects = [
   {
@@ -121,17 +128,30 @@ export const projects = [
         },
         images: [w_m, w_01, w_02],
       },
-      // {
-      //   id: 3,
-      //   title: "WebPage Layout",
-      //   info: "HTML CSS JavaScript",
-      //   URL: {
-      //     figma: null,
-      //     github: null,
-      //     web: null,
-      //   },
-      //   images: [app_kids_01, app_kids_02, app_kids_03],
-      // }
+      {
+        id: 3,
+        title: "Landing Page",
+        info: "Figma Design",
+        URL: {
+          figma:
+            "https://www.figma.com/file/G6ns5Ic06hAcAUb5I0evs8/Landing?type=design&node-id=0%3A1&mode=design&t=fCpSKatzOnWKmTkg-1",
+          github: null,
+          web: null,
+        },
+        images: [l1_m, l1_01, l1_02],
+      },
+      {
+        id: 4,
+        title: "Landing Page",
+        info: "Figma Design",
+        URL: {
+          figma:
+            "https://www.figma.com/file/G6ns5Ic06hAcAUb5I0evs8/Landing?type=design&node-id=0%3A1&mode=design&t=fCpSKatzOnWKmTkg-1",
+          github: null,
+          web: "https://danielkai0107.github.io/Practice-copycat-03/",
+        },
+        images: [l2_m, l2_01, l2_02],
+      },
     ],
   },
   {
