@@ -31,6 +31,10 @@ const l2_m = "/images/Web/Land02/main.jpg";
 const l2_01 = "/images/Web/Land02/main.jpg";
 const l2_02 = "/images/Web/Land02/main.jpg";
 
+const l3_m = "/images/Web/Land03/main.jpg";
+const l3_01 = "/images/Web/Land03/main.jpg";
+const l3_02 = "/images/Web/Land03/main.jpg";
+
 //Graphic
 const f_m = "/images/Graphic/Fisher/main.jpg";
 const f_01 = "/images/Graphic/Fisher/1.png";
@@ -151,6 +155,18 @@ export const projects = [
           web: "https://danielkai0107.github.io/Practice-copycat-03/",
         },
         images: [l2_m, l2_01, l2_02],
+      },
+      {
+        id: 5,
+        title: "Landing Page",
+        info: "Figma Design",
+        URL: {
+          figma:
+            "https://www.figma.com/file/G6ns5Ic06hAcAUb5I0evs8/Landing?type=design&node-id=0%3A1&mode=design&t=fCpSKatzOnWKmTkg-1",
+          github: null,
+          web: null,
+        },
+        images: [l3_m, l3_01, l3_02],
       },
     ],
   },
