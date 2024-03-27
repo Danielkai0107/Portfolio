@@ -2,12 +2,16 @@ nav {
   width: 50vw;
   position: fixed;
   z-index: 100;
-  right: 0;
+  right: 1rem;
   top: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 2.5rem;
+  //MD
+  @include md {
+    right: $p-md;
+    top: $p-md;
+  }
   ul {
     display: flex;
     gap: 2rem;
@@ -40,7 +44,7 @@ nav {
       opacity: 0;
     }
     span {
-      @include size(20px, 20px);
+      @include size(1.25rem, 1.25rem);
       background-image: url("../../images/icon/home.png");
       background-position: center;
       background-size: contain;

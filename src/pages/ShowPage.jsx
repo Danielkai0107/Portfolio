@@ -95,6 +95,13 @@ const ShowPage = () => {
           </ul>
         </section>
         <section className="show_main_content">
+          <figure className="loading">
+            <ul class="dots">
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </figure>
           <img
             src={currentItem && currentItem.images[0]}
             alt=""

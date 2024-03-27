@@ -31,8 +31,13 @@
   }
   .back {
     position: fixed;
-    top: 1.5rem;
-    left: 2.5rem;
+    top: $p-sm;
+    left: $p-sm;
+    //MD
+    @include md {
+      top: $p-md;
+      left: $p-md;
+    }
     span {
       @include size(20px, 20px);
       background-image: url("../../images/icon/left.png");
@@ -41,14 +46,24 @@
       background-repeat: no-repeat;
     }
     p {
-      position: absolute;
-      left: 140%;
+      display: none;
+      //MD
+      @include md {
+        display: block;
+        position: absolute;
+        left: 140%;
+      }
     }
   }
   .prev {
     position: fixed;
-    bottom: 1.5rem;
-    left: 2.5rem;
+    bottom: $p-sm;
+    left: $p-sm;
+    //MD
+    @include md {
+      bottom: $p-md;
+      left: $p-md;
+    }
     span {
       @include size(20px, 20px);
       background-image: url("../../images/icon/prev.png");
@@ -57,14 +72,24 @@
       background-repeat: no-repeat;
     }
     p {
-      position: absolute;
-      left: 140%;
+      display: none;
+      //MD
+      @include md {
+        display: block;
+        position: absolute;
+        left: 140%;
+      }
     }
   }
   .next {
     position: fixed;
-    bottom: 1.5rem;
-    right: 2.5rem;
+    bottom: $p-sm;
+    right: $p-sm;
+    //MD
+    @include md {
+      bottom: $p-md;
+      right: $p-md;
+    }
     span {
       @include size(20px, 20px);
       background-image: url("../../images/icon/next.png");
@@ -73,14 +98,22 @@
       background-repeat: no-repeat;
     }
     p {
-      position: absolute;
-      right: 140%;
+      display: none;
+      //MD
+      @include md {
+        display: block;
+        position: absolute;
+        right: 140%;
+      }
     }
   }
   &_main {
-    width: 800px;
     padding: 1rem;
     animation: fadeIn 1.5s ease-in-out;
+    //MD
+    @include md {
+      padding: 0 12rem;
+    }
     &_title {
       display: flex;
       justify-content: space-between;
@@ -91,10 +124,11 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        font-size: 3.75rem;
+        font-size: 3rem;
         span {
-          font-size: 1.4rem;
+          font-size: 1.5rem;
           font-weight: 100;
+          margin-left: 0.5rem;
         }
       }
       .icon_list {
@@ -169,10 +203,46 @@
       margin-top: 2rem;
       margin-bottom: 6rem;
       gap: 3rem;
+      .loading {
+        width: 4rem;
+        height: 1rem;
+        position: absolute;
+        top: 1rem;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(-40%);
+        .dots {
+          li {
+            position: absolute;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50%;
+            &:nth-child(1) {
+              background: #e0e0e0;
+              animation: load02 2s linear infinite;
+              animation-delay: 1s;
+            }
+            &:nth-child(2) {
+              background: #d1d1d1;
+              animation: load02 2s linear infinite;
+              animation-delay: 0s;
+            }
+            &:nth-child(3) {
+              background: #e0e0e0;
+              animation: load01 2s linear infinite;
+              animation-delay: 1s;
+            }
+          }
+        }
+      }
       img {
+        z-index: 3;
         width: 100%;
       }
       ul {
+        margin-top: 5rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -204,5 +274,34 @@
         }
       }
     }
+  }
+}
+@keyframes load01 {
+  0% {
+    opacity: 1;
+    transform: translate(0 0);
+  }
+  49.99% {
+    opacity: 1;
+    transform: translate(2rem, 0);
+  }
+  50% {
+    opacity: 0;
+    transform: translate(2rem, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+}
+@keyframes load02 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2rem, 0);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }

@@ -2,21 +2,26 @@
 // Small devices (landscape phones, less than 768px)
 // Medium devices (tablets, less than 992px)
 // Large devices (desktops, less than 1200px)
+//min 以上 max 以下
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
 
 @mixin sm() {
-  @media all and (min-width: 576px) {
+  @media all and (max-width: $md) {
     @content;
   }
 }
 
 @mixin md() {
-  @media all and (min-width: 992px) {
+  @media all and (min-width: $md) {
     @content;
   }
 }
 
 @mixin lg() {
-  @media all and (min-width: 992px) {
+  @media all and (min-width: $lg) {
     @content;
   }
 }

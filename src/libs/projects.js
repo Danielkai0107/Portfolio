@@ -106,7 +106,7 @@ export const projects = [
   },
   {
     id: 2,
-    category: "Web",
+    category: "WebPage",
     items: [
       {
         id: 1,

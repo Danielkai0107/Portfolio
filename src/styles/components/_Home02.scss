@@ -1,112 +1,138 @@
 .home02 {
   background-color: #f0f0f3;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  padding: 2.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 3rem;
+  //MD
+  @include md {
+    padding: $p-md;
+    gap: 6rem;
+  }
   &_title {
     width: 100%;
+    display: flex;
+    gap: 0.5rem;
     h1 {
-      font-size: 3.75rem;
+      font-size: 3rem;
+      //LG
+      @include lg {
+        font-size: 3.75rem;
+      }
     }
   }
   &_main {
-    width: calc(100vw / 4);
-    aspect-ratio: 4/5;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    gap: 3rem;
+    //MD
+    @include md {
+      flex-direction: row;
+    }
     &_bgc {
       width: 100%;
-      height: 100%;
+      aspect-ratio: 11/9;
       object-fit: cover;
       border-radius: 60px;
+      //MD
+      @include md {
+        width: 400px;
+      }
     }
-    .icon--into {
-      position: absolute;
-      bottom: 1rem;
-      right: -4rem;
+    &_info {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 90px;
-      height: 90px;
-      border-radius: 20px;
-      background: #f0f0f3;
-      box-shadow: -10px -10px 30px #ffffff,
-        10px 10px 30px rgba(174, 174, 192, 0.4), inset 10px 10px 10px #ffffff,
-        inset -10px -10px 10px rgba(174, 174, 192, 0.25);
-      cursor: pointer;
-      transition: all 0.2s;
-      &:active {
-        opacity: 0;
+      gap: 3rem;
+      //MD
+      @include md {
+        align-items: flex-end;
       }
-      span {
-        display: block;
-        width: 40px;
-        height: 40px;
-        background-image: url("../../images/icon/right.png");
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
+      //LG
+      @include lg {
+        flex-direction: row;
       }
-      animation: float 6s ease-in-out infinite;
+      .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        h2 {
+          text-wrap: nowrap;
+          font-size: 2rem;
+          transition: all 0.1s;
+          animation: float 6s ease-in-out infinite;
+        }
+        p {
+          text-align: center;
+          font-size: 1.5rem;
+          font-weight: 100;
+        }
+      }
+      .icon--into {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 3.75rem;
+        height: 3.75rem;
+        border-radius: 3.75rem;
+        background: #f0f0f3;
+        box-shadow: -10px -10px 30px #ffffff,
+          10px 10px 30px rgba(174, 174, 192, 0.4), inset 10px 10px 10px #ffffff,
+          inset -10px -10px 10px rgba(174, 174, 192, 0.25);
+        cursor: pointer;
+        transition: all 0.2s;
+        &:active {
+          opacity: 0;
+        }
+        span {
+          display: block;
+          width: 1.5rem;
+          height: 1.5rem;
+          background-image: url("../../images/icon/right.png");
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+        animation: float 6s ease-in-out infinite;
+      }
     }
     .card {
+      position: absolute;
+      right: 1rem;
+      top: 2rem;
+      width: 8rem;
+      height: 8rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: calc(100vw / 3.5);
-      position: absolute;
-      margin-right: 35rem;
-      margin-top: 4rem;
-      padding: 1rem;
-      border-radius: 60px;
+      border-radius: 9rem;
       background: #ffffff;
       box-shadow: 7.27273px 7.27273px 21.8182px rgba(174, 174, 192, 0.4),
         -7.27273px -7.27273px 21.8182px #ffffff;
       animation: float 6s 1s ease-in-out infinite;
-      &_info {
-        width: 50%;
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        line-height: 1.25rem;
-        span {
-          display: block;
-          min-width: 1.5rem;
-          height: 1.5rem;
-          background-color: #f0f0f3;
-          border-radius: 1rem;
-        }
+      //MD
+      @include md {
+        right: 50vw;
+        top: 2rem;
       }
       &_img {
         width: 8rem;
         height: 8rem;
-        border-radius: 40px;
+        border-radius: 8rem;
         overflow: hidden;
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
-      }
-    }
-    .list {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      margin-left: 40rem;
-      h2 {
-        text-wrap: nowrap;
-        font-size: 3rem;
-        transition: all 0.1s;
-        animation: float 6s ease-in-out infinite;
       }
     }
   }
