@@ -5,16 +5,17 @@ import img3 from '../images/Home/3.png';
 import img4 from '../images/Home/4.png';
 import img5 from '../images/Home/5.jpg';
 import img6 from '../images/Home/6.jpg';
+import img7 from '../images/Home/7.jpg';
 
 const Home01 = () => {
   const [currentImageIndexes, setCurrentImageIndexes] = useState([0, 0, 0, 0]);
   const [fadeKey, setFadeKey] = useState(0);
 
   const images = useMemo(() => [
-    [img1, img2, img3, img4, img5, img6],
-    [img2, img3, img4, img5, img6, img1],
-    [img3, img4, img5, img6, img1, img2],
-    [img4, img5, img6, img1, img2, img3]
+    [img1, img2, img3, img4, img5, img6, img7],
+    [img2, img3, img4, img5, img6, img7, img1],
+    [img3, img4, img5, img6, img7, img1, img2],
+    [img4, img5, img6, img7, img1, img2, img3]
   ], []);
 
   useEffect(() => {
