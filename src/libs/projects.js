@@ -52,6 +52,11 @@ const p_m = "/images/Graphic/Poster/main.jpg";
 const p_01 = "/images/Graphic/Poster/1.png";
 const p_02 = "/images/Graphic/Poster/2.png";
 
+//Graphic
+const sp_m = "/images/Sport/sp/main.jpg";
+const sp_01 = "/images/Sport/sp/1.png";
+const sp_02 = "/images/Sport/sp/2.jpg";
+
 export const projects = [
   {
     id: 1,
@@ -217,6 +222,23 @@ export const projects = [
           web: null,
         },
         images: [p_m, p_01, p_02],
+      },
+    ],
+  },
+  {
+    id: 4,
+    category: "Sports",
+    items: [
+      {
+        id: 1,
+        title: "Sports Poster",
+        info: "Sports Records",
+        URL: {
+          figma: null,
+          github: null,
+          web: null,
+        },
+        images: [sp_m, sp_01, sp_02],
       },
     ],
   },
