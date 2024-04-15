@@ -127,10 +127,14 @@
         font-size: 3rem;
         span {
           margin-left: 0.5rem;
-          font-size: 1.3rem;
+          font-size: 1rem;
           font-weight: 400;
           letter-spacing: 4px;
           font-family: "Noto Sans TC", sans-serif;
+          //MD
+          @include md {
+            font-size: 1.3rem;
+          }
         }
       }
       .icon_list {

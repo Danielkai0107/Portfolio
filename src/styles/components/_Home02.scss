@@ -71,10 +71,14 @@
           animation: float 6s ease-in-out infinite;
         }
         p {
-          font-size: 1.2rem;
+          font-size: 1rem;
           font-weight: 400;
           letter-spacing: 4px;
           font-family: "Noto Sans TC", sans-serif;
+          //MD
+          @include md {
+          font-size: 1.2rem;
+          }
         }
       }
       .icon--into {

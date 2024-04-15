@@ -116,7 +116,7 @@ export const projects = [
       {
         id: 1,
         title: "Movie Finder",
-        info: "ReactJS RWD｜API｜網頁切版",
+        info: "ReactJS｜網站製作",
         URL: {
           figma:
             "https://www.figma.com/file/akpQOTlVUP3IDUDgNt2Bv9/MovieFinder?type=design&node-id=460%3A401&mode=design&t=mU4KEwJsjFbrJVcU-1",
@@ -128,7 +128,7 @@ export const projects = [
       {
         id: 2,
         title: "Weather Forecast",
-        info: "ReactJS｜API｜網頁切版",
+        info: "ReactJS｜網站製作",
         URL: {
           figma:
             "https://www.figma.com/file/DkAa0lG987eAv43Vwft8BK/Weather-Forecast?type=design&node-id=0%3A1&mode=design&t=TNvFB8P0HOIsPAqG-1",
