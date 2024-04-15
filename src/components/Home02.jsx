@@ -23,7 +23,7 @@ const Home02 = ({ handleSetShow, pIndex }) => {
     <article className='home02'>
       <section className='home02_title'>
         <h1>{projects[pIndex].category}</h1>
-        <h1>Design</h1>
+        <h1>Projects</h1>
       </section>
       <section className='home02_main'>
         <img className='home02_main_bgc fade-in-out' key={`bgc-${fadeKey}`} src={currentItem && currentItem.images[2]} alt="" />

@@ -38,11 +38,10 @@ const Home01 = () => {
             <p>Daniel Kai</p>
           </li>
           <li>
-            <h1>Design</h1>
             <h1>Portfolio</h1>
           </li>
           <li>
-            <p>A passionate designer specializing in web and graphic design.</p>
+            <p>A passionate designer specializing in front-end development and graphic.</p>
           </li>
         </ul>
         <figure className='icon--scroll'>

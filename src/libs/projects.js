@@ -65,7 +65,7 @@ export const projects = [
       {
         id: 1,
         title: "AI English",
-        info: "UI Design",
+        info: "使用者介面設計",
         URL: {
           figma: null,
           github: null,
@@ -76,7 +76,7 @@ export const projects = [
       {
         id: 2,
         title: "Device Check UI",
-        info: "UI Redesign",
+        info: "使用者介面設計",
         URL: {
           figma:
             "https://www.figma.com/file/HMcLsWaecjpFvjU8bJjCn7/Device-Check-UI?type=design&node-id=0%3A1&mode=design&t=0RHG84KgyX0CECcY-1",
@@ -88,7 +88,7 @@ export const projects = [
       {
         id: 3,
         title: "Payment UI",
-        info: "UI Design",
+        info: "使用者介面設計",
         URL: {
           figma: null,
           github: null,
@@ -99,7 +99,7 @@ export const projects = [
       {
         id: 4,
         title: "Kids English",
-        info: "UI Design",
+        info: "使用者介面設計",
         URL: {
           figma: null,
           github: null,
@@ -111,12 +111,12 @@ export const projects = [
   },
   {
     id: 2,
-    category: "WebPage",
+    category: "Web",
     items: [
       {
         id: 1,
         title: "Movie Finder",
-        info: "ReactJS RWD API",
+        info: "ReactJS RWD｜API｜網頁切版",
         URL: {
           figma:
             "https://www.figma.com/file/akpQOTlVUP3IDUDgNt2Bv9/MovieFinder?type=design&node-id=460%3A401&mode=design&t=mU4KEwJsjFbrJVcU-1",
@@ -128,7 +128,7 @@ export const projects = [
       {
         id: 2,
         title: "Weather Forecast",
-        info: "ReactJS API",
+        info: "ReactJS｜API｜網頁切版",
         URL: {
           figma:
             "https://www.figma.com/file/DkAa0lG987eAv43Vwft8BK/Weather-Forecast?type=design&node-id=0%3A1&mode=design&t=TNvFB8P0HOIsPAqG-1",
@@ -140,7 +140,7 @@ export const projects = [
       {
         id: 3,
         title: "Landing Page",
-        info: "Figma Design",
+        info: "網頁切版",
         URL: {
           figma:
             "https://www.figma.com/file/G6ns5Ic06hAcAUb5I0evs8/Landing?type=design&node-id=0%3A1&mode=design&t=fCpSKatzOnWKmTkg-1",
@@ -152,7 +152,7 @@ export const projects = [
       {
         id: 4,
         title: "Landing Page",
-        info: "Figma Design",
+        info: "網頁切版",
         URL: {
           figma:
             "https://www.figma.com/file/G6ns5Ic06hAcAUb5I0evs8/Landing?type=design&node-id=0%3A1&mode=design&t=fCpSKatzOnWKmTkg-1",
@@ -164,7 +164,7 @@ export const projects = [
       {
         id: 5,
         title: "Landing Page",
-        info: "Figma Design",
+        info: "EDM",
         URL: {
           figma:
             "https://www.figma.com/file/G6ns5Ic06hAcAUb5I0evs8/Landing?type=design&node-id=0%3A1&mode=design&t=fCpSKatzOnWKmTkg-1",
@@ -182,7 +182,7 @@ export const projects = [
       {
         id: 1,
         title: "FISHER WHARF",
-        info: "Fisher Wharf",
+        info: "品牌設計",
         URL: {
           figma: null,
           github: null,
@@ -193,7 +193,7 @@ export const projects = [
       {
         id: 2,
         title: "ZEBULUN",
-        info: "ZEBULUN",
+        info: "品牌設計",
         URL: {
           figma: null,
           github: null,
@@ -204,7 +204,7 @@ export const projects = [
       {
         id: 3,
         title: "YOLO SPORT",
-        info: "YOLO SPORT",
+        info: "商品設計",
         URL: {
           figma: null,
           github: null,
@@ -215,7 +215,7 @@ export const projects = [
       {
         id: 4,
         title: "Poster Design",
-        info: "Poster Design",
+        info: "海報設計",
         URL: {
           figma: null,
           github: null,
@@ -223,6 +223,17 @@ export const projects = [
         },
         images: [p_m, p_01, p_02],
       },
+      {
+        id: 5,
+        title: "Sports Poster",
+        info: "運動行銷設計",
+        URL: {
+          figma: null,
+          github: null,
+          web: null,
+        },
+        images: [sp_m, sp_01, sp_02],
+      }
     ],
   },
   {
