@@ -139,7 +139,13 @@
       }
       .icon_list {
         display: flex;
+        align-items: center;
         gap: 2rem;
+        margin-left: 0.5rem;
+        p {
+          font-size: 1rem;
+          letter-spacing: 3px;
+        }
         li {
           width: 2.5rem;
           height: 2.5rem;

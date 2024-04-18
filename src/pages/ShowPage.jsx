@@ -71,6 +71,10 @@ const ShowPage = () => {
             <span>{currentItem.info}</span>
           </h1>
           <ul className="icon_list">
+            {
+              (currentItem.URL.figma || currentItem.URL.github || currentItem.URL.web) && (<p>前往作品：</p>)
+            }
+            
             {currentItem.URL.figma && (
               <li className="figma">
                 <a href={currentItem.URL.figma} target="_blank" rel="noreferrer">

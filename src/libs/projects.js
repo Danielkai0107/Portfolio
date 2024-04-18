@@ -35,6 +35,9 @@ const l3_m = "/images/Web/Land03/main.jpg";
 const l3_01 = "/images/Web/Land03/main.jpg";
 const l3_02 = "/images/Web/Land03/main.jpg";
 
+const l4_m = "/images/Web/Land04/main.jpg";
+
+
 //Graphic
 const f_m = "/images/Graphic/Fisher/main.jpg";
 const f_01 = "/images/Graphic/Fisher/1.png";
@@ -163,6 +166,17 @@ export const projects = [
       },
       {
         id: 5,
+        title: "Landing Page",
+        info: "網頁切版",
+        URL: {
+          figma:null,
+          github: null,
+          web: "https://danielkai0107.github.io/Practice-copycat-02/",
+        },
+        images: [l4_m, l4_m, l4_m],
+      },
+      {
+        id: 6,
         title: "Landing Page",
         info: "EDM",
         URL: {
