@@ -70,7 +70,7 @@ export const projects = [
         title: "AI English",
         info: "使用者介面設計",
         URL: {
-          figma: null,
+          figma: "https://www.figma.com/file/E8VffxIq7L31E9mIprdpXP/Untitled?type=design&node-id=0%3A1&mode=design&t=AZKyXbihmK2jZGD2-1",
           github: null,
           web: null,
         },
