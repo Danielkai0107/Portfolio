@@ -18,7 +18,6 @@ const Home = () => {
       <Home02 handleSetShow={handleSetShow} pIndex={0} />
       <Home02 handleSetShow={handleSetShow} pIndex={1} />
       <Home02 handleSetShow={handleSetShow} pIndex={2} />
-      {/* <Home02 handleSetShow={handleSetShow} pIndex={3} /> */}
     </main>
   );
 };
