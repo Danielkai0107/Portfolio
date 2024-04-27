@@ -2,6 +2,10 @@ const ai_m = "/images/App/AI/main.png";
 const ai_01 = "/images/App/AI/1.png";
 const ai_02 = "/images/App/AI/2.png";
 
+const aiux_m = "/images/App/UX/main.jpg";
+const aiux_01 = "/images/App/UX/1.jpg";
+const aiux_02 = "/images/App/UX/2.jpg";
+
 const kids_m = "/images/App/Kids/main.png";
 const kids_01 = "/images/App/Kids/1.png";
 const kids_02 = "/images/App/Kids/2.png";
@@ -67,7 +71,7 @@ export const projects = [
     items: [
       {
         id: 1,
-        title: "AI English",
+        title: "AI English UI",
         info: "使用者介面設計",
         URL: {
           figma: "https://www.figma.com/file/E8VffxIq7L31E9mIprdpXP/Untitled?type=design&node-id=0%3A1&mode=design&t=AZKyXbihmK2jZGD2-1",
@@ -78,6 +82,17 @@ export const projects = [
       },
       {
         id: 2,
+        title: "User Experience",
+        info: "使用者體驗",
+        URL: {
+          figma: "https://www.figma.com/file/E8VffxIq7L31E9mIprdpXP/Untitled?type=design&node-id=0%3A1&mode=design&t=AZKyXbihmK2jZGD2-1",
+          github: null,
+          web: null,
+        },
+        images: [aiux_m, aiux_01, aiux_02],
+      },
+      {
+        id: 3,
         title: "Device Check UI",
         info: "使用者介面設計",
         URL: {
@@ -89,7 +104,7 @@ export const projects = [
         images: [dev_m, dev_01, dev_02],
       },
       {
-        id: 3,
+        id: 4,
         title: "Payment UI",
         info: "使用者介面設計",
         URL: {
@@ -100,7 +115,7 @@ export const projects = [
         images: [pay_m, pay_01, pay_02],
       },
       {
-        id: 4,
+        id: 5,
         title: "Kids English",
         info: "使用者介面設計",
         URL: {
