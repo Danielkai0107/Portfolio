@@ -86,7 +86,7 @@ export const projects = [
       },
       {
         id: 2,
-        title: "User Experience Report",
+        title: "User Experience",
         info: "使用者體驗研究",
         URL: {
           figma: "https://www.figma.com/file/E8VffxIq7L31E9mIprdpXP/Untitled?type=design&node-id=0%3A1&mode=design&t=AZKyXbihmK2jZGD2-1",
@@ -97,7 +97,7 @@ export const projects = [
       },
       {
         id: 3,
-        title: "UX Pain Point & Results",
+        title: "UX Pain Point",
         info: "使用者痛點＆方案",
         URL: {
           figma: null,

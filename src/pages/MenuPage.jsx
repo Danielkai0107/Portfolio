@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { projects } from '../libs/projects.js';
 import { useNavigate, useParams } from 'react-router-dom';
-
+import TopBtn from '../components/TopBtn';
 
 const MenuPage = () => {
   const navigate = useNavigate();
@@ -28,20 +28,22 @@ const MenuPage = () => {
     <article className='menu'>
       <figure className="icon back" onClick={handleBack}>
         <span></span>
-        <p>Back</p>
+        <p>Home</p>
       </figure>
       <section className='menu_title'>
-        <h1>{projects[pIndex].category}</h1>
-        <h1>Projects</h1>
+        <h1>Menu</h1>
       </section>
       <ul className='menu_list'>
         {items.map((item, index) => (
-          <li key={index} onClick={()=>{handleSetShow(item.id , pIndex)}}>
+          <li key={index} onClick={() => { handleSetShow(item.id, pIndex) }}>
             <figure>
               <img src={item.images[1]} alt="" />
             </figure>
             <h1>
-              0{item.id} {item.title}
+              <span>
+                0{item.id}
+              </span>
+              {item.title}
             </h1>
             <p>
               {item.info}
@@ -49,6 +51,7 @@ const MenuPage = () => {
           </li>
         ))}
       </ul>
+      <TopBtn />
     </article>
   )
 }
