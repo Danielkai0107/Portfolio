@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { projects } from '../libs/projects.js';
 
-const Home02 = ({ handleSetShow, pIndex }) => {
+const Home02 = ({ handleSetMenu, pIndex,id }) => {
   const items = projects[pIndex].items;
   const [currentItem, setCurrentItem] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,7 +20,7 @@ const Home02 = ({ handleSetShow, pIndex }) => {
 
 
   return (
-    <article className='home02'>
+    <article className='home02' id={id}>
       <section className='home02_title'>
         <h1>{projects[pIndex].category}</h1>
         <h1>Projects</h1>
@@ -37,7 +37,7 @@ const Home02 = ({ handleSetShow, pIndex }) => {
             <h2 >0{currentItem && currentItem.id} {currentItem && currentItem.title}</h2>
             <p>{currentItem && currentItem.info}</p>
           </li>
-          <figure className='icon--into' onClick={() => { handleSetShow(currentItem.id, pIndex) }}>
+          <figure className='icon--into' onClick={() => { handleSetMenu(pIndex) }}>
             <span></span>
           </figure>
         </ul>

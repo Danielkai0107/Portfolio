@@ -11,6 +11,7 @@
 
 // Layout
 @import "./pages/Home";
+@import "./pages/Menu";
 @import "./pages/ShowPage.scss";
 
 body {
@@ -29,6 +30,39 @@ body {
 }
 .fade-in-out-1 {
   animation: fadeInOut01 6s ease-in-out;
+}
+
+.toTopBtn {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.4s;
+  &:hover {
+    scale: 1.1;
+  }
+  li {
+    h1 {
+      font-size: 3.75rem;
+    }
+    p {
+      font-size: 1.25rem;
+    }
+    &:nth-child(1) {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      span {
+        display: block;
+        @include size(24px, 24px);
+        background-image: url("../images/icon/logo.png");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
+  }
 }
 
 

@@ -1,0 +1,121 @@
+.menu {
+  background-color: #f0f0f3;
+  padding: 1rem 1rem 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  //MD
+  @include md {
+    padding: 2rem 2rem 10rem 2rem;
+    gap: 4rem;
+  }
+  .icon {
+    z-index: 100;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f3;
+    box-shadow: -3px -3px 22.5px #ffffff,
+      7.5px 7.5px 22.5px rgba(174, 174, 192, 0.4),
+      inset 7.5px 7.5px 7.5px #ffffff,
+      inset -7.5px -7.5px 7.5px rgba(174, 174, 192, 0.25);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+      scale: 0.8;
+    }
+    &:active {
+      opacity: 0;
+    }
+  }
+  .back {
+    position: fixed;
+    top: $p-sm;
+    left: $p-sm;
+    //MD
+    @include md {
+      top: $p-md;
+      left: $p-md;
+    }
+    span {
+      @include size(20px, 20px);
+      background-image: url("../../images/icon/left.png");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    p {
+      display: none;
+      //MD
+      @include md {
+        display: block;
+        position: absolute;
+        left: 140%;
+      }
+    }
+  }
+  &_title {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 5rem;
+    //MD
+    @include md {
+      margin-top: 6rem;
+    }
+    h1 {
+      font-size: 3rem;
+      //LG
+      @include lg {
+        font-size: 3.75rem;
+      }
+    }
+  }
+  &_list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    li {
+      //MD
+      @include md {
+        width: calc((100% - 8rem) / 3);
+      }
+      overflow: hidden;
+      transition: all 0.4s;
+      background: #f0f0f3;
+      cursor: pointer;
+      &:hover {
+        scale: 1.1;
+      }
+      figure {
+        width: 100%;
+        aspect-ratio: 5/3;
+        border-radius: 1rem;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      h1 {
+        padding: 1rem;
+        font-size: 1.4rem;
+        text-wrap: nowrap;
+      }
+      p {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+      }
+    }
+  }
+}

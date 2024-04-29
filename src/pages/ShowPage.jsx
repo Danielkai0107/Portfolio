@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { projects } from '../libs/projects';
 import { useNavigate, useParams } from 'react-router-dom';
+import TopBtn from '../components/TopBtn';
 
 const ShowPage = () => {
   const navigate = useNavigate();
@@ -10,14 +11,7 @@ const ShowPage = () => {
   const currentItem = currentList.find((item) => item.id === ID);
 
   const handleBack = () => {
-    navigate('/');
-  }
-
-  const handleToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    navigate(`/Menu/${category}`);
   }
 
   const handlePrev = () => {
@@ -74,7 +68,7 @@ const ShowPage = () => {
             {
               (currentItem.URL.figma || currentItem.URL.github || currentItem.URL.web) && (<p>前往作品：</p>)
             }
-            
+
             {currentItem.URL.figma && (
               <li className="figma">
                 <a href={currentItem.URL.figma} target="_blank" rel="noreferrer">
@@ -110,12 +104,7 @@ const ShowPage = () => {
             src={currentItem && currentItem.images[0]}
             alt=""
           />
-          <ul onClick={handleToTop}>
-            <li>
-              <span></span>
-              <p>TO THE TOP</p>
-            </li>
-          </ul>
+          <TopBtn />
         </section>
       </article>
     </aside>
