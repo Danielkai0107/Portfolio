@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { projects } from '../libs/projects';
 import { useNavigate, useParams } from 'react-router-dom';
 import TopBtn from '../components/TopBtn';
+import FigmaEmbed from '../components/FigmaEmbed';
 
 const ShowPage = () => {
   const navigate = useNavigate();
@@ -104,6 +105,7 @@ const ShowPage = () => {
             src={currentItem && currentItem.images[0]}
             alt=""
           />
+          {currentItem.proto && <FigmaEmbed url={currentItem.proto}/>}
           <TopBtn />
         </section>
       </article>

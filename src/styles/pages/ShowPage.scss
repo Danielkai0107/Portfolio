@@ -252,8 +252,15 @@
       img {
         z-index: 3;
         width: 100%;
+        max-width: 860px;
       }
-      
+      .FigmaEmbed {
+        display: none;
+        //LG
+        @include lg {
+        display: block;
+        }
+      }
     }
   }
 }

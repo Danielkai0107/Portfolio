@@ -45,7 +45,6 @@ const l3_02 = "/images/Web/Land03/main.jpg";
 
 const l4_m = "/images/Web/Land04/main.jpg";
 
-
 //Graphic
 const f_m = "/images/Graphic/Fisher/main.jpg";
 const f_01 = "/images/Graphic/Fisher/1.png";
@@ -78,22 +77,28 @@ export const projects = [
         title: "AI English UI",
         info: "使用者介面設計",
         URL: {
-          figma: "https://www.figma.com/file/E8VffxIq7L31E9mIprdpXP/Untitled?type=design&node-id=0%3A1&mode=design&t=AZKyXbihmK2jZGD2-1",
+          figma:
+            "https://www.figma.com/file/E8VffxIq7L31E9mIprdpXP/Untitled?type=design&node-id=0%3A1&mode=design&t=AZKyXbihmK2jZGD2-1",
           github: null,
           web: null,
         },
         images: [ai_m, ai_01, ai_02],
+        proto: [
+          `<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="860" height="600" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FE8VffxIq7L31E9mIprdpXP%2FAI-English-App%3Fpage-id%3D63%253A953%26type%3Ddesign%26node-id%3D63-1137%26viewport%3D397%252C341%252C0.23%26t%3DVt1LxjnI95PzvkEm-1%26scaling%3Dscale-down%26starting-point-node-id%3D63%253A1213%26mode%3Ddesign" allowfullscreen></iframe>`,
+        ],
       },
       {
         id: 2,
         title: "User Experience",
         info: "使用者體驗研究",
         URL: {
-          figma: "https://www.figma.com/file/E8VffxIq7L31E9mIprdpXP/Untitled?type=design&node-id=0%3A1&mode=design&t=AZKyXbihmK2jZGD2-1",
+          figma:
+            "https://www.figma.com/file/E8VffxIq7L31E9mIprdpXP/Untitled?type=design&node-id=0%3A1&mode=design&t=AZKyXbihmK2jZGD2-1",
           github: null,
           web: null,
         },
         images: [aiux_m, aiux_01, aiux_02],
+        proto: [`<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="860" height="600" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FE8VffxIq7L31E9mIprdpXP%2FAI-English-App%3Fpage-id%3D21%253A705%26type%3Ddesign%26node-id%3D21-1032%26viewport%3D825%252C905%252C0.2%26t%3D4cwgo7zk4NRUWjNc-1%26scaling%3Dscale-down%26starting-point-node-id%3D21%253A1032%26mode%3Ddesign" allowfullscreen></iframe>`,]
       },
       {
         id: 3,
@@ -117,6 +122,7 @@ export const projects = [
           web: null,
         },
         images: [dev_m, dev_01, dev_02],
+        proto: [`<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="860" height="600" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FHMcLsWaecjpFvjU8bJjCn7%2FDevice-Check-UI%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D0-162%26viewport%3D331%252C365%252C0.25%26t%3DQ5qcA5fxVoAirlHv-1%26scaling%3Dscale-down%26starting-point-node-id%3D0%253A6%26mode%3Ddesign" allowfullscreen></iframe>`,]
       },
       {
         id: 5,
@@ -139,6 +145,7 @@ export const projects = [
           web: null,
         },
         images: [kids_m, kids_01, kids_02],
+        proto: [`<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="860" height=600" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FBcoKxx2FXvhebCwF3wegm7%2FKIDS-English%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1-478%26viewport%3D405%252C287%252C0.13%26t%3DrKGr5jCZqwpnaLbv-1%26scaling%3Dscale-down%26starting-point-node-id%3D1%253A48%26mode%3Ddesign" allowfullscreen></iframe>`,]
       },
     ],
   },
@@ -199,7 +206,7 @@ export const projects = [
         title: "Landing Page",
         info: "網頁切版",
         URL: {
-          figma:null,
+          figma: null,
           github: null,
           web: "https://danielkai0107.github.io/Practice-copycat-02/",
         },
@@ -277,7 +284,7 @@ export const projects = [
           web: null,
         },
         images: [sp_m, sp_01, sp_02],
-      }
+      },
     ],
   },
   {
