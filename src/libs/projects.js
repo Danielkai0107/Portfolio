@@ -185,7 +185,7 @@ export const projects = [
           figma:
             "https://www.figma.com/file/G6ns5Ic06hAcAUb5I0evs8/Landing?type=design&node-id=0%3A1&mode=design&t=fCpSKatzOnWKmTkg-1",
           github: null,
-          web: null,
+          web: "https://danielkai0107.github.io/Practice-copycat-01/",
         },
         images: [l1_m, l1_01, l1_02],
       },
