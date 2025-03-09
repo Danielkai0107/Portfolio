@@ -1,31 +1,8 @@
 import React from "react";
 
 const Home01 = () => {
-
-
   return (
     <article className="home01 panel">
-      <section className="home01_title">
-        <ul>
-          <li>
-            <span></span>
-            <p>Daniel Kai</p>
-          </li>
-          <li>
-            <h1>UI UX Designer</h1>
-          </li>
-          <li>
-            <p>
-              A passionate designer specializing in front-end development and
-              graphic.
-            </p>
-          </li>
-        </ul>
-      </section>
-      <figure className="icon--scroll">
-        <span className="border"></span>
-        <span className="dot"></span>
-      </figure>
       <ul className="img_box_group">
         <li>
           <div className="box mt-6 img-1"></div>
@@ -59,6 +36,27 @@ const Home01 = () => {
           <div className="box img-1"></div>
         </li>
       </ul>
+      <section className="home01_title">
+        <ul>
+          <li>
+            <span></span>
+            <p>Daniel Kai</p>
+          </li>
+          <li>
+            <h1>UI UX Designer</h1>
+          </li>
+          <li>
+            <p>
+              Hi , I am Daniel.<br/>A UI/UX Designer crafting intuitive and modern
+              digital experiences.
+            </p>
+          </li>
+        </ul>
+      </section>
+      <figure className="icon--scroll">
+        <span className="border"></span>
+        <span className="dot"></span>
+      </figure>
     </article>
   );
 };

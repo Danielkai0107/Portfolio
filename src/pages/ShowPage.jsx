@@ -28,7 +28,7 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
     <aside className="show">
       <figure className="icon back" onClick={handleCloseShow}>
         <span></span>
-        <p>Back</p>
+        <p>Home</p>
       </figure>
       <figure className="icon prev" onClick={handlePrev}>
         <span></span>
