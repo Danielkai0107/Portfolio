@@ -1,23 +1,23 @@
-//Home.jsx
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Home01 from '../components/Home01';
-import Home02 from '../components/Home02';
 import ToTopBtn from '../components/TopBtn';
-import { useLocation, useNavigate } from 'react-router-dom';
-
+import MenuPage from './MenuPage';
+import ShowPage from './ShowPage';
 
 const Home = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  const navigate = useNavigate();
+  const handleShowProject = (project) => {
+    setSelectedProject(project);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-  const location = useLocation();
-
-  const handleSetMenu = (categoryIndex) => {
-    navigate(`/Menu/${categoryIndex}`);
+  const handleCloseShow = () => {
+    setSelectedProject(null);
   };
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
+    const params = new URLSearchParams(window.location.search);
     const scrollToId = params.get('scrollToId');
     if (scrollToId) {
       const element = document.getElementById(scrollToId);
@@ -25,15 +25,34 @@ const Home = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  }, [location]);
+  }, []);
 
   return (
     <main className='home'>
-      <Home01 />
-      <Home02 handleSetMenu={handleSetMenu} pIndex={0} id="section0" />
-      <Home02 handleSetMenu={handleSetMenu} pIndex={1} id="section1" />
-      <Home02 handleSetMenu={handleSetMenu} pIndex={2} id="section2" />
-      <ToTopBtn />
+      {selectedProject ? (
+        <ShowPage selectedProject={selectedProject} handleCloseShow={handleCloseShow} />
+      ) : (
+        <>
+          <Home01 />
+          <section className='home_menu_title'>
+            <h1>01 Website Design</h1>
+            <h2>網頁設計</h2>
+          </section>
+          <MenuPage pIndex={1} handleShowProject={handleShowProject} />
+          <section className='home_menu_title'>
+            <h1>02 App UI UX Design</h1>
+            <h2>使用者介面設計</h2>
+          </section>
+          <MenuPage pIndex={0} handleShowProject={handleShowProject} />
+          <section className='home_menu_title'>
+            <h1>03 Graphic Design</h1>
+            <h2>平面設計</h2>
+          </section>
+          <MenuPage pIndex={2} handleShowProject={handleShowProject} />
+
+          <ToTopBtn />
+        </>
+      )}
     </main>
   );
 };

@@ -288,13 +288,57 @@ export const projects = [
     ],
   },
   {
-    id: 4,
-    category: "Sports",
+    id: 3,
+    category: "Graphic",
     items: [
       {
         id: 1,
+        title: "FISHER WHARF",
+        info: "品牌設計",
+        URL: {
+          figma: null,
+          github: null,
+          web: null,
+        },
+        images: [f_m, f_01, f_02],
+      },
+      {
+        id: 2,
+        title: "ZEBULUN",
+        info: "品牌設計",
+        URL: {
+          figma: null,
+          github: null,
+          web: null,
+        },
+        images: [z_m, z_01, z_02],
+      },
+      {
+        id: 3,
+        title: "YOLO SPORT",
+        info: "商品設計",
+        URL: {
+          figma: null,
+          github: null,
+          web: null,
+        },
+        images: [y_m, y_01, y_02],
+      },
+      {
+        id: 4,
+        title: "Poster Design",
+        info: "海報設計",
+        URL: {
+          figma: null,
+          github: null,
+          web: null,
+        },
+        images: [p_m, p_01, p_02],
+      },
+      {
+        id: 5,
         title: "Sports Poster",
-        info: "Sports Records",
+        info: "運動行銷設計",
         URL: {
           figma: null,
           github: null,

@@ -1,54 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { projects } from '../libs/projects';
-import { useNavigate, useParams } from 'react-router-dom';
 import TopBtn from '../components/TopBtn';
 import FigmaEmbed from '../components/FigmaEmbed';
+import { projects } from '../libs/projects.js';
 
-const ShowPage = () => {
-  const navigate = useNavigate();
-  const { id, category } = useParams();
-  const [ID, setID] = useState(parseInt(id));
+const ShowPage = ({ selectedProject, handleCloseShow }) => {
+  const [currentItem, setCurrentItem] = useState(selectedProject);
+  const category = projects.findIndex((project) => project.items.includes(selectedProject));
   const currentList = projects[category].items;
-  const currentItem = currentList.find((item) => item.id === ID);
-
-  const handleBack = () => {
-    navigate(`/Menu/${category}`);
-  }
 
   const handlePrev = () => {
-    if (ID - 1 <= 0) {
-      setID(currentList.length);
-    } else {
-      setID(ID - 1);
-    }
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    const currentIndex = currentList.findIndex((item) => item.id === currentItem.id);
+    const prevIndex = (currentIndex - 1 + currentList.length) % currentList.length;
+    setCurrentItem(currentList[prevIndex]);
   };
 
   const handleNext = () => {
-    if (ID + 1 > currentList.length) {
-      setID(1);
-    } else {
-      setID(ID + 1);
-    }
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    const currentIndex = currentList.findIndex((item) => item.id === currentItem.id);
+    const nextIndex = (currentIndex + 1) % currentList.length;
+    setCurrentItem(currentList[nextIndex]);
   };
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }, [ID])
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentItem]);
 
   return (
     <aside className="show">
-      <figure className="icon back" onClick={handleBack}>
+      <figure className="icon back" onClick={handleCloseShow}>
         <span></span>
         <p>Back</p>
       </figure>
@@ -60,7 +38,7 @@ const ShowPage = () => {
         <span></span>
         <p>Next</p>
       </figure>
-      <article className="show_main" key={ID}>
+      <article className="show_main" key={currentItem.id}>
         <section className="show_main_title">
           <h1>{currentItem.title}
             <span>{currentItem.info}</span>
@@ -69,7 +47,6 @@ const ShowPage = () => {
             {
               (currentItem.URL.figma || currentItem.URL.github || currentItem.URL.web) && (<p>前往作品：</p>)
             }
-
             {currentItem.URL.figma && (
               <li className="figma">
                 <a href={currentItem.URL.figma} target="_blank" rel="noreferrer">
@@ -95,17 +72,17 @@ const ShowPage = () => {
         </section>
         <section className="show_main_content">
           <figure className="loading">
-            <ul class="dots">
+            <ul className="dots">
               <li></li>
               <li></li>
               <li></li>
             </ul>
           </figure>
           <img
-            src={currentItem && currentItem.images[0]}
+            src={currentItem.images[0]}
             alt=""
           />
-          {currentItem.proto && <FigmaEmbed url={currentItem.proto}/>}
+          {currentItem.proto && <FigmaEmbed url={currentItem.proto} />}
           <TopBtn />
         </section>
       </article>

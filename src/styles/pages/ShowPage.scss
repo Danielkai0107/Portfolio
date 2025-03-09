@@ -1,4 +1,5 @@
 .show {
+  font-family: "Manjari", sans-serif;
   display: flex;
   justify-content: center;
   padding-top: 7rem;
@@ -52,6 +53,7 @@
         display: block;
         position: absolute;
         left: 140%;
+        margin-top: 5px;
       }
     }
   }
@@ -78,6 +80,7 @@
         display: block;
         position: absolute;
         left: 140%;
+        margin-top: 5px;
       }
     }
   }
@@ -104,6 +107,7 @@
         display: block;
         position: absolute;
         right: 140%;
+        margin-top: 5px;
       }
     }
   }
@@ -124,16 +128,16 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        font-size: 3rem;
+        font-size: 44px;
         span {
           margin-left: 0.5rem;
-          font-size: 1rem;
-          font-weight: 400;
+          font-size: 16px;
+          font-weight: 300;
           letter-spacing: 4px;
           font-family: "Noto Sans TC", sans-serif;
           //MD
           @include md {
-            font-size: 1.3rem;
+            font-size: 20px;
           }
         }
       }
@@ -258,7 +262,7 @@
         display: none;
         //LG
         @include lg {
-        display: block;
+          display: block;
         }
       }
     }

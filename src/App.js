@@ -8,13 +8,11 @@ import {
 import Home from "./pages/Home";
 import ShowPage from "./pages/ShowPage";
 import MenuPage from "./pages/MenuPage";
-import Navbar from "./components/Navbar";
 
 const App = () => {
   
   return (
     <Router>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Project/:id/:category" element={<ShowPage />} />
