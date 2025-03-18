@@ -45,6 +45,8 @@ const l3_02 = "/images/Web/Land03/main.jpg";
 
 const l4_m = "/images/Web/Land04/main.jpg";
 
+const l5_m = "/images/Web/Land05/main.jpg";
+
 //Graphic
 const f_m = "/images/Graphic/Fisher/main.jpg";
 const f_01 = "/images/Graphic/Fisher/1.png";
@@ -155,6 +157,17 @@ export const projects = [
     items: [
       {
         id: 1,
+        title: "E-commerce UI",
+        info: "電商網頁設計",
+        URL: {
+          figma:null,
+          github: null,
+          web: null,
+        },
+        images: [l5_m, l5_m, l5_m],
+      },
+      {
+        id: 2,
         title: "Movie Finder",
         info: "ReactJS｜網站製作",
         URL: {
@@ -166,7 +179,7 @@ export const projects = [
         images: [mo_m, mo_01, mo_02],
       },
       {
-        id: 2,
+        id: 3,
         title: "Weather Forecast",
         info: "ReactJS｜網站製作",
         URL: {
@@ -178,7 +191,7 @@ export const projects = [
         images: [w_m, w_01, w_02],
       },
       {
-        id: 3,
+        id: 4,
         title: "Landing Page",
         info: "網頁切版",
         URL: {
@@ -190,7 +203,7 @@ export const projects = [
         images: [l1_m, l1_01, l1_02],
       },
       {
-        id: 4,
+        id: 5,
         title: "Landing Page",
         info: "網頁切版",
         URL: {
@@ -202,7 +215,7 @@ export const projects = [
         images: [l2_m, l2_01, l2_02],
       },
       {
-        id: 5,
+        id: 6,
         title: "Landing Page",
         info: "網頁切版",
         URL: {
@@ -213,7 +226,7 @@ export const projects = [
         images: [l4_m, l4_m, l4_m],
       },
       {
-        id: 6,
+        id: 7,
         title: "Landing Page",
         info: "EDM",
         URL: {
