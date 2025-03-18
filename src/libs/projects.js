@@ -31,21 +31,20 @@ const mo_m = "/images/Web/Movie/main.jpg";
 const mo_01 = "/images/Web/Movie/1.png";
 const mo_02 = "/images/Web/Movie/2.png";
 
-const l1_m = "/images/Web/Land01/main.jpg";
-const l1_01 = "/images/Web/Land01/main.jpg";
-const l1_02 = "/images/Web/Land01/main.jpg";
+const l7_m = "/images/Web/Land07/main.jpg";
+const l7_01 = "/images/Web/Land07/1.jpg";
 
 const l2_m = "/images/Web/Land02/main.jpg";
-const l2_01 = "/images/Web/Land02/main.jpg";
-const l2_02 = "/images/Web/Land02/main.jpg";
 
 const l3_m = "/images/Web/Land03/main.jpg";
-const l3_01 = "/images/Web/Land03/main.jpg";
-const l3_02 = "/images/Web/Land03/main.jpg";
 
 const l4_m = "/images/Web/Land04/main.jpg";
 
 const l5_m = "/images/Web/Land05/main.jpg";
+const l5_01 = "/images/Web/Land05/1.jpg";
+
+const l6_m = "/images/Web/Land06/main.jpg";
+const l6_01 = "/images/Web/Land06/1.jpg";
 
 //Graphic
 const f_m = "/images/Graphic/Fisher/main.jpg";
@@ -100,7 +99,9 @@ export const projects = [
           web: null,
         },
         images: [aiux_m, aiux_01, aiux_02],
-        proto: [`<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="860" height="600" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FE8VffxIq7L31E9mIprdpXP%2FAI-English-App%3Fpage-id%3D21%253A705%26type%3Ddesign%26node-id%3D21-1032%26viewport%3D825%252C905%252C0.2%26t%3D4cwgo7zk4NRUWjNc-1%26scaling%3Dscale-down%26starting-point-node-id%3D21%253A1032%26mode%3Ddesign" allowfullscreen></iframe>`,]
+        proto: [
+          `<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="860" height="600" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FE8VffxIq7L31E9mIprdpXP%2FAI-English-App%3Fpage-id%3D21%253A705%26type%3Ddesign%26node-id%3D21-1032%26viewport%3D825%252C905%252C0.2%26t%3D4cwgo7zk4NRUWjNc-1%26scaling%3Dscale-down%26starting-point-node-id%3D21%253A1032%26mode%3Ddesign" allowfullscreen></iframe>`,
+        ],
       },
       {
         id: 3,
@@ -124,7 +125,9 @@ export const projects = [
           web: null,
         },
         images: [dev_m, dev_01, dev_02],
-        proto: [`<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="860" height="600" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FHMcLsWaecjpFvjU8bJjCn7%2FDevice-Check-UI%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D0-162%26viewport%3D331%252C365%252C0.25%26t%3DQ5qcA5fxVoAirlHv-1%26scaling%3Dscale-down%26starting-point-node-id%3D0%253A6%26mode%3Ddesign" allowfullscreen></iframe>`,]
+        proto: [
+          `<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="860" height="600" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FHMcLsWaecjpFvjU8bJjCn7%2FDevice-Check-UI%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D0-162%26viewport%3D331%252C365%252C0.25%26t%3DQ5qcA5fxVoAirlHv-1%26scaling%3Dscale-down%26starting-point-node-id%3D0%253A6%26mode%3Ddesign" allowfullscreen></iframe>`,
+        ],
       },
       {
         id: 5,
@@ -147,7 +150,9 @@ export const projects = [
           web: null,
         },
         images: [kids_m, kids_01, kids_02],
-        proto: [`<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="860" height=600" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FBcoKxx2FXvhebCwF3wegm7%2FKIDS-English%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1-478%26viewport%3D405%252C287%252C0.13%26t%3DrKGr5jCZqwpnaLbv-1%26scaling%3Dscale-down%26starting-point-node-id%3D1%253A48%26mode%3Ddesign" allowfullscreen></iframe>`,]
+        proto: [
+          `<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="860" height=600" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FBcoKxx2FXvhebCwF3wegm7%2FKIDS-English%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1-478%26viewport%3D405%252C287%252C0.13%26t%3DrKGr5jCZqwpnaLbv-1%26scaling%3Dscale-down%26starting-point-node-id%3D1%253A48%26mode%3Ddesign" allowfullscreen></iframe>`,
+        ],
       },
     ],
   },
@@ -157,62 +162,58 @@ export const projects = [
     items: [
       {
         id: 1,
-        title: "E-commerce UI",
+        title: "Web Design",
         info: "電商網頁設計",
         URL: {
-          figma:null,
+          figma: null,
           github: null,
           web: null,
         },
-        images: [l5_m, l5_m, l5_m],
+        images: [l5_m, l5_01, l5_m],
       },
       {
         id: 2,
+        title: "Web Design",
+        info: "品牌網頁設計",
+        URL: {
+          figma: null,
+          github: null,
+          web: null,
+        },
+        images: [l6_m, l6_01, l6_m],
+      },
+      {
+        id: 3,
         title: "Movie Finder",
         info: "ReactJS｜網站製作",
         URL: {
-          figma:
-            "https://www.figma.com/file/akpQOTlVUP3IDUDgNt2Bv9/MovieFinder?type=design&node-id=460%3A401&mode=design&t=mU4KEwJsjFbrJVcU-1",
-          github: "https://github.com/Danielkai0107/movie-final.git",
-          web: "https://danielkai0107.github.io/movie-final/",
+          figma: null,
+          github: null,
+          web: null,
         },
         images: [mo_m, mo_01, mo_02],
       },
       {
-        id: 3,
+        id: 4,
         title: "Weather Forecast",
         info: "ReactJS｜網站製作",
         URL: {
-          figma:
-            "https://www.figma.com/file/DkAa0lG987eAv43Vwft8BK/Weather-Forecast?type=design&node-id=0%3A1&mode=design&t=TNvFB8P0HOIsPAqG-1",
-          github: "https://github.com/Danielkai0107/Weather-API-UI.git",
-          web: "https://weather-api-ui.vercel.app/",
+          figma: null,
+          github: null,
+          web: null,
         },
         images: [w_m, w_01, w_02],
       },
       {
-        id: 4,
-        title: "Landing Page",
-        info: "網頁切版",
-        URL: {
-          figma:
-            "https://www.figma.com/file/G6ns5Ic06hAcAUb5I0evs8/Landing?type=design&node-id=0%3A1&mode=design&t=fCpSKatzOnWKmTkg-1",
-          github: null,
-          web: "https://danielkai0107.github.io/Practice-copycat-01/",
-        },
-        images: [l1_m, l1_01, l1_02],
-      },
-      {
         id: 5,
-        title: "Landing Page",
-        info: "網頁切版",
+        title: "Web Design",
+        info: "品牌網頁設計",
         URL: {
-          figma:
-            "https://www.figma.com/file/G6ns5Ic06hAcAUb5I0evs8/Landing?type=design&node-id=0%3A1&mode=design&t=fCpSKatzOnWKmTkg-1",
+          figma: null,
           github: null,
-          web: "https://danielkai0107.github.io/Practice-copycat-03/",
+          web: null,
         },
-        images: [l2_m, l2_01, l2_02],
+        images: [l7_m, l7_01, l7_m],
       },
       {
         id: 6,
@@ -221,21 +222,20 @@ export const projects = [
         URL: {
           figma: null,
           github: null,
-          web: "https://danielkai0107.github.io/Practice-copycat-02/",
+          web: null,
         },
-        images: [l4_m, l4_m, l4_m],
+        images: [l2_m, l2_m, l2_m],
       },
       {
         id: 7,
         title: "Landing Page",
         info: "EDM",
         URL: {
-          figma:
-            "https://www.figma.com/file/G6ns5Ic06hAcAUb5I0evs8/Landing?type=design&node-id=0%3A1&mode=design&t=fCpSKatzOnWKmTkg-1",
+          figma: null,
           github: null,
           web: null,
         },
-        images: [l3_m, l3_01, l3_02],
+        images: [l3_m, l3_m, l3_m],
       },
     ],
   },
