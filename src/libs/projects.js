@@ -37,8 +37,8 @@ const l7_01 = "/images/Web/Land07/1.jpg";
 const l2_m = "/images/Web/Land02/main.jpg";
 
 const l3_m = "/images/Web/Land03/main.jpg";
+const l3_01 = "/images/Web/Land03/1.jpg";
 
-const l4_m = "/images/Web/Land04/main.jpg";
 
 const l5_m = "/images/Web/Land05/main.jpg";
 const l5_01 = "/images/Web/Land05/1.jpg";
@@ -228,14 +228,14 @@ export const projects = [
       },
       {
         id: 7,
-        title: "Landing Page",
-        info: "EDM",
+        title: "Web Design",
+        info: "行銷網頁設計",
         URL: {
           figma: null,
           github: null,
           web: null,
         },
-        images: [l3_m, l3_m, l3_m],
+        images: [l3_m, l3_01, l3_m],
       },
     ],
   },
