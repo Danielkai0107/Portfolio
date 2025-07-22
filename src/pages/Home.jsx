@@ -94,7 +94,11 @@ const Home = () => {
   if (loading) {
     return (
       <main className="home">
-        <div style={{ textAlign: "center", padding: "2rem" }}>載入中...</div>
+        <div className="loading-dots">
+          <span className="dot"></span>
+          <span className="dot"></span>
+          <span className="dot"></span>
+        </div>
       </main>
     );
   }

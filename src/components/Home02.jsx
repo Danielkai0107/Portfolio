@@ -70,12 +70,14 @@ const Home02 = ({ handleSetMenu, pIndex, id }) => {
     return (
       <article className="home02" id={id}>
         <section className="home02_title">
-          <h1>載入中...</h1>
+          <h1></h1>
           <h1>Projects</h1>
         </section>
         <section className="home02_main">
-          <div style={{ textAlign: "center", padding: "2rem", color: "white" }}>
-            {loading ? "載入專案資料中..." : "找不到專案資料"}
+          <div className="loading-dots">
+            <span className="dot"></span>
+            <span className="dot"></span>
+            <span className="dot"></span>
           </div>
         </section>
       </article>
