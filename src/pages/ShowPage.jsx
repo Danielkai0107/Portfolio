@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import TopBtn from "../components/TopBtn";
 import FigmaEmbed from "../components/FigmaEmbed";
 import ImageDisplay from "../components/ImageDisplay";
 import { getAllProjects } from "../services/projectService";
+import analyticsService from "../services/analyticsService";
 
 const ShowPage = ({ selectedProject, handleCloseShow }) => {
+  const { id: urlProjectId, category: urlCategory } = useParams();
   const [currentItem, setCurrentItem] = useState(selectedProject);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,13 +20,35 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
         const projectsData = await getAllProjects();
         setProjects(projectsData);
 
-        // 找到當前項目所屬的分類
-        const category = projectsData.findIndex((project) =>
-          project.items.some((item) => item.id === selectedProject.id)
-        );
+        // 如果有 URL 參數，根據 URL 找到對應的項目
+        if (urlProjectId && urlCategory) {
+          let foundProject = null;
+          let foundCategory = null;
 
-        if (category !== -1) {
-          setCurrentList(projectsData[category].items);
+          for (const category of projectsData) {
+            const project = category.items.find(
+              (item) => item.id === urlProjectId
+            );
+            if (project) {
+              foundProject = { ...project, category: urlCategory };
+              foundCategory = category.items;
+              break;
+            }
+          }
+
+          if (foundProject && foundCategory) {
+            setCurrentItem(foundProject);
+            setCurrentList(foundCategory);
+          }
+        } else if (selectedProject) {
+          // 找到當前項目所屬的分類
+          const category = projectsData.findIndex((project) =>
+            project.items.some((item) => item.id === selectedProject.id)
+          );
+
+          if (category !== -1) {
+            setCurrentList(projectsData[category].items);
+          }
         }
       } catch (err) {
         console.error("載入專案資料失敗：", err);
@@ -33,9 +58,26 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
     };
 
     fetchProjects();
-  }, [selectedProject]);
+  }, [selectedProject, urlProjectId, urlCategory]);
+
+  // 追蹤項目瀏覽
+  useEffect(() => {
+    if (currentItem && !loading) {
+      analyticsService.trackProjectView(currentItem);
+    }
+  }, [currentItem, loading]);
+
+  // 組件卸載時追蹤停留時間
+  useEffect(() => {
+    return () => {
+      analyticsService.onProjectChange();
+    };
+  }, []);
 
   const handlePrev = () => {
+    // 記錄當前項目停留時間
+    analyticsService.onProjectChange();
+
     const currentIndex = currentList.findIndex(
       (item) => item.id === currentItem.id
     );
@@ -45,11 +87,30 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
   };
 
   const handleNext = () => {
+    // 記錄當前項目停留時間
+    analyticsService.onProjectChange();
+
     const currentIndex = currentList.findIndex(
       (item) => item.id === currentItem.id
     );
     const nextIndex = (currentIndex + 1) % currentList.length;
     setCurrentItem(currentList[nextIndex]);
+  };
+
+  const handleCloseShowWithTracking = () => {
+    // 記錄停留時間
+    analyticsService.onProjectChange();
+
+    if (handleCloseShow) {
+      handleCloseShow();
+    }
+  };
+
+  // 追蹤外部連結點擊
+  const handleLinkClick = (linkType, url) => {
+    if (currentItem) {
+      analyticsService.trackExternalLinkClick(currentItem.id, linkType, url);
+    }
   };
 
   useEffect(() => {
@@ -66,7 +127,7 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
     );
   }
 
-  if (currentList.length === 0) {
+  if (currentList.length === 0 || !currentItem) {
     return (
       <aside className="show">
         <div style={{ textAlign: "center", padding: "2rem", color: "white" }}>
@@ -78,7 +139,7 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
 
   return (
     <aside className="show">
-      <figure className="icon back" onClick={handleCloseShow}>
+      <figure className="icon back" onClick={handleCloseShowWithTracking}>
         <span></span>
         <p>Home</p>
       </figure>
@@ -106,6 +167,9 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
                   href={currentItem.URL.figma}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() =>
+                    handleLinkClick("figma", currentItem.URL.figma)
+                  }
                 >
                   <span></span>
                 </a>
@@ -117,6 +181,9 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
                   href={currentItem.URL.github}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() =>
+                    handleLinkClick("github", currentItem.URL.github)
+                  }
                 >
                   <span></span>
                 </a>
@@ -124,7 +191,12 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
             )}
             {currentItem.URL.web && (
               <li className="web">
-                <a href={currentItem.URL.web} target="_blank" rel="noreferrer">
+                <a
+                  href={currentItem.URL.web}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => handleLinkClick("web", currentItem.URL.web)}
+                >
                   <span></span>
                 </a>
               </li>

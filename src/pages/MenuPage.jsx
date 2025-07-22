@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllProjects } from "../services/projectService";
+import analyticsService from "../services/analyticsService";
 import ImageDisplay from "../components/ImageDisplay";
 
 const MenuPage = ({ pIndex, handleShowProject }) => {
@@ -28,6 +29,11 @@ const MenuPage = ({ pIndex, handleShowProject }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pIndex]);
 
+  const handleProjectClickWithTracking = (item) => {
+    // 調用原始的處理函數
+    handleShowProject(item);
+  };
+
   if (loading) {
     return (
       <article className="menu">
@@ -52,7 +58,7 @@ const MenuPage = ({ pIndex, handleShowProject }) => {
     <article className="menu">
       <ul className="menu_list">
         {items.map((item, index) => (
-          <li key={index} onClick={() => handleShowProject(item)}>
+          <li key={index} onClick={() => handleProjectClickWithTracking(item)}>
             <figure>
               <ImageDisplay src={item.images[1]} alt={item.title} />
             </figure>

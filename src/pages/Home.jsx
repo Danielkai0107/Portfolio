@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAllProjects } from "../services/projectService";
+import analyticsService from "../services/analyticsService";
 import Home01 from "../components/Home01";
 import ToTopBtn from "../components/TopBtn";
 import MenuPage from "./MenuPage";
@@ -112,7 +113,7 @@ const Home = () => {
         />
       ) : (
         <>
-          <Home01 />
+          <Home01 projects={projects} onProjectClick={handleShowProject} />
 
           {/* 動態顯示可見的類別，編號基於可見類別的順序 */}
           {projects

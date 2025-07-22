@@ -18,6 +18,7 @@ import {
   moveItemToLast,
 } from "../services/projectService";
 import { onAuthChange, logout } from "../services/authService";
+import analyticsService from "../services/analyticsService";
 import ItemForm from "../components/ItemForm";
 import LoginForm from "../components/LoginForm";
 import ImageDisplay from "../components/ImageDisplay";
@@ -44,12 +45,36 @@ const AdminPage = () => {
   const [editCategoryName, setEditCategoryName] = useState("");
   const [editCategoryDescription, setEditCategoryDescription] = useState("");
 
+  // Analytics 統計數據狀態
+  const [analyticsStats, setAnalyticsStats] = useState(null);
+
+  // 載入 Analytics 統計數據
+  const loadAnalyticsStats = () => {
+    const stats = analyticsService.getLocalStats();
+    setAnalyticsStats(stats);
+  };
+
+  // 重置 Analytics 統計數據
+  const handleResetStats = () => {
+    const confirm = window.confirm(
+      "確定要重置所有統計數據嗎？此操作無法復原。"
+    );
+    if (confirm) {
+      analyticsService.resetStats();
+      loadAnalyticsStats();
+      window.alert("統計數據已重置");
+    }
+  };
+
   // 載入所有專案資料
   const loadProjects = async () => {
     try {
       setLoading(true);
       const data = await getAllProjects();
       setProjects(data);
+
+      // 載入完專案資料後也載入統計數據
+      loadAnalyticsStats();
     } catch (error) {
       console.error("載入專案失敗:", error);
       window.alert("載入專案資料失敗");
@@ -525,6 +550,135 @@ const AdminPage = () => {
           </div>
         </div>
       </header>
+
+      {/* Analytics 統計面板 */}
+      {analyticsStats && (
+        <section className="analytics-dashboard">
+          <div className="dashboard-header">
+            <h2>網站數據統計</h2>
+            <div className="dashboard-actions">
+              <button
+                className="btn btn-small"
+                onClick={loadAnalyticsStats}
+                title="重新載入統計數據"
+              >
+                刷新
+              </button>
+              <button
+                className="btn btn-small btn-danger"
+                onClick={handleResetStats}
+                title="重置所有統計數據"
+              >
+                重置
+              </button>
+            </div>
+          </div>
+
+          <div className="stats-grid">
+            {/* 總瀏覽次數 */}
+            <div className="stat-card">
+              <div className="stat-content">
+                <h3>總頁面瀏覽次數</h3>
+                <div className="stat-number">
+                  {analyticsStats.totalPageViews.toLocaleString()}
+                </div>
+                <p className="stat-description">所有頁面的累計瀏覽數</p>
+              </div>
+            </div>
+
+            {/* 項目總瀏覽數 */}
+            <div className="stat-card">
+              <div className="stat-content">
+                <h3>項目總瀏覽數</h3>
+                <div className="stat-number">
+                  {Object.values(analyticsStats.projectViews)
+                    .reduce((total, project) => total + project.views, 0)
+                    .toLocaleString()}
+                </div>
+                <p className="stat-description">所有項目的累計瀏覽數</p>
+              </div>
+            </div>
+
+            {/* 外部連結總點擊 */}
+            <div className="stat-card">
+              <div className="stat-content">
+                <h3>外部連結點擊</h3>
+                <div className="stat-number">
+                  {(
+                    analyticsStats.externalClicks.figma +
+                    analyticsStats.externalClicks.github +
+                    analyticsStats.externalClicks.web
+                  ).toLocaleString()}
+                </div>
+                <div className="stat-breakdown">
+                  <span>Figma: {analyticsStats.externalClicks.figma}</span>
+                  <span>GitHub: {analyticsStats.externalClicks.github}</span>
+                  <span>Web: {analyticsStats.externalClicks.web}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 最後更新時間 */}
+            <div className="stat-card">
+              <div className="stat-content">
+                <h3>最後更新</h3>
+                <div className="stat-time">
+                  {new Date(analyticsStats.lastUpdated).toLocaleString("zh-TW")}
+                </div>
+                <p className="stat-description">統計數據最後更新時間</p>
+              </div>
+            </div>
+          </div>
+
+          {/* 最受歡迎項目排行 */}
+          <div className="ranking-section">
+            <h3>最受歡迎項目 (瀏覽次數排行)</h3>
+            <div className="ranking-list">
+              {analyticsStats.mostPopularProjects
+                .slice(0, 5)
+                .map((project, index) => (
+                  <div key={project.id} className="ranking-item">
+                    <span className="rank">#{index + 1}</span>
+                    <span className="project-title">{project.title}</span>
+                    <span className="project-views">
+                      {project.views} 次瀏覽
+                    </span>
+                    <span className="project-time">
+                      平均 {project.averageTime}秒
+                    </span>
+                  </div>
+                ))}
+              {analyticsStats.mostPopularProjects.length === 0 && (
+                <div className="empty-state">尚無項目瀏覽數據</div>
+              )}
+            </div>
+          </div>
+
+          {/* 停留時間最長項目排行 */}
+          <div className="ranking-section">
+            <h3>停留時間最長項目 (用戶最感興趣)</h3>
+            <div className="ranking-list">
+              {analyticsStats.longestViewProjects
+                .slice(0, 5)
+                .map((project, index) => (
+                  <div key={project.id} className="ranking-item">
+                    <span className="rank">#{index + 1}</span>
+                    <span className="project-title">{project.title}</span>
+                    <span className="project-time">
+                      平均 {project.averageTime}秒
+                    </span>
+                    <span className="project-views">
+                      {project.views} 次瀏覽
+                    </span>
+                  </div>
+                ))}
+              {analyticsStats.longestViewProjects.length === 0 && (
+                <div className="empty-state">尚無停留時間數據</div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       <main className="admin-main">
         {projects.map((project, index) => (
