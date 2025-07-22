@@ -57,7 +57,7 @@ const MenuPage = ({ pIndex, handleShowProject }) => {
               <ImageDisplay src={item.images[1]} alt={item.title} />
             </figure>
             <div className="item_title">
-              <span>0{item.id}</span>
+              <span>0{index + 1}</span>
               <h1>{item.title}</h1>
             </div>
             <div className="goto_btn"></div>

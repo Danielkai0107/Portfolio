@@ -473,3 +473,161 @@ export const moveCategoryDown = async (categoryId) => {
     throw error;
   }
 };
+
+// 向上移動子項目
+export const moveItemUp = async (categoryId, itemId) => {
+  try {
+    const docRef = doc(db, "projects", categoryId.toString());
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      throw new Error("分類不存在");
+    }
+
+    const categoryData = docSnap.data();
+    const items = [...(categoryData.items || [])];
+
+    // 找到當前項目的索引
+    const currentIndex = items.findIndex((item) => item.id === parseInt(itemId));
+    
+    if (currentIndex === -1) {
+      throw new Error("找不到指定的項目");
+    }
+
+    if (currentIndex === 0) {
+      throw new Error("已經是第一個項目，無法向上移動");
+    }
+
+    // 交換當前項目和上一個項目的位置
+    [items[currentIndex - 1], items[currentIndex]] = [items[currentIndex], items[currentIndex - 1]];
+
+    await updateDoc(docRef, {
+      items: items,
+      updatedAt: new Date().toISOString(),
+    });
+
+    return true;
+  } catch (error) {
+    console.error("向上移動子項目時發生錯誤：", error);
+    throw error;
+  }
+};
+
+// 向下移動子項目
+export const moveItemDown = async (categoryId, itemId) => {
+  try {
+    const docRef = doc(db, "projects", categoryId.toString());
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      throw new Error("分類不存在");
+    }
+
+    const categoryData = docSnap.data();
+    const items = [...(categoryData.items || [])];
+
+    // 找到當前項目的索引
+    const currentIndex = items.findIndex((item) => item.id === parseInt(itemId));
+    
+    if (currentIndex === -1) {
+      throw new Error("找不到指定的項目");
+    }
+
+    if (currentIndex === items.length - 1) {
+      throw new Error("已經是最後一個項目，無法向下移動");
+    }
+
+    // 交換當前項目和下一個項目的位置
+    [items[currentIndex], items[currentIndex + 1]] = [items[currentIndex + 1], items[currentIndex]];
+
+    await updateDoc(docRef, {
+      items: items,
+      updatedAt: new Date().toISOString(),
+    });
+
+    return true;
+  } catch (error) {
+    console.error("向下移動子項目時發生錯誤：", error);
+    throw error;
+  }
+};
+
+// 移動子項目到最前面
+export const moveItemToFirst = async (categoryId, itemId) => {
+  try {
+    const docRef = doc(db, "projects", categoryId.toString());
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      throw new Error("分類不存在");
+    }
+
+    const categoryData = docSnap.data();
+    const items = [...(categoryData.items || [])];
+
+    // 找到當前項目的索引
+    const currentIndex = items.findIndex((item) => item.id === parseInt(itemId));
+    
+    if (currentIndex === -1) {
+      throw new Error("找不到指定的項目");
+    }
+
+    if (currentIndex === 0) {
+      throw new Error("項目已經在最前面");
+    }
+
+    // 移動項目到最前面
+    const [movedItem] = items.splice(currentIndex, 1);
+    items.unshift(movedItem);
+
+    await updateDoc(docRef, {
+      items: items,
+      updatedAt: new Date().toISOString(),
+    });
+
+    return true;
+  } catch (error) {
+    console.error("移動子項目到最前面時發生錯誤：", error);
+    throw error;
+  }
+};
+
+// 移動子項目到最後面
+export const moveItemToLast = async (categoryId, itemId) => {
+  try {
+    const docRef = doc(db, "projects", categoryId.toString());
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      throw new Error("分類不存在");
+    }
+
+    const categoryData = docSnap.data();
+    const items = [...(categoryData.items || [])];
+
+    // 找到當前項目的索引
+    const currentIndex = items.findIndex((item) => item.id === parseInt(itemId));
+    
+    if (currentIndex === -1) {
+      throw new Error("找不到指定的項目");
+    }
+
+    if (currentIndex === items.length - 1) {
+      throw new Error("項目已經在最後面");
+    }
+
+    // 移動項目到最後面
+    const [movedItem] = items.splice(currentIndex, 1);
+    items.push(movedItem);
+
+    await updateDoc(docRef, {
+      items: items,
+      updatedAt: new Date().toISOString(),
+    });
+
+    return true;
+  } catch (error) {
+    console.error("移動子項目到最後面時發生錯誤：", error);
+    throw error;
+  }
+};

@@ -105,8 +105,7 @@ const Home02 = ({ handleSetMenu, pIndex, id }) => {
         <ul className="home02_main_info">
           <li className="title fade-in-out" key={`title-${fadeKey}`}>
             <h2>
-              0{currentItem && currentItem.id}{" "}
-              {currentItem && currentItem.title}
+              0{currentIndex + 1} {currentItem && currentItem.title}
             </h2>
             <p>{currentItem && currentItem.info}</p>
           </li>

@@ -418,6 +418,72 @@
   }
 }
 
+/* 子項目排序控制 */
+.item-sort-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  border-radius: 6px;
+  padding: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  
+  .btn-sort {
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+    min-width: 18px;
+    background: rgba(248, 249, 250, 0.9);
+    color: #6c757d;
+    border: 1px solid #e9ecef;
+    
+    &:hover:not(:disabled) {
+      background: #e9ecef;
+      color: #495057;
+      border-color: #dee2e6;
+      transform: scale(1.05);
+    }
+    
+    &:disabled {
+      background: rgba(248, 249, 250, 0.5);
+      color: #adb5bd;
+      border-color: #e9ecef;
+      opacity: 0.4;
+    }
+    
+    // "移到最前"按鈕樣式
+    &.btn-sort-first {
+      background: rgba(40, 167, 69, 0.1);
+      color: #28a745;
+      border-color: rgba(40, 167, 69, 0.3);
+      
+      &:hover:not(:disabled) {
+        background: rgba(40, 167, 69, 0.2);
+        color: #1e7e34;
+        border-color: #28a745;
+      }
+    }
+    
+    // "移到最後"按鈕樣式
+    &.btn-sort-last {
+      background: rgba(220, 53, 69, 0.1);
+      color: #dc3545;
+      border-color: rgba(220, 53, 69, 0.3);
+      
+      &:hover:not(:disabled) {
+        background: rgba(220, 53, 69, 0.2);
+        color: #c82333;
+        border-color: #dc3545;
+      }
+    }
+  }
+}
+
 .item-image {
   width: 100%;
   height: 180px;
@@ -917,6 +983,21 @@
   .items-grid {
     grid-template-columns: 1fr;
     gap: 15px;
+  }
+  
+  .item-sort-controls {
+    top: 8px;
+    right: 8px;
+    padding: 4px;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    
+    .btn-sort {
+      width: 22px;
+      height: 22px;
+      font-size: 11px;
+      min-width: 22px;
+    }
   }
 
   .modal-overlay {

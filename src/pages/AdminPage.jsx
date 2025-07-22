@@ -12,6 +12,10 @@ import {
   initializeExistingCategoryVisibility,
   moveCategoryUp,
   moveCategoryDown,
+  moveItemUp,
+  moveItemDown,
+  moveItemToFirst,
+  moveItemToLast,
 } from "../services/projectService";
 import { onAuthChange, logout } from "../services/authService";
 import ItemForm from "../components/ItemForm";
@@ -394,6 +398,54 @@ const AdminPage = () => {
     }
   };
 
+  // 向上移動子項目
+  const handleMoveItemUp = async (categoryId, itemId, itemTitle) => {
+    try {
+      await moveItemUp(categoryId, itemId);
+      window.alert(`「${itemTitle}」已向上移動`);
+      loadProjects(); // 重新載入資料
+    } catch (error) {
+      console.error("向上移動子項目失敗:", error);
+      window.alert(error.message || "向上移動子項目失敗");
+    }
+  };
+
+  // 向下移動子項目
+  const handleMoveItemDown = async (categoryId, itemId, itemTitle) => {
+    try {
+      await moveItemDown(categoryId, itemId);
+      window.alert(`「${itemTitle}」已向下移動`);
+      loadProjects(); // 重新載入資料
+    } catch (error) {
+      console.error("向下移動子項目失敗:", error);
+      window.alert(error.message || "向下移動子項目失敗");
+    }
+  };
+
+  // 移動子項目到最前面
+  const handleMoveItemToFirst = async (categoryId, itemId, itemTitle) => {
+    try {
+      await moveItemToFirst(categoryId, itemId);
+      window.alert(`「${itemTitle}」已移動到最前面`);
+      loadProjects(); // 重新載入資料
+    } catch (error) {
+      console.error("移動子項目到最前面失敗:", error);
+      window.alert(error.message || "移動子項目到最前面失敗");
+    }
+  };
+
+  // 移動子項目到最後面
+  const handleMoveItemToLast = async (categoryId, itemId, itemTitle) => {
+    try {
+      await moveItemToLast(categoryId, itemId);
+      window.alert(`「${itemTitle}」已移動到最後面`);
+      loadProjects(); // 重新載入資料
+    } catch (error) {
+      console.error("移動子項目到最後面失敗:", error);
+      window.alert(error.message || "移動子項目到最後面失敗");
+    }
+  };
+
   // 認證載入中
   if (authLoading) {
     return (
@@ -590,8 +642,51 @@ const AdminPage = () => {
             </div>
 
             <div className="items-grid">
-              {project.items?.map((item) => (
+              {project.items?.map((item, itemIndex) => (
                 <div key={item.id} className="admin-item">
+                  <div className="item-sort-controls">
+                    <button
+                      className="btn btn-small btn-sort btn-sort-first"
+                      onClick={() =>
+                        handleMoveItemToFirst(project.id, item.id, item.title)
+                      }
+                      title="移動到最前面"
+                      disabled={itemIndex === 0}
+                    >
+                      ⇈
+                    </button>
+                    <button
+                      className="btn btn-small btn-sort"
+                      onClick={() =>
+                        handleMoveItemUp(project.id, item.id, item.title)
+                      }
+                      title="向上移動一位"
+                      disabled={itemIndex === 0}
+                    >
+                      ↑
+                    </button>
+                    <button
+                      className="btn btn-small btn-sort"
+                      onClick={() =>
+                        handleMoveItemDown(project.id, item.id, item.title)
+                      }
+                      title="向下移動一位"
+                      disabled={itemIndex === project.items.length - 1}
+                    >
+                      ↓
+                    </button>
+                    <button
+                      className="btn btn-small btn-sort btn-sort-last"
+                      onClick={() =>
+                        handleMoveItemToLast(project.id, item.id, item.title)
+                      }
+                      title="移動到最後面"
+                      disabled={itemIndex === project.items.length - 1}
+                    >
+                      ⇊
+                    </button>
+                  </div>
+
                   <div className="item-image">
                     <ImageDisplay
                       src={item.images?.[0]}
