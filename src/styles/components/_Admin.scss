@@ -135,6 +135,266 @@
   }
 }
 
+/* 分類標題組 */
+.category-title-group {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* 排序按鈕與標題間的24px間距 */
+  flex: 1;
+
+  h2 {
+    margin: 0;
+  }
+
+  .category-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-left: auto; /* 將操作按鈕推到右側 */
+  }
+}
+
+/* 排序按鈕組（現在在左側，水平排列） */
+.sort-buttons {
+  display: flex;
+  gap: 4px; /* 水平排列時的間距 */
+  flex-shrink: 0; /* 防止按鈕被壓縮 */
+}
+
+/* 編輯按鈕組 */
+.edit-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* 分類刪除區域 */
+.category-delete-section {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  justify-content: center;
+
+  .btn-danger {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+
+    &:hover:not(:disabled) {
+      background: #c82333;
+      border-color: #bd2130;
+    }
+  }
+}
+
+/* 排序按鈕樣式 */
+.btn-sort {
+  background: #f8f9fa;
+  color: #6c757d;
+  border-color: #e9ecef;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  min-width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover:not(:disabled) {
+    background: #e9ecef;
+    color: #495057;
+    border-color: #dee2e6;
+  }
+
+  &:disabled {
+    background: #f8f9fa;
+    color: #adb5bd;
+    border-color: #e9ecef;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:active:not(:disabled) {
+    background: #dee2e6;
+    color: #212529;
+  }
+}
+
+/* 可見性按鈕樣式 */
+.btn-visibility {
+  background: #f8f9fa;
+  color: #6c757d;
+  border-color: #e9ecef;
+  margin-right: 8px;
+
+  &:hover:not(:disabled) {
+    background: #17a2b8;
+    color: white;
+    border-color: #17a2b8;
+  }
+}
+
+/* 隱藏標記 */
+.hidden-badge {
+  background: #dc3545;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+/* 分類資訊區 */
+.category-info {
+  flex: 1;
+
+  h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #212529;
+    letter-spacing: -0.3px;
+  }
+
+  .category-description {
+    margin: 0;
+    color: #6c757d;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: inline-block;
+
+    &:hover {
+      background: #f8f9fa;
+      color: #495057;
+    }
+  }
+}
+
+/* 描述編輯表單 */
+.description-edit-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+
+  .description-input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #6c757d;
+    transition: all 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #212529;
+      box-shadow: 0 0 0 2px rgba(33, 37, 41, 0.1);
+    }
+  }
+}
+
+/* 分類編輯表單（合併版） */
+.category-edit-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+  flex-direction: column;
+
+  .category-name-input,
+  .category-description-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    color: #212529;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: #212529;
+      box-shadow: 0 0 0 3px rgba(33, 37, 41, 0.1);
+    }
+  }
+
+  .category-name-input {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .category-description-input {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+
+  .edit-form-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+  }
+}
+
+/* 小型按鈕 */
+.btn-small {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  min-width: auto;
+}
+
+.btn-success {
+  background: #28a745;
+  color: white;
+  border-color: #28a745;
+
+  &:hover:not(:disabled) {
+    background: #218838;
+    border-color: #1e7e34;
+  }
+}
+
+.btn-danger {
+  background: transparent;
+  color: #dc3545;
+  border-color: #dc3545;
+
+  &:hover:not(:disabled) {
+    background: #dc3545;
+    color: white;
+  }
+}
+
+/* 新增類別表單模態框 */
+.modal-content {
+  padding: 30px;
+
+  .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: #212529;
+      box-shadow: 0 0 0 3px rgba(33, 37, 41, 0.1);
+    }
+  }
+}
+
 /* 項目網格 */
 .items-grid {
   display: grid;
@@ -541,6 +801,117 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+  }
+
+  .category-title-group {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+
+    .sort-buttons {
+      order: -1; /* 確保排序按鈕在最上方 */
+      align-self: center;
+
+      .btn-sort {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+    }
+
+    .category-info {
+      width: 100%;
+      order: 0;
+
+      h2 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .category-description {
+        font-size: 0.9rem;
+        text-align: center;
+      }
+    }
+
+    .category-actions {
+      width: 100%;
+      order: 1;
+      justify-content: center;
+      margin-left: 0;
+
+      .edit-buttons {
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+
+        .btn-small {
+          padding: 6px 12px;
+          font-size: 0.8rem;
+        }
+
+        .btn-visibility {
+          background: #17a2b8;
+          color: white;
+          border-color: #17a2b8;
+
+          &:hover:not(:disabled) {
+            background: #138496;
+            border-color: #117a8b;
+          }
+        }
+      }
+    }
+  }
+
+  .category-delete-section {
+    margin-top: 15px;
+    padding-top: 10px;
+
+    .btn-danger {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+    }
+  }
+
+  .description-edit-form {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+
+    .description-input {
+      font-size: 0.9rem;
+    }
+
+    .btn-small {
+      min-width: 80px;
+    }
+  }
+
+  .category-edit-form {
+    width: 100%;
+    gap: 8px;
+
+    .category-name-input,
+    .category-description-input {
+      font-size: 1rem;
+    }
+
+    .edit-form-buttons {
+      justify-content: center;
+
+      .btn-small {
+        min-width: 80px;
+        flex: 1;
+        max-width: 120px;
+      }
+    }
+  }
+
+  .hidden-badge {
+    font-size: 0.65rem;
+    padding: 1px 4px;
   }
 
   .items-grid {
