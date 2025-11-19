@@ -116,6 +116,12 @@
   margin-bottom: 30px;
   border: 1px solid #e9ecef;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+
+  &.drag-over-category {
+    border: 2px dashed #28a745;
+    background-color: rgba(40, 167, 69, 0.05);
+  }
 }
 
 .category-header {
@@ -415,6 +421,27 @@
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
     border-color: #dee2e6;
+  }
+
+  // 拖曳相關樣式
+  &[draggable="true"] {
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+    transform: scale(0.95);
+  }
+
+  &.drag-over-item {
+    border: 2px dashed #007bff;
+    background-color: rgba(0, 123, 255, 0.1);
+    transform: scale(1.02);
   }
 }
 

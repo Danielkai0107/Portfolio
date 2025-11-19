@@ -16,6 +16,7 @@ import {
   moveItemDown,
   moveItemToFirst,
   moveItemToLast,
+  moveItemToCategory,
 } from "../services/projectService";
 import { onAuthChange, logout } from "../services/authService";
 import analyticsService from "../services/analyticsService";
@@ -47,6 +48,11 @@ const AdminPage = () => {
 
   // Analytics 統計數據狀態
   const [analyticsStats, setAnalyticsStats] = useState(null);
+
+  // 拖曳相關狀態
+  const [draggedItem, setDraggedItem] = useState(null);
+  const [dragOverCategory, setDragOverCategory] = useState(null);
+  const [dragOverIndex, setDragOverIndex] = useState(null);
 
   // 載入 Analytics 統計數據
   const loadAnalyticsStats = () => {
@@ -471,6 +477,131 @@ const AdminPage = () => {
     }
   };
 
+  // 處理拖曳開始
+  const handleDragStart = (e, categoryId, item) => {
+    setDraggedItem({ categoryId, item });
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/html", e.target.outerHTML);
+    // 設定拖曳圖片
+    if (e.target) {
+      e.target.style.opacity = "0.5";
+    }
+  };
+
+  // 處理拖曳結束
+  const handleDragEnd = (e) => {
+    if (e.target) {
+      e.target.style.opacity = "";
+    }
+    setDraggedItem(null);
+    setDragOverCategory(null);
+    setDragOverIndex(null);
+  };
+
+  // 處理拖曳進入類別區域
+  const handleDragOverCategory = (e, categoryId) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    setDragOverCategory(categoryId);
+    // 當拖曳到類別區域（而非具體項目）時，清除 index
+    if (e.target.classList.contains('admin-category') || e.target.closest('.items-grid')) {
+      setDragOverIndex(null);
+    }
+  };
+
+  // 處理拖曳離開類別區域
+  const handleDragLeaveCategory = (e) => {
+    e.preventDefault();
+    // 只有當離開整個類別區域時才清除
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      setDragOverCategory(null);
+      setDragOverIndex(null);
+    }
+  };
+
+  // 處理拖曳進入項目區域
+  const handleDragOverItem = (e, categoryId, itemIndex) => {
+    e.preventDefault();
+    e.stopPropagation();
+    e.dataTransfer.dropEffect = "move";
+    setDragOverCategory(categoryId);
+    setDragOverIndex(itemIndex);
+  };
+
+  // 處理放置項目到指定位置
+  const handleDropItem = async (e, targetCategoryId, targetIndex) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!draggedItem) return;
+
+    const { categoryId: sourceCategoryId, item } = draggedItem;
+
+    // 如果是在同一個類別內移動，不處理（使用現有的移動功能）
+    if (sourceCategoryId === targetCategoryId) {
+      setDraggedItem(null);
+      setDragOverCategory(null);
+      setDragOverIndex(null);
+      return;
+    }
+
+    try {
+      await moveItemToCategory(
+        sourceCategoryId,
+        item.id,
+        targetCategoryId,
+        targetIndex
+      );
+      const targetCategory = projects.find(p => p.id === targetCategoryId);
+      window.alert(`「${item.title}」已成功移動到「${targetCategory?.category}」`);
+      loadProjects(); // 重新載入資料
+    } catch (error) {
+      console.error("移動項目失敗:", error);
+      window.alert(`移動項目失敗: ${error.message}`);
+    } finally {
+      setDraggedItem(null);
+      setDragOverCategory(null);
+      setDragOverIndex(null);
+    }
+  };
+
+  // 處理放置到類別區域（添加到最後）
+  const handleDropCategory = async (e, targetCategoryId) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!draggedItem) return;
+
+    const { categoryId: sourceCategoryId, item } = draggedItem;
+
+    // 如果是在同一個類別內，不處理
+    if (sourceCategoryId === targetCategoryId) {
+      setDraggedItem(null);
+      setDragOverCategory(null);
+      setDragOverIndex(null);
+      return;
+    }
+
+    try {
+      await moveItemToCategory(
+        sourceCategoryId,
+        item.id,
+        targetCategoryId,
+        null // null 表示添加到最後
+      );
+      const targetCategory = projects.find(p => p.id === targetCategoryId);
+      window.alert(`「${item.title}」已成功移動到「${targetCategory?.category}」`);
+      loadProjects(); // 重新載入資料
+    } catch (error) {
+      console.error("移動項目失敗:", error);
+      window.alert(`移動項目失敗: ${error.message}`);
+    } finally {
+      setDraggedItem(null);
+      setDragOverCategory(null);
+      setDragOverIndex(null);
+    }
+  };
+
   // 認證載入中
   if (authLoading) {
     return (
@@ -682,7 +813,13 @@ const AdminPage = () => {
 
       <main className="admin-main">
         {projects.map((project, index) => (
-          <section key={project.id} className="admin-category">
+          <section 
+            key={project.id} 
+            className={`admin-category ${dragOverCategory === project.id && dragOverIndex === null ? 'drag-over-category' : ''}`}
+            onDragOver={(e) => handleDragOverCategory(e, project.id)}
+            onDragLeave={handleDragLeaveCategory}
+            onDrop={(e) => handleDropCategory(e, project.id)}
+          >
             <div className="category-header">
               {editingCategoryInfo === project.id ? (
                 <div className="category-edit-form">
@@ -797,7 +934,15 @@ const AdminPage = () => {
 
             <div className="items-grid">
               {project.items?.map((item, itemIndex) => (
-                <div key={item.id} className="admin-item">
+                <div 
+                  key={item.id} 
+                  className={`admin-item ${draggedItem?.item.id === item.id ? 'dragging' : ''} ${dragOverCategory === project.id && dragOverIndex === itemIndex ? 'drag-over-item' : ''}`}
+                  draggable
+                  onDragStart={(e) => handleDragStart(e, project.id, item)}
+                  onDragEnd={handleDragEnd}
+                  onDragOver={(e) => handleDragOverItem(e, project.id, itemIndex)}
+                  onDrop={(e) => handleDropItem(e, project.id, itemIndex)}
+                >
                   <div className="item-sort-controls">
                     <button
                       className="btn btn-small btn-sort btn-sort-first"

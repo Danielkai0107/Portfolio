@@ -488,8 +488,10 @@ export const moveItemUp = async (categoryId, itemId) => {
     const items = [...(categoryData.items || [])];
 
     // 找到當前項目的索引
-    const currentIndex = items.findIndex((item) => item.id === parseInt(itemId));
-    
+    const currentIndex = items.findIndex(
+      (item) => item.id === parseInt(itemId)
+    );
+
     if (currentIndex === -1) {
       throw new Error("找不到指定的項目");
     }
@@ -499,7 +501,10 @@ export const moveItemUp = async (categoryId, itemId) => {
     }
 
     // 交換當前項目和上一個項目的位置
-    [items[currentIndex - 1], items[currentIndex]] = [items[currentIndex], items[currentIndex - 1]];
+    [items[currentIndex - 1], items[currentIndex]] = [
+      items[currentIndex],
+      items[currentIndex - 1],
+    ];
 
     await updateDoc(docRef, {
       items: items,
@@ -527,8 +532,10 @@ export const moveItemDown = async (categoryId, itemId) => {
     const items = [...(categoryData.items || [])];
 
     // 找到當前項目的索引
-    const currentIndex = items.findIndex((item) => item.id === parseInt(itemId));
-    
+    const currentIndex = items.findIndex(
+      (item) => item.id === parseInt(itemId)
+    );
+
     if (currentIndex === -1) {
       throw new Error("找不到指定的項目");
     }
@@ -538,7 +545,10 @@ export const moveItemDown = async (categoryId, itemId) => {
     }
 
     // 交換當前項目和下一個項目的位置
-    [items[currentIndex], items[currentIndex + 1]] = [items[currentIndex + 1], items[currentIndex]];
+    [items[currentIndex], items[currentIndex + 1]] = [
+      items[currentIndex + 1],
+      items[currentIndex],
+    ];
 
     await updateDoc(docRef, {
       items: items,
@@ -566,8 +576,10 @@ export const moveItemToFirst = async (categoryId, itemId) => {
     const items = [...(categoryData.items || [])];
 
     // 找到當前項目的索引
-    const currentIndex = items.findIndex((item) => item.id === parseInt(itemId));
-    
+    const currentIndex = items.findIndex(
+      (item) => item.id === parseInt(itemId)
+    );
+
     if (currentIndex === -1) {
       throw new Error("找不到指定的項目");
     }
@@ -606,8 +618,10 @@ export const moveItemToLast = async (categoryId, itemId) => {
     const items = [...(categoryData.items || [])];
 
     // 找到當前項目的索引
-    const currentIndex = items.findIndex((item) => item.id === parseInt(itemId));
-    
+    const currentIndex = items.findIndex(
+      (item) => item.id === parseInt(itemId)
+    );
+
     if (currentIndex === -1) {
       throw new Error("找不到指定的項目");
     }
@@ -628,6 +642,69 @@ export const moveItemToLast = async (categoryId, itemId) => {
     return true;
   } catch (error) {
     console.error("移動子項目到最後面時發生錯誤：", error);
+    throw error;
+  }
+};
+
+// 移動項目到其他類別
+export const moveItemToCategory = async (sourceCategoryId, itemId, targetCategoryId, targetIndex = null) => {
+  try {
+    // 獲取來源類別
+    const sourceDocRef = doc(db, "projects", sourceCategoryId.toString());
+    const sourceDocSnap = await getDoc(sourceDocRef);
+
+    if (!sourceDocSnap.exists()) {
+      throw new Error("來源分類不存在");
+    }
+
+    // 獲取目標類別
+    const targetDocRef = doc(db, "projects", targetCategoryId.toString());
+    const targetDocSnap = await getDoc(targetDocRef);
+
+    if (!targetDocSnap.exists()) {
+      throw new Error("目標分類不存在");
+    }
+
+    const sourceData = sourceDocSnap.data();
+    const targetData = targetDocSnap.data();
+
+    // 從來源類別中找到要移動的項目
+    const sourceItems = [...(sourceData.items || [])];
+    const itemIndex = sourceItems.findIndex((item) => item.id === parseInt(itemId));
+
+    if (itemIndex === -1) {
+      throw new Error("找不到指定的項目");
+    }
+
+    // 移除項目 from 來源類別
+    const [movedItem] = sourceItems.splice(itemIndex, 1);
+
+    // 將項目添加到目標類別
+    const targetItems = [...(targetData.items || [])];
+    
+    // 處理 targetIndex：如果為 null 或超出範圍，則添加到最後
+    if (targetIndex !== null && targetIndex >= 0 && targetIndex <= targetItems.length) {
+      // 插入到指定位置
+      targetItems.splice(targetIndex, 0, movedItem);
+    } else {
+      // 添加到最後
+      targetItems.push(movedItem);
+    }
+
+    // 更新兩個類別
+    await updateDoc(sourceDocRef, {
+      items: sourceItems,
+      updatedAt: new Date().toISOString(),
+    });
+
+    await updateDoc(targetDocRef, {
+      items: targetItems,
+      updatedAt: new Date().toISOString(),
+    });
+
+    return true;
+  } catch (error) {
+    console.error("移動項目到其他類別時發生錯誤：", error);
     throw error;
   }
 };

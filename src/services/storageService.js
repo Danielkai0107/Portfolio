@@ -21,12 +21,6 @@ export const uploadImage = async (file, folder = "images") => {
       throw new Error("只能上傳圖片檔案");
     }
 
-    // 檢查檔案大小 (限制 5MB)
-    const maxSize = 5 * 1024 * 1024; // 5MB
-    if (file.size > maxSize) {
-      throw new Error("圖片大小不能超過 5MB");
-    }
-
     const uniqueFileName = generateUniqueFileName(file.name);
     const storageRef = ref(storage, `${folder}/${uniqueFileName}`);
 
