@@ -120,8 +120,20 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
   if (loading) {
     return (
       <aside className="show">
-        <div style={{ textAlign: "center", padding: "2rem", color: "white" }}>
-          載入中...
+        <div className="show-skeleton">
+          <div className="show-skeleton__title">
+            <div className="skeleton-block" />
+            <div className="skeleton-block" />
+            <div className="show-skeleton__title-icons">
+              <div className="skeleton-block" />
+              <div className="skeleton-block" />
+            </div>
+          </div>
+          <div className="show-skeleton__content">
+            <div className="skeleton-block" />
+            <div className="skeleton-block" />
+            <div className="skeleton-block" />
+          </div>
         </div>
       </aside>
     );
@@ -155,13 +167,35 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
         <section className="show_main_title">
           <h1>
             {currentItem.title}
-            <span>{currentItem.info}</span>
+            {currentItem.info && <span className="show_main_title_subtitle">{currentItem.info}</span>}
+            {currentItem.description && (
+              <span className="show_main_title_description">{currentItem.description}</span>
+            )}
           </h1>
           <ul className="icon_list">
-            {(currentItem.URL.figma ||
-              currentItem.URL.github ||
-              currentItem.URL.web) && <p>前往作品：</p>}
-            {currentItem.URL.figma && (
+            {currentItem.externalLink && (
+              <li className="web">
+                <a
+                  href={currentItem.externalLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() =>
+                    analyticsService.trackExternalLinkClick(
+                      currentItem.id,
+                      "external",
+                      currentItem.externalLink
+                    )
+                  }
+                >
+                  <span></span>
+                  <p>前往連結</p>
+                </a>
+              </li>
+            )}
+            {(currentItem.URL?.figma ||
+              currentItem.URL?.github ||
+              currentItem.URL?.web) && <p>前往作品：</p>}
+            {currentItem.URL?.figma && (
               <li className="figma">
                 <a
                   href={currentItem.URL.figma}
@@ -175,7 +209,7 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
                 </a>
               </li>
             )}
-            {currentItem.URL.github && (
+            {currentItem.URL?.github && (
               <li className="github">
                 <a
                   href={currentItem.URL.github}
@@ -189,7 +223,7 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
                 </a>
               </li>
             )}
-            {currentItem.URL.web && (
+            {currentItem.URL?.web && (
               <li className="web">
                 <a
                   href={currentItem.URL.web}
@@ -204,19 +238,19 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
           </ul>
         </section>
         <section className="show_main_content">
-          <figure className="loading">
-            <ul className="dots">
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </figure>
-          <ImageDisplay
-            src={currentItem.images[0]}
-            alt={currentItem.title}
-            showAnalysis={false}
-          />
-          {currentItem.proto && <FigmaEmbed url={currentItem.proto} />}
+          {(currentItem.images?.slice(1) || [])
+            .filter(Boolean)
+            .map((src, i) => (
+              <ImageDisplay
+                key={`${currentItem.id}-${i}`}
+                src={src}
+                alt={`${currentItem.title} - ${i + 1}`}
+                showAnalysis={false}
+              />
+            ))}
+          {currentItem.proto && currentItem.proto.length > 0 && (
+            <FigmaEmbed url={currentItem.proto[0]} />
+          )}
           <TopBtn />
         </section>
       </article>

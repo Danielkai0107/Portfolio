@@ -95,10 +95,25 @@ const Home = () => {
   if (loading) {
     return (
       <main className="home">
-        <div className="loading-dots">
-          <span className="dot"></span>
-          <span className="dot"></span>
-          <span className="dot"></span>
+        <div className="home-skeleton">
+          <div className="home-skeleton__hero">
+            <div className="skeleton-block" />
+            <div className="skeleton-block" />
+            <div className="skeleton-block" />
+          </div>
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="home-skeleton__section">
+              <div className="home-skeleton__section-title">
+                <div className="skeleton-block" />
+                <div className="skeleton-block" />
+              </div>
+              <div className="home-skeleton__section-cards">
+                {[...Array(4)].map((_, j) => (
+                  <div key={j} className="skeleton-block" />
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </main>
     );
@@ -121,7 +136,7 @@ const Home = () => {
             .map((project, visibleIndex) => {
               // 找到該分類在原始陣列中的索引（用於 MenuPage 的 pIndex）
               const originalIndex = projects.findIndex(
-                (p) => p.id === project.id
+                (p) => p.id === project.id,
               );
               // 顯示編號基於可見分類的順序
               const displayNumber = visibleIndex + 1;
@@ -147,6 +162,36 @@ const Home = () => {
             })}
 
           <ToTopBtn />
+
+          <footer className="home-footer">
+            <a
+              href="https://www.danielkai.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-footer__link"
+            >
+              Daniel's Case Studies
+              <span className="home-footer__link-icon" aria-hidden="true">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </span>
+            </a>
+            <p className="home-footer__copyright">
+              © {new Date().getFullYear()} Daniel Kai. All rights reserved.
+            </p>
+          </footer>
 
           {/* Admin 入口 - 隱蔽連結 */}
           <Link

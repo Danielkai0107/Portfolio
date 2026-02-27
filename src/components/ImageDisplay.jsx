@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const ImageDisplay = ({
   src,
   alt = "",
   className = "",
   fallback = "/images/placeholder.png",
-  showAnalysis = true, // 控制是否顯示開發模式分析標籤
+  showAnalysis = true,
   onLoad,
   onError,
   ...props
 }) => {
-  const [imageStatus, setImageStatus] = useState("loading"); // loading, loaded, error
+  const [imageStatus, setImageStatus] = useState("loading");
   const [currentSrc, setCurrentSrc] = useState(src);
+
+  useEffect(() => {
+    setCurrentSrc(src);
+    setImageStatus("loading");
+  }, [src]);
 
   const handleImageLoad = (e) => {
     setImageStatus("loaded");
@@ -19,9 +24,6 @@ const ImageDisplay = ({
   };
 
   const handleImageError = (e) => {
-    console.log(`圖片載入失敗: ${currentSrc}`);
-
-    // 如果當前不是 fallback，切換到 fallback
     if (currentSrc !== fallback) {
       setCurrentSrc(fallback);
       setImageStatus("loading");
@@ -31,23 +33,6 @@ const ImageDisplay = ({
     }
   };
 
-  // 檢查是否為 Firebase Storage URL
-  const isFirebaseStorageUrl = (url) => {
-    if (!url) return false;
-    return (
-      url.includes("firebasestorage.googleapis.com") ||
-      url.includes("firebase") ||
-      url.startsWith("https://")
-    );
-  };
-
-  // 檢查是否為本地路徑
-  const isLocalPath = (url) => {
-    if (!url) return false;
-    return url.startsWith("/") || url.startsWith("./");
-  };
-
-  // 如果沒有圖片來源，直接使用 fallback
   if (!src) {
     return (
       <img
@@ -61,8 +46,13 @@ const ImageDisplay = ({
     );
   }
 
+  const isLoading = imageStatus !== "loaded";
+
   return (
-    <>
+    <div
+      className={`skeleton-image-wrapper${isLoading ? " skeleton-image-wrapper--loading" : ""}`}
+    >
+      {isLoading && <div className="skeleton-shimmer" />}
       <img
         src={currentSrc}
         alt={alt}
@@ -71,27 +61,12 @@ const ImageDisplay = ({
         onError={handleImageError}
         {...props}
         style={{
-          opacity: imageStatus === "loading" ? 0.7 : 1,
-          transition: "opacity 0.3s ease",
+          opacity: isLoading ? 0 : 1,
+          transition: "opacity 0.6s ease",
           ...props.style,
         }}
       />
-
-      {/* 顯示圖片來源類型（開發時使用，可透過 showAnalysis 控制） */}
-      {process.env.NODE_ENV === "development" && showAnalysis && (
-        <div
-          style={{
-            fontSize: "10px",
-            color: "#666",
-            marginTop: "2px",
-            display: imageStatus === "loaded" ? "block" : "none",
-          }}
-        >
-          {isFirebaseStorageUrl(currentSrc) && "🔥 Storage"}
-          {isLocalPath(currentSrc) && "📁 Local"}
-        </div>
-      )}
-    </>
+    </div>
   );
 };
 

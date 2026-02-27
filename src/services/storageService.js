@@ -60,7 +60,7 @@ export const uploadMultipleImages = async (files, folder = "images") => {
   }
 };
 
-// 上傳專案相關圖片 (main, image1, image2)
+// 上傳專案相關圖片 (main, image1, image2) — 相容舊版
 export const uploadProjectImages = async (
   mainImage,
   image1,
@@ -71,22 +71,45 @@ export const uploadProjectImages = async (
     const folder = `projects/${projectCategory}`;
     const uploadResults = {};
 
-    // 上傳主要圖片
     if (mainImage) {
       uploadResults.main = await uploadImage(mainImage, folder);
     }
-
-    // 上傳圖片1
     if (image1) {
       uploadResults.image1 = await uploadImage(image1, folder);
     }
-
-    // 上傳圖片2
     if (image2) {
       uploadResults.image2 = await uploadImage(image2, folder);
     }
 
     return uploadResults;
+  } catch (error) {
+    console.error("上傳專案圖片時發生錯誤：", error);
+    throw error;
+  }
+};
+
+// 上傳專案圖片：封面（一張）+ 內頁（多張連續）
+export const uploadProjectCoverAndInner = async (
+  coverFile,
+  innerFiles,
+  projectCategory
+) => {
+  try {
+    const folder = `projects/${projectCategory}`;
+    let coverUrl = null;
+    const innerUrls = [];
+
+    if (coverFile) {
+      const result = await uploadImage(coverFile, folder);
+      coverUrl = result.url;
+    }
+
+    if (innerFiles && innerFiles.length > 0) {
+      const results = await uploadMultipleImages(innerFiles, folder);
+      results.forEach((r) => innerUrls.push(r.url));
+    }
+
+    return { coverUrl, innerUrls };
   } catch (error) {
     console.error("上傳專案圖片時發生錯誤：", error);
     throw error;

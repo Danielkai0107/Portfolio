@@ -29,15 +29,22 @@ const MenuPage = ({ pIndex, handleShowProject }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pIndex]);
 
-  const handleProjectClickWithTracking = (item) => {
-    // 調用原始的處理函數
-    handleShowProject(item);
+  const handleItemClick = (item) => {
+    if (item.externalLink) {
+      window.open(item.externalLink, "_blank", "noopener,noreferrer");
+    } else {
+      handleShowProject(item);
+    }
   };
 
   if (loading) {
     return (
       <article className="menu">
-        <div style={{ textAlign: "center", padding: "2rem" }}>載入中...</div>
+        <ul className="menu_skeleton">
+          {[...Array(4)].map((_, i) => (
+            <li key={i} className="menu_skeleton_card" />
+          ))}
+        </ul>
       </article>
     );
   }
@@ -58,13 +65,21 @@ const MenuPage = ({ pIndex, handleShowProject }) => {
     <article className="menu">
       <ul className="menu_list">
         {items.map((item, index) => (
-          <li key={index} onClick={() => handleProjectClickWithTracking(item)}>
+          <li key={index} onClick={() => handleItemClick(item)}>
             <figure>
-              <ImageDisplay src={item.images[1]} alt={item.title} />
+              <ImageDisplay
+                src={item.images?.[0]}
+                alt={item.title}
+              />
             </figure>
             <div className="item_title">
               <span>0{index + 1}</span>
               <h1>{item.title}</h1>
+              {item.externalLink && (
+                <span className="item_external_link_hint" title="點擊開新分頁">
+                  ↗
+                </span>
+              )}
             </div>
             <div className="goto_btn"></div>
           </li>

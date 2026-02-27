@@ -7,7 +7,7 @@ const Home02 = ({ handleSetMenu, pIndex, id }) => {
   const [currentItem, setCurrentItem] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
-  const [cardImageIndex, setCardImageIndex] = useState(1); // 控制卡片圖片輪播 (1或2)
+  const [cardImageIndex, setCardImageIndex] = useState(0); // 封面為 images[0]，可選與 images[1] 輪播
   const [loading, setLoading] = useState(true);
 
   // 載入專案資料
@@ -44,24 +44,22 @@ const Home02 = ({ handleSetMenu, pIndex, id }) => {
     return () => clearInterval(interval);
   }, [currentIndex, projects, pIndex]);
 
-  // 卡片圖片輪播效果 (images[1] 和 images[2] 互換)
+  // 卡片圖片：封面 images[0]，若有 images[1] 可輪播
   useEffect(() => {
     if (!currentItem || !currentItem.images) return;
 
-    // 檢查是否有兩張不同的圖片可以輪播
-    const hasImage1 = currentItem.images[1];
-    const hasImage2 = currentItem.images[2];
-    const canAlternate = hasImage1 && hasImage2 && hasImage1 !== hasImage2;
+    const hasCover = currentItem.images[0];
+    const hasSecond = currentItem.images[1];
+    const canAlternate = hasCover && hasSecond && hasCover !== hasSecond;
 
     if (!canAlternate) {
-      // 如果不能輪播，就固定使用 images[1]
-      setCardImageIndex(1);
+      setCardImageIndex(0);
       return;
     }
 
     const cardInterval = setInterval(() => {
-      setCardImageIndex((prevIndex) => (prevIndex === 1 ? 2 : 1));
-    }, 3000); // 每3秒切換一次卡片圖片
+      setCardImageIndex((prev) => (prev === 0 ? 1 : 0));
+    }, 3000);
 
     return () => clearInterval(cardInterval);
   }, [currentItem]);
@@ -70,14 +68,16 @@ const Home02 = ({ handleSetMenu, pIndex, id }) => {
     return (
       <article className="home02" id={id}>
         <section className="home02_title">
-          <h1></h1>
-          <h1>Projects</h1>
+          <div className="skeleton-block" style={{ width: "160px", height: "2.5rem" }} />
+          <div className="skeleton-block" style={{ width: "130px", height: "2.5rem" }} />
         </section>
         <section className="home02_main">
-          <div className="loading-dots">
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
+          <div className="home02-skeleton">
+            <div className="home02-skeleton__card skeleton-block skeleton-block--circle" />
+            <div className="home02-skeleton__info">
+              <div className="skeleton-block" />
+              <div className="skeleton-block" />
+            </div>
           </div>
         </section>
       </article>
@@ -97,7 +97,7 @@ const Home02 = ({ handleSetMenu, pIndex, id }) => {
             key={`card-img-${cardImageIndex}-${fadeKey}`}
           >
             <ImageDisplay
-              src={currentItem && currentItem.images[cardImageIndex]}
+              src={currentItem?.images?.[cardImageIndex]}
               alt={currentItem ? currentItem.title : ""}
             />
           </li>

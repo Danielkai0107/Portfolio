@@ -3,45 +3,53 @@ import {
   addItemToCategory,
   updateProjectItem,
 } from "../services/projectService";
-import { uploadProjectImages } from "../services/storageService";
+import { uploadImage } from "../services/storageService";
 import ImageDisplay from "./ImageDisplay";
 
 const ItemForm = ({ categoryId, item, onClose, isEdit }) => {
+  // images[0] = 封面（僅首頁圖卡）, images[1..] = 內頁圖片
   const [formData, setFormData] = useState({
     title: "",
     info: "",
+    description: "",
+    externalLink: "",
     URL: {
       figma: "",
       github: "",
       web: "",
     },
-    images: ["", "", ""],
+    images: [""],
     proto: [],
   });
 
   const [imageFiles, setImageFiles] = useState({
-    main: null,
-    image1: null,
-    image2: null,
+    cover: null,
+    inner: [],
   });
 
   const [loading, setLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState("");
 
-  // 編輯模式時載入現有資料
+  // 編輯模式時載入現有資料（images[0]=封面, images[1..]=內頁）
   useEffect(() => {
     if (isEdit && item) {
+      const raw = item.images || [];
+      const images =
+        raw.length > 0 ? raw : [""];
       setFormData({
         title: item.title || "",
         info: item.info || "",
+        description: item.description || "",
+        externalLink: item.externalLink || "",
         URL: {
           figma: item.URL?.figma || "",
           github: item.URL?.github || "",
           web: item.URL?.web || "",
         },
-        images: item.images || ["", "", ""],
+        images,
         proto: item.proto || [],
       });
+      setImageFiles({ cover: null, inner: [] });
     }
   }, [isEdit, item]);
 
@@ -66,28 +74,63 @@ const ItemForm = ({ categoryId, item, onClose, isEdit }) => {
     }
   };
 
-  // 處理圖片檔案選擇
-  const handleImageChange = (e, imageType) => {
+  // 封面：單一檔案，僅影響首頁圖卡
+  const handleCoverChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setImageFiles((prev) => ({
+    if (!file) return;
+    setImageFiles((prev) => ({ ...prev, cover: file }));
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      setFormData((prev) => ({
         ...prev,
-        [imageType]: file,
+        images: [ev.target.result, ...prev.images.slice(1)],
       }));
+    };
+    reader.readAsDataURL(file);
+  };
 
-      // 預覽圖片
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const imageIndex =
-          imageType === "main" ? 0 : imageType === "image1" ? 1 : 2;
-        setFormData((prev) => ({
-          ...prev,
-          images: prev.images.map((img, idx) =>
-            idx === imageIndex ? e.target.result : img
-          ),
-        }));
-      };
-      reader.readAsDataURL(file);
+  // 內頁：連續新增多張圖片（保留選擇順序）
+  const handleInnerImagesChange = (e) => {
+    const files = e.target.files ? Array.from(e.target.files) : [];
+    if (files.length === 0) return;
+    setImageFiles((prev) => ({ ...prev, inner: [...prev.inner, ...files] }));
+    Promise.all(
+      files.map(
+        (file) =>
+          new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (ev) => resolve(ev.target.result);
+            reader.readAsDataURL(file);
+          })
+      )
+    ).then((blobUrls) => {
+      setFormData((prev) => ({
+        ...prev,
+        images: [...prev.images.slice(0, 1), ...prev.images.slice(1), ...blobUrls],
+      }));
+    });
+    e.target.value = "";
+  };
+
+  // 移除內頁某一張（innerIndex 為內頁中的順序，0-based）
+  const handleRemoveInnerImage = (innerIndex) => {
+    const imageIndex = 1 + innerIndex;
+    const removed = formData.images[imageIndex];
+    const isNewImage = (u) => u && (String(u).startsWith("data:") || String(u).startsWith("blob:"));
+    const wasNew = isNewImage(removed);
+    const blobIndexInInner = formData.images
+      .slice(1, imageIndex)
+      .filter(isNewImage).length;
+
+    setFormData((prev) => ({
+      ...prev,
+      images: prev.images.filter((_, i) => i !== imageIndex),
+    }));
+    if (wasNew) {
+      setImageFiles((f) => ({
+        ...f,
+        inner: f.inner.filter((_, i) => i !== blobIndexInInner),
+      }));
     }
   };
 
@@ -115,31 +158,37 @@ const ItemForm = ({ categoryId, item, onClose, isEdit }) => {
     try {
       let finalFormData = { ...formData };
 
-      // 上傳新圖片到 Firebase Storage
-      if (imageFiles.main || imageFiles.image1 || imageFiles.image2) {
-        setUploadProgress("上傳圖片中...");
+      // 上傳圖片：封面 + 內頁（新選的檔案才上傳）
+      const folder = `category-${categoryId}`;
+      let coverUrl = formData.images[0] || "";
+      const innerUrls = [];
 
-        const uploadResults = await uploadProjectImages(
-          imageFiles.main,
-          imageFiles.image1,
-          imageFiles.image2,
-          `category-${categoryId}`
-        );
-
-        // 更新圖片網址
-        const newImages = [...formData.images];
-        if (uploadResults.main) {
-          newImages[0] = uploadResults.main.url;
-        }
-        if (uploadResults.image1) {
-          newImages[1] = uploadResults.image1.url;
-        }
-        if (uploadResults.image2) {
-          newImages[2] = uploadResults.image2.url;
-        }
-
-        finalFormData.images = newImages;
+      if (imageFiles.cover) {
+        setUploadProgress("上傳封面中...");
+        const res = await uploadImage(imageFiles.cover, folder);
+        coverUrl = res.url;
       }
+
+      const innerPart = formData.images.slice(1) || [];
+      let innerFileIdx = 0;
+      for (const url of innerPart) {
+        const isNew = url && typeof url === "string" && (url.startsWith("data:") || url.startsWith("blob:"));
+        if (isNew && imageFiles.inner[innerFileIdx]) {
+          setUploadProgress(`上傳內頁圖片 ${innerFileIdx + 1}/${imageFiles.inner.length}...`);
+          const res = await uploadImage(imageFiles.inner[innerFileIdx], folder);
+          innerUrls.push(res.url);
+          innerFileIdx += 1;
+        } else if (url && typeof url === "string" && (url.startsWith("http://") || url.startsWith("https://"))) {
+          innerUrls.push(url);
+        }
+      }
+
+      const isStoredUrl = (s) => typeof s === "string" && (s.startsWith("http://") || s.startsWith("https://"));
+      const coverForStore = isStoredUrl(coverUrl) ? coverUrl : "";
+      finalFormData.images =
+        coverForStore || innerUrls.length > 0
+          ? [coverForStore, ...innerUrls]
+          : [""];
 
       // 清理 URL 資料 (移除空字串)
       const cleanedURL = Object.fromEntries(
@@ -149,6 +198,13 @@ const ItemForm = ({ categoryId, item, onClose, isEdit }) => {
         ])
       );
       finalFormData.URL = cleanedURL;
+
+      // 外連結：有值才寫入，空字串不存
+      if (!finalFormData.externalLink?.trim()) {
+        delete finalFormData.externalLink;
+      } else {
+        finalFormData.externalLink = finalFormData.externalLink.trim();
+      }
 
       if (isEdit) {
         setUploadProgress("更新項目中...");
@@ -203,7 +259,7 @@ const ItemForm = ({ categoryId, item, onClose, isEdit }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="info">說明</label>
+          <label htmlFor="info">副標題</label>
           <input
             type="text"
             id="info"
@@ -211,7 +267,40 @@ const ItemForm = ({ categoryId, item, onClose, isEdit }) => {
             value={formData.info}
             onChange={handleInputChange}
             disabled={loading}
+            placeholder="簡短副標題"
           />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="description">說明描述</label>
+          <textarea
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            disabled={loading}
+            rows={4}
+            placeholder="內頁標題區的說明文字，字級較小"
+          />
+        </div>
+
+        <div className="form-section">
+          <h4>外連結（選填）</h4>
+          <p className="form-hint">
+            若有填寫，首頁圖卡點擊時會在新分頁開啟此連結，不會進入內頁。
+          </p>
+          <div className="form-group">
+            <label htmlFor="externalLink">點擊圖卡開啟的網址</label>
+            <input
+              type="url"
+              id="externalLink"
+              name="externalLink"
+              value={formData.externalLink}
+              onChange={handleInputChange}
+              disabled={loading}
+              placeholder="https://..."
+            />
+          </div>
         </div>
 
         <div className="form-section">
@@ -255,53 +344,57 @@ const ItemForm = ({ categoryId, item, onClose, isEdit }) => {
         </div>
 
         <div className="form-section">
-          <h4>圖片</h4>
+          <h4>封面</h4>
+          <p className="form-hint">僅顯示於首頁圖卡，一張為限。</p>
+          <div className="image-upload image-upload-cover">
+            <label className="image-upload-label">封面圖</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleCoverChange}
+              disabled={loading}
+            />
+            {formData.images[0] && (
+              <div className="image-preview">
+                <ImageDisplay src={formData.images[0]} alt="封面預覽" />
+              </div>
+            )}
+          </div>
+        </div>
 
-          <div className="image-upload-group">
-            <div className="image-upload">
-              <label>主要圖片</label>
+        <div className="form-section">
+          <h4>內頁圖片</h4>
+          <p className="form-hint">可連續新增多張，用於內頁展示。</p>
+          <div className="image-upload-group image-upload-inner">
+            {(formData.images.slice(1) || []).map(
+              (url, i) =>
+                url ? (
+                  <div key={i} className="image-upload-inner-item">
+                    <div className="image-preview">
+                      <ImageDisplay src={url} alt={`內頁 ${i + 1}`} />
+                    </div>
+                    <button
+                      type="button"
+                      className="btn-remove-inner-image"
+                      onClick={() => handleRemoveInnerImage(i)}
+                      disabled={loading}
+                      title="移除"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ) : null
+            )}
+            <label className="image-upload-add-inner">
+              <span>+ 新增圖片</span>
               <input
                 type="file"
                 accept="image/*"
-                onChange={(e) => handleImageChange(e, "main")}
+                multiple
+                onChange={handleInnerImagesChange}
                 disabled={loading}
               />
-              {formData.images[0] && (
-                <div className="image-preview">
-                  <ImageDisplay src={formData.images[0]} alt="主要圖片預覽" />
-                </div>
-              )}
-            </div>
-
-            <div className="image-upload">
-              <label>圖片 1</label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleImageChange(e, "image1")}
-                disabled={loading}
-              />
-              {formData.images[1] && (
-                <div className="image-preview">
-                  <ImageDisplay src={formData.images[1]} alt="圖片 1 預覽" />
-                </div>
-              )}
-            </div>
-
-            <div className="image-upload">
-              <label>圖片 2</label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleImageChange(e, "image2")}
-                disabled={loading}
-              />
-              {formData.images[2] && (
-                <div className="image-preview">
-                  <ImageDisplay src={formData.images[2]} alt="圖片 2 預覽" />
-                </div>
-              )}
-            </div>
+            </label>
           </div>
         </div>
 

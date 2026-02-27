@@ -773,6 +773,13 @@
   }
 }
 
+.form-hint {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: -8px 0 12px 0;
+  line-height: 1.4;
+}
+
 /* 圖片上傳區域 */
 .image-upload-group {
   display: grid;
@@ -816,6 +823,103 @@
     height: 120px;
     object-fit: cover;
   }
+}
+
+/* 封面：單一上傳區 */
+.image-upload-cover {
+  max-width: 320px;
+
+  .image-preview img {
+    height: 160px;
+  }
+}
+
+/* 內頁：多張連續上傳 */
+.image-upload-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.image-upload-inner-item {
+  position: relative;
+  width: 140px;
+  flex-shrink: 0;
+
+  .image-preview {
+    margin-top: 8px;
+
+    img {
+      height: 100px;
+    }
+  }
+}
+
+.btn-remove-inner-image {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+
+  &:hover:not(:disabled) {
+    background: #c00;
+  }
+}
+
+.image-upload-add-inner {
+  width: 140px;
+  height: 100px;
+  margin-top: 8px;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+
+  span {
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+
+  input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  &:hover {
+    border-color: #212529;
+    background: #e9ecef;
+
+    span {
+      color: #212529;
+    }
+  }
+}
+
+.image-upload-label {
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 10px;
+  display: block;
 }
 
 /* 載入覆蓋層 */
