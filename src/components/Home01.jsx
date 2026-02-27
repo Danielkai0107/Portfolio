@@ -43,12 +43,14 @@ const Home01 = () => {
             <p>Daniel Kai</p>
           </li>
           <li>
-            <h1>UI UX Designer</h1>
+            <h1>Product Designer</h1>
           </li>
           <li>
             <p>
-              Hi , I am Daniel.<br/>A UI/UX Designer crafting intuitive and modern
-              digital experiences.
+              Hi , I am Daniel.
+              <br />I design and ship scalable digital systems across multiple
+              platforms — structuring complex user flows, business logic, and
+              multi-role environments into intuitive product experiences.
             </p>
           </li>
         </ul>
