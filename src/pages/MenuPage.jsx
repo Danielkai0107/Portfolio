@@ -30,11 +30,8 @@ const MenuPage = ({ pIndex, handleShowProject }) => {
   }, [pIndex]);
 
   const handleItemClick = (item) => {
-    if (item.externalLink) {
-      window.open(item.externalLink, "_blank", "noopener,noreferrer");
-    } else {
-      handleShowProject(item);
-    }
+    const categoryDocId = projects[pIndex]?.id;
+    handleShowProject({ ...item, _categoryDocId: categoryDocId });
   };
 
   if (loading) {
@@ -76,7 +73,7 @@ const MenuPage = ({ pIndex, handleShowProject }) => {
               <span>0{index + 1}</span>
               <h1>{item.title}</h1>
               {item.externalLink && (
-                <span className="item_external_link_hint" title="點擊開新分頁">
+                <span className="item_external_link_hint" title="內頁可前往連結">
                   ↗
                 </span>
               )}

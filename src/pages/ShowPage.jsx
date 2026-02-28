@@ -20,34 +20,40 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
         const projectsData = await getAllProjects();
         setProjects(projectsData);
 
-        // 如果有 URL 參數，根據 URL 找到對應的項目
         if (urlProjectId && urlCategory) {
-          let foundProject = null;
-          let foundCategory = null;
-
-          for (const category of projectsData) {
-            const project = category.items.find(
-              (item) => item.id === urlProjectId
-            );
-            if (project) {
-              foundProject = { ...project, category: urlCategory };
-              foundCategory = category.items;
-              break;
-            }
-          }
-
-          if (foundProject && foundCategory) {
-            setCurrentItem(foundProject);
-            setCurrentList(foundCategory);
-          }
-        } else if (selectedProject) {
-          // 找到當前項目所屬的分類
-          const category = projectsData.findIndex((project) =>
-            project.items.some((item) => item.id === selectedProject.id)
+          // URL 入口：用 urlCategory 精確匹配類別名稱，再在該類別中找項目
+          const matchedCategory = projectsData.find(
+            (cat) => cat.category === urlCategory
           );
 
-          if (category !== -1) {
-            setCurrentList(projectsData[category].items);
+          if (matchedCategory) {
+            const project = matchedCategory.items.find(
+              (item) => String(item.id) === String(urlProjectId)
+            );
+            if (project) {
+              setCurrentItem({ ...project, category: urlCategory });
+              setCurrentList(matchedCategory.items);
+            }
+          }
+        } else if (selectedProject) {
+          // MenuPage 入口：用 _categoryDocId 精確匹配類別
+          let matchedCategory = null;
+
+          if (selectedProject._categoryDocId) {
+            matchedCategory = projectsData.find(
+              (p) => p.id === selectedProject._categoryDocId
+            );
+          }
+
+          if (!matchedCategory) {
+            // 後備：遍歷查找（適用於沒有 _categoryDocId 的舊入口）
+            matchedCategory = projectsData.find((project) =>
+              project.items.some((item) => item.id === selectedProject.id)
+            );
+          }
+
+          if (matchedCategory) {
+            setCurrentList(matchedCategory.items);
           }
         }
       } catch (err) {
@@ -174,7 +180,7 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
           </h1>
           <ul className="icon_list">
             {currentItem.externalLink && (
-              <li className="web">
+              <li className="web external-link">
                 <a
                   href={currentItem.externalLink}
                   target="_blank"
@@ -188,7 +194,7 @@ const ShowPage = ({ selectedProject, handleCloseShow }) => {
                   }
                 >
                   <span></span>
-                  <p>前往連結</p>
+                  <p>查看案例分析</p>
                 </a>
               </li>
             )}
