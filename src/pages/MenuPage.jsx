@@ -72,11 +72,6 @@ const MenuPage = ({ pIndex, handleShowProject }) => {
             <div className="item_title">
               <span>0{index + 1}</span>
               <h1>{item.title}</h1>
-              {item.externalLink && (
-                <span className="item_external_link_hint" title="內頁可前往連結">
-                  ↗
-                </span>
-              )}
             </div>
             <div className="goto_btn"></div>
           </li>
