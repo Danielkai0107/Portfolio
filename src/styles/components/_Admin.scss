@@ -846,6 +846,23 @@
   position: relative;
   width: 140px;
   flex-shrink: 0;
+  cursor: grab;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.15s;
+  border-radius: 8px;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &.is-dragging {
+    opacity: 0.35;
+    transform: scale(0.97);
+  }
+
+  &.is-drag-over {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 2px #374151;
+  }
 
   .image-preview {
     margin-top: 8px;
@@ -853,6 +870,29 @@
     img {
       height: 100px;
     }
+  }
+}
+
+.drag-handle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 22px;
+  height: 22px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  z-index: 1;
+  line-height: 1;
+  user-select: none;
+
+  &:active {
+    cursor: grabbing;
   }
 }
 

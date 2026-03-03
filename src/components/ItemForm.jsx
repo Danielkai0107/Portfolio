@@ -29,6 +29,8 @@ const ItemForm = ({ categoryId, item, onClose, isEdit }) => {
 
   const [loading, setLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState("");
+  const [dragIndex, setDragIndex] = useState(null);
+  const [dragOverIndex, setDragOverIndex] = useState(null);
 
   // 編輯模式時載入現有資料（images[0]=封面, images[1..]=內頁）
   useEffect(() => {
@@ -132,6 +134,49 @@ const ItemForm = ({ categoryId, item, onClose, isEdit }) => {
         inner: f.inner.filter((_, i) => i !== blobIndexInInner),
       }));
     }
+  };
+
+  // 拖動排序內頁圖片
+  const handleReorderInnerImages = (fromIndex, toIndex) => {
+    if (fromIndex === toIndex) return;
+    const inner = formData.images.slice(1);
+    const newInner = [...inner];
+    const [moved] = newInner.splice(fromIndex, 1);
+    newInner.splice(toIndex, 0, moved);
+
+    const isNew = (u) => u && (String(u).startsWith("data:") || String(u).startsWith("blob:"));
+    const oldNewUrls = inner.filter(isNew);
+    const fileMap = new Map();
+    oldNewUrls.forEach((url, i) => {
+      if (imageFiles.inner[i]) fileMap.set(url, imageFiles.inner[i]);
+    });
+    const newInnerFiles = newInner.filter(isNew).map((url) => fileMap.get(url)).filter(Boolean);
+
+    setFormData((prev) => ({ ...prev, images: [prev.images[0], ...newInner] }));
+    setImageFiles((prev) => ({ ...prev, inner: newInnerFiles }));
+  };
+
+  const handleDragStart = (e, index) => {
+    setDragIndex(index);
+    e.dataTransfer.effectAllowed = "move";
+  };
+
+  const handleDragOver = (e, index) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    setDragOverIndex(index);
+  };
+
+  const handleDrop = (e, index) => {
+    e.preventDefault();
+    handleReorderInnerImages(dragIndex, index);
+    setDragIndex(null);
+    setDragOverIndex(null);
+  };
+
+  const handleDragEnd = () => {
+    setDragIndex(null);
+    setDragOverIndex(null);
   };
 
   // 處理 Figma 原型嵌入碼
@@ -369,7 +414,20 @@ const ItemForm = ({ categoryId, item, onClose, isEdit }) => {
             {(formData.images.slice(1) || []).map(
               (url, i) =>
                 url ? (
-                  <div key={i} className="image-upload-inner-item">
+                  <div
+                    key={i}
+                    className={[
+                      "image-upload-inner-item",
+                      dragIndex === i ? "is-dragging" : "",
+                      dragOverIndex === i && dragIndex !== i ? "is-drag-over" : "",
+                    ].join(" ").trim()}
+                    draggable={!loading}
+                    onDragStart={(e) => handleDragStart(e, i)}
+                    onDragOver={(e) => handleDragOver(e, i)}
+                    onDrop={(e) => handleDrop(e, i)}
+                    onDragEnd={handleDragEnd}
+                  >
+                    <div className="drag-handle" title="拖動排序">⠿</div>
                     <div className="image-preview">
                       <ImageDisplay src={url} alt={`內頁 ${i + 1}`} />
                     </div>
